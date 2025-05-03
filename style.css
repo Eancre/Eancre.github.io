@@ -1,0 +1,85 @@
+/* Palette couleurs */
+:root {
+    --violet-fonce: #245075;
+    --rose-vif: #e62b87;
+    --violet-moyen: #9b549c;
+    --blanc: #ffffff;
+    --gris-clair: #f4f4f4;
+    --noir: #333;
+}
+
+/* Base */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--gris-clair);
+    color: var(--noir);
+}
+
+a {
+    color: var(--violet-fonce);
+    text-decoration: none;
+}
+
+/* Header */
+header {
+    background-color: var(--violet-fonce);
+    color: var(--blanc);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em 2em;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.title h1 {
+    color: var(--blanc);
+    margin-left: 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5em;
+    padding: 0;
+    margin: 0;
+}
+
+nav a {
+    color: var(--blanc);
+    font-weight: bold;
+}
+
+/* Sections */
+main {
+    padding: 2em;
+}
+
+section {
+    margin-bottom: 3em;
+}
+
+h1, h2, h3 {
+    color: var(--violet-fonce);
+}
+
+/* Bouton */
+.btn {
+    display: inline-block;
+    background-color: var(--rose-vif);
+    color: var(--blanc);
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    margin-top: 1em;
+}
+
+/* Footer */
+footer {
+    background-color: var(--violet-moyen);
+    color: var(--blanc);
+    text-align: center;
+    padding: 1.5em;
+}
