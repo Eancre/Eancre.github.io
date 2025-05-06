@@ -35,6 +35,10 @@ header {
     height: 50px;
 }
 
+.Aff img {
+    height: 500px;
+}
+
 .title h1 {
     color: var(--blanc);
     margin-left: 20px;
