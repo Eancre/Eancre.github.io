@@ -1,3 +1,65 @@
+
+
+/* Menu desktop */
+.navbar {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+/* Menu burger (caché par défaut sur desktop) */
+.burger-menu {
+  display: none;
+  font-size: 1.8em;
+  cursor: pointer;
+}
+
+/* Menu mobile (par défaut caché) */
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  background: #004466;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 200px;
+  padding: 10px;
+}
+
+.mobile-nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.mobile-nav a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* Quand le menu mobile est actif */
+.mobile-nav.active {
+  display: flex;
+}
+
+/* Responsive : en dessous de 768px, on cache le menu classique */
+@media (max-width: 768px) {
+  .navbar {
+    display: none;
+  }
+  .burger-menu {
+    display: block;
+  }
+}
 /* Palette couleurs */
 :root {
     --violet-fonce: #245075;
@@ -92,6 +154,7 @@ footer {
 .b {
     height: 200px;
 }
+
 
 
 
