@@ -30,16 +30,34 @@
         <div class="title">
             <h1><u><center>L'Eancre</center></u></h1>
         </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="apropos.html">Qui sommes-nous ?</a></li>
-                <li><a href="actualites.html">Actualités</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+        <nav class="navbar">
+      <a href="#">Accueil</a>
+      <a href="#">Qui sommes-nous</a>
+      <a href="#">Actualités</a>
+      <a href="#">Événements</a>
+      <a href="#">Contact</a>
+    </nav>
 
+ 
+    <div class="burger-menu" id="burger">☰</div>
+    </header>
+     <div class="mobile-nav" id="mobileNav">
+    <a href="#">Accueil</a>
+    <a href="#">Qui sommes-nous</a>
+    <a href="#">Actualités</a>
+    <a href="#">Événements</a>
+    <a href="#">Contact</a>
+  </div>
+
+  <script>
+    // Script pour ouvrir/fermer le menu mobile
+    const burger = document.getElementById('burger');
+    const mobileNav = document.getElementById('mobileNav');
+
+    burger.addEventListener('click', () => {
+      mobileNav.classList.toggle('active');
+    });
+  </script>
     <main>
         <section class="intro">
             <h1>La vie est unique</h1>
@@ -78,6 +96,7 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
