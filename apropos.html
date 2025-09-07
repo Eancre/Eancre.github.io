@@ -13,16 +13,36 @@
             <a href="index.html"><img src="logo.png" alt="Logo de l'association L'Eancre"></a>
         </div>
         <div class="title">
-           <h1><u>L'Eancre</u></h1>
+            <h1><u><center>L'Eancre</center></u></h1>
         </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="apropos.html">Qui sommes-nous ?</a></li>
-                <li><a href="actualites.html">Actualités</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+        <nav class="navbar">
+      <a href="index.html">Accueil</a>
+      <a href="apropos.html">Qui sommes-nous</a>
+      <a href="#">Actualités</a>
+      <a href="actualites.html">Événements</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+ 
+    <div class="burger-menu" id="burger">☰</div>
+    </header>
+     <div class="mobile-nav" id="mobileNav">
+     <a href="index.html">Accueil</a>
+      <a href="apropos.html">Qui sommes-nous</a>
+      <a href="#">Actualités</a>
+      <a href="actualites.html">Événements</a>
+      <a href="contact.html">Contact</a>
+  </div>
+
+  <script>
+    // Script pour ouvrir/fermer le menu mobile
+    const burger = document.getElementById('burger');
+    const mobileNav = document.getElementById('mobileNav');
+
+    burger.addEventListener('click', () => {
+      mobileNav.classList.toggle('active');
+    });
+  </script>
     </header>
 
     <main>
@@ -57,5 +77,6 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
