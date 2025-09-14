@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://asso-eancre.fr/sitemap.xml
+Sitemap: https://www.asso-eancre.fr/sitemap.xml
