@@ -56,6 +56,18 @@
     });
   </script>
     </header>
+
+
+<div id="info-banner" class="info-banner">
+    <p>📣 <strong>Changement d'adresse sur notre site :</strong>
+    <strong>79 Boulevard Etienne Clémentel, 63200 RIOM</strong>.</p>
+	<a href="contact.html"><u>Voir la page <b>Contact</b> pour plus d'informations.</u></a>
+    <button id="close-banner" class="close-banner">✕</button>
+</div>
+
+<main>
+
+
     <main>
         <section class="intro">
             <h1>La vie est unique</h1>
@@ -66,9 +78,9 @@
             <h2>Actualité en ce moment</h2>
             <article>
                 <h3>Exposition Hervé Balmisse</h3>
-                <h4>Exposision clôturer</h4>
                 <p>Du 7 Mai au 28 Août 2025 - 6 Place Saint-Jean, 63200 RIOM</p>
                 <p>Vernissage le 7 mai à 18h30</p>
+		<h2><em>Exposision clôturer</em></h2>
             </article>
             <a class="btn" href="actualites.html">Voir toutes les actualités</a>
         </section>
@@ -93,6 +105,21 @@
     </footer>
 
     <script src="script.js"></script>
+<script>
+    const banner = document.getElementById("info-banner");
+    const closeBtn = document.getElementById("close-banner");
+
+    closeBtn.addEventListener("click", () => {
+        banner.style.display = "none";
+        localStorage.setItem("bannerClosed", "yes");
+    });
+
+    // Si déjà fermé une fois → ne pas réafficher
+    if (localStorage.getItem("bannerClosed") === "yes") {
+        banner.style.display = "none";
+    }
+</script>
+
 </body>
 </html>
 
