@@ -11,6 +11,11 @@
   text-decoration: none;
   font-weight: bold;
 }
+.banner-warning {
+    margin-top: 6px;
+    font-size: 0.95rem;
+    color: #ffd966; /* jaune d’avertissement */
+}
 
 .navbar a:hover {
   text-decoration: underline;
@@ -188,6 +193,7 @@ footer {
 .b {
     height: 200px;
 }
+
 
 
 
