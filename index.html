@@ -6,156 +6,112 @@
     <title>Association - L'Eancre</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="logo2.png">
-    <link rel="icon" type="image/x-icon" href="https://www.asso-eancre.fr/logo2.ico">
-    <link rel="icon" type="image/x-icon" href="https://asso-eancre.fr/logo2.ico">
-    <link rel="icon" type="image/x-icon" href="asso-eancre.fr/logo2.ico">
-    <link rel="icon" type="image/x-icon" href="www.asso-eancre.fr/logo2.ico">
-    <script type="application/ld+json">
-           {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "url": "https://www.asso-eancre.fr",
-      "logo": "https://www.asso-eancre.fr/logo2.ico"
-        }
-    </script>
-
-
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <a href="index.html"><img src="logo.png" alt="Logo de l'association L'Eancre"></a>
-        </div>
-        <div class="title">
-            <h1><u><center>L'Eancre</center></u></h1>
-        </div>
-        <nav class="navbar">
-      <a href="index.html">Accueil</a>
-      <a href="apropos.html">Qui sommes-nous</a>
-      <a href="actualites.html">Actualités</a>
-      <a href="contact.html">Contact</a>
+
+<header>
+    <div class="logo">
+        <a href="index.html"><img src="logo.png" alt="Logo de l'association L'Eancre"></a>
+    </div>
+    <div class="title">
+        <h1><u>L'Eancre</u></h1>
+    </div>
+    <nav class="navbar">
+        <a href="index.html">Accueil</a>
+        <a href="apropos.html">Qui sommes-nous</a>
+        <a href="actualites.html">Actualités</a>
+        <a href="contact.html">Contact</a>
     </nav>
-
- 
     <div class="burger-menu" id="burger">☰</div>
-    </header>
-     <div class="mobile-nav" id="mobileNav">
-     <a href="index.html">Accueil</a>
-      <a href="apropos.html">Qui sommes-nous</a>
-      <a href="actualites.html">Actualités</a>
-      <a href="contact.html">Contact</a>
-  </div>
+</header>
 
-  <script>
-    // Script pour ouvrir/fermer le menu mobile
-    const burger = document.getElementById('burger');
-    const mobileNav = document.getElementById('mobileNav');
-
-    burger.addEventListener('click', () => {
-      mobileNav.classList.toggle('active');
-    });
-  </script>
-    </header>
-
+<div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Accueil</a>
+    <a href="apropos.html">Qui sommes-nous</a>
+    <a href="actualites.html">Actualités</a>
+    <a href="contact.html">Contact</a>
+</div>
 
 <!-- ✅ BANDEAU D'INFORMATION -->
 <div id="info-banner" class="info-banner">
-<div class="banner-text">
-<p>
-📣 <strong>Changement d'adresse :</strong>
-79 Boulevard Etienne Clémentel, 63200 RIOM
-</p>
-<p class="banner-warning">
-⚠️ <strong>Attention ! Les courriers adressés à une autre adresse n'ont pas été réceptionnés.</strong>
-</p>
-<a href="contact.html"><u>Voir la page <b>Contact</b> pour plus d'informations</u></a>
-</div>
-<button type="button" id="close-banner" class="close-banner">✕</button>
+    <div class="banner-text">
+        <p>
+            📣 <strong>Changement d'adresse :</strong>
+            79 Boulevard Etienne Clémentel, 63200 RIOM
+        </p>
+        <p class="banner-warning">
+            ⚠️ <strong>Attention ! Les courriers adressés à une autre adresse n'ont pas été réceptionnés.</strong>
+        </p>
+        <a href="contact.html"><u>Voir la page <b>Contact</b> pour plus d'informations</u></a>
+    </div>
+    <button type="button" id="close-banner" class="close-banner">✕</button>
 </div>
 
 <main>
+    <section class="intro">
+        <h1>La vie est unique</h1>
+        <p>
+            La confrontation à la maladie grave entraîne un vécu qui l’est tout autant.
+            L’association L’Eancre agit pour améliorer les conditions d’accueil des patients
+            en soins palliatifs et de leurs proches.
+        </p>
+    </section>
 
+    <section class="actus">
+        <h2>Actualité en ce moment</h2>
+        <article>
+            <h3>Exposition Hervé Balmisse</h3>
+            <p>Du 7 Mai au 28 Août 2025 - 6 Place Saint-Jean, 63200 RIOM</p>
+            <p>Vernissage le 7 mai à 18h30</p>
+            <h3><em>Exposition clôturée</em></h3>
+        </article>
+        <a class="btn" href="actualites.html">Voir toutes les actualités</a>
+    </section>
 
-    <main>
-        <section class="intro">
-            <h1>La vie est unique</h1>
-            <p>La confrontation à la maladie grave entraîne un vécu qui l’est tout autant. L’association L’Eancre agit pour améliorer les conditions d’accueil des patients en soins palliatifs et de leurs proches.</p>
-        </section>
+    <section class="presentation">
+        <h2>Notre mission</h2>
+        <p>
+            Depuis 2009, L'Eancre construit des liens entre patients, proches, soignants et citoyens.
+            Nous agissons concrètement pour rendre plus humaines les hospitalisations.
+        </p>
+        <a class="btn" href="apropos.html">En savoir plus</a>
+    </section>
+</main>
 
-        <section class="actus">
-            <h2>Actualité en ce moment</h2>
-            <article>
-                <h3>Exposition Hervé Balmisse</h3>
-                <p>Du 7 Mai au 28 Août 2025 - 6 Place Saint-Jean, 63200 RIOM</p>
-                <p>Vernissage le 7 mai à 18h30</p>
-		<h2><em>Exposision clôturer</em></h2>
-            </article>
-            <a class="btn" href="actualites.html">Voir toutes les actualités</a>
-        </section>
-
-        <section class="presentation">
-            <h2>Notre mission</h2>
-            <p>Depuis 2009, L'Eancre construit des liens entre patients, proches, soignants et citoyens. Nous agissons concrètement pour rendre plus humaines les hospitalisations et soutenir le mouvement des soins palliatifs.</p>
-            <a class="btn" href="apropos.html">En savoir plus</a>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-logo">
+<footer>
+    <div class="footer-logo">
         <img class="b" src="footer-logo.png" alt="Logo L'Eancre">
-        </div>
-        <div class="footer-info">
-            <p>&copy; 2025 L'Eancre - Association loi 1901. Tous droits réservés.</p>
-            <p>79 Boulevard Etienne Clémentel, 63200 RIOM</p>
-            <p>Contact : <a href="mailto:eancre63@gmail.com">eancre63@gmail.com</a> | <a href="https://asso-eancre.fr">asso-eancre.fr</a></p>
-            <p><a href="mentions-legales.html">Mentions Légales</a></p>
-        </div>
-    </footer>
+    </div>
+    <div class="footer-info">
+        <p>&copy; 2025 L'Eancre - Association loi 1901. Tous droits réservés.</p>
+        <p>79 Boulevard Etienne Clémentel, 63200 RIOM</p>
+        <p>
+            Contact : <a href="mailto:eancre63@gmail.com">eancre63@gmail.com</a> |
+            <a href="https://asso-eancre.fr">asso-eancre.fr</a>
+        </p>
+        <p><a href="mentions-legales.html">Mentions légales</a></p>
+    </div>
+</footer>
 
-    <script src="script.js"></script>
 <script>
-    const banner = document.getElementById("info-banner");
-    const closeBtn = document.getElementById("close-banner");
+    // Menu mobile
+    const burger = document.getElementById('burger');
+    const mobileNav = document.getElementById('mobileNav');
+    burger.addEventListener('click', () => mobileNav.classList.toggle('active'));
 
-    closeBtn.addEventListener("click", () => {
-        banner.style.display = "none";
-        localStorage.setItem("bannerClosed", "yes");
-    });
+    // Bandeau info
+    const banner = document.getElementById('info-banner');
+    const closeBtn = document.getElementById('close-banner');
 
-    // Si déjà fermé une fois → ne pas réafficher
-    if (localStorage.getItem("bannerClosed") === "yes") {
-        banner.style.display = "none";
+    if (localStorage.getItem('bannerClosed') === 'yes') {
+        banner.style.display = 'none';
     }
+
+    closeBtn.addEventListener('click', () => {
+        banner.style.display = 'none';
+        localStorage.setItem('bannerClosed', 'yes');
+    });
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
