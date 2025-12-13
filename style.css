@@ -35,33 +35,37 @@
   width: 200px;
   padding: 10px;
 }
-/* Bandeau d'information */
 .info-banner {
-    background: var(--violet-moyen);
+    background: #9b549c;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 20px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 15px;
-    font-size: 1rem;
+    justify-content: space-between;
+    gap: 20px;
     position: sticky;
     top: 0;
     z-index: 9999;
 }
 
-.info-banner p {
-    margin: 0;
+.banner-text {
+    display: flex;
+    flex-direction: column;
     text-align: center;
+    flex: 1;
+}
+
+.banner-warning {
+    margin-top: 6px;
+    color: #ffd966;
 }
 
 .close-banner {
     background: transparent;
     border: none;
     color: white;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     cursor: pointer;
-    padding: 5px;
 }
 
 
@@ -189,6 +193,7 @@ footer {
 .b {
     height: 200px;
 }
+
 
 
 
