@@ -1,3 +1,10 @@
+body {
+    background-image: url("fond.jpg");
+    background-size: cover;          /* l’image couvre tout l’écran */
+    background-position: center;     /* centrée */
+    background-repeat: no-repeat;    /* pas de répétition */
+    background-attachment: fixed;    /* reste fixe au scroll */
+}
 
 
 /* Menu desktop */
@@ -195,6 +202,7 @@ footer {
 .b {
     height: 200px;
 }
+
 
 
 
