@@ -22,15 +22,37 @@ const imagePath = path.join(__dirname, '..', 'public', 'img', 'image.png');
 
 app.use(express.static(publicDirPath))
 
+// ... (imports restants identiques)
+
 app.get('/mailImage/:id/:idMail', (req, res) => {
+    // id = socketID, idMail = mailID
     const instance = openMail(req.params.id, req.params.idMail);
 
     if (instance) {
+        // On envoie l'update à l'owner via son propre channel (ownerID)
         io.to(instance.ownerID).emit('update', instance);
     }
 
+    // Renvoie une image transparente de 1x1 pixel ou ton image.png
     res.sendFile(imagePath);
-})
+});
+
+io.on('connection', (socket) => {
+    socket.on('join', (options, cb) => {
+        const { error, instance } = addMailInstance({
+            socketID: socket.id,
+            ownerID: options.ownerID, // Assure-toi que le client envoie ownerID
+        });
+        
+        if (error) return cb(error);
+        
+        socket.join(instance.ownerID);
+        io.to(instance.ownerID).emit('update', instance);
+        cb();
+    });
+    
+    // ... (le reste des listeners socket.on)
+});
 
 io.on('connection', (socket) => {
     socket.on('join', (options, cb) => {
