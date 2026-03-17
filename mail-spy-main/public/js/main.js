@@ -23,6 +23,14 @@ const random = (length = 8) => {
 
 const userID = random(32);
 
+// Rejoindre la session au chargement
+socket.emit('join', { ownerID: userID }, (error) => {
+    if (error) {
+        alert(error);
+        location.href = '/';
+    }
+});
+
 // this userID is a "secret" : it allows you to know how many times the email was opened,
 // and you can reset this count. This userID is never sent to the client via the image, so
 // the client can't know the statistics of an email you sent.
