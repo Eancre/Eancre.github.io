@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="logo_onglet.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Les actualités de L'Eancre — événements, expositions, presse et vie de l'association.">
+<title>Actualités — L'Eancre</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ---- ACTU HERO ---- */
+.actu-featured { padding: 4rem 2rem; background: var(--off-white); }
+.actu-featured-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.actu-featured-img { border-radius: 20px; overflow: hidden; aspect-ratio: 16/10; background: linear-gradient(135deg, var(--bleu-dark), var(--violet)); position: relative; }
+.actu-featured-img img { width: 100%; height: 100%; object-fit: cover; }
+.actu-featured-img-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: rgba(255,255,255,.4); }
+.actu-featured-cat { display: inline-block; background: var(--rose); color: white; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; padding: .35rem .9rem; border-radius: 20px; font-weight: 500; margin-bottom: 1rem; }
+.actu-featured-text h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin: .3rem 0 1.2rem; line-height: 1.15; }
+.actu-featured-text h2 em { color: var(--rose); }
+.actu-featured-text p { font-size: 1rem; margin-bottom: 1rem; }
+.actu-featured-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 1.5rem 0; }
+.meta-chip { display: flex; align-items: center; gap: .4rem; font-size: .82rem; color: var(--text-light); }
+.meta-chip span { font-size: 1rem; }
+
+/* ---- LISTE ACTUALITÉS ---- */
+.actu-list-section { padding: 5rem 2rem 7rem; }
+.actu-list-inner { max-width: 1100px; margin: 0 auto; }
+.actu-list-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem; }
+
+.actu-list { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+.actu-item { background: white; border-radius: 20px; border: 1px solid var(--border); overflow: hidden; transition: all .4s; opacity: 0; transform: translateY(22px); }
+.actu-item.vis { opacity: 1; transform: none; }
+.actu-item:hover { box-shadow: 0 20px 55px rgba(36,80,117,.14); transform: translateY(-5px); }
+.actu-item-img { height: 180px; position: relative; overflow: hidden; }
+.actu-item-img-bg { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; transition: transform .6s; }
+.actu-item:hover .actu-item-img-bg { transform: scale(1.06); }
+.actu-item-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+.actu-item:hover .actu-item-img img { transform: scale(1.06); }
+.actu-cat-pill { position: absolute; top: .9rem; left: .9rem; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; padding: .3rem .8rem; border-radius: 20px; font-weight: 500; color: white; }
+.pill-rose   { background: var(--rose); }
+.pill-bleu   { background: var(--bleu); }
+.pill-violet { background: var(--violet); }
+.actu-item-body { padding: 1.6rem; }
+.actu-item-date { font-size: .73rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-light); margin-bottom: .5rem; }
+.actu-item-body h3 { font-size: 1.2rem; color: var(--text-dark); margin-bottom: .6rem; line-height: 1.3; }
+.actu-item-body p { font-size: .87rem; line-height: 1.75; }
+.actu-item-link { display: inline-flex; align-items: center; gap: .3rem; margin-top: 1rem; font-size: .77rem; letter-spacing: .1em; text-transform: uppercase; color: var(--rose); text-decoration: none; font-weight: 500; transition: gap .3s; }
+.actu-item-link:hover { gap: .7rem; }
+
+/* ---- NEWSLETTER ---- */
+.newsletter-section { background: linear-gradient(135deg, var(--bleu-dark) 0%, #2a1a5a 100%); padding: 6rem 2rem; text-align: center; }
+.newsletter-inner { max-width: 560px; margin: 0 auto; }
+.newsletter-inner .section-tag { color: var(--rose-light); }
+.newsletter-inner h2 { color: white; margin: .5rem 0 1rem; }
+.newsletter-inner p { color: rgba(255,255,255,.6); margin-bottom: 2.5rem; font-size: 1rem; }
+.newsletter-form { display: flex; gap: .8rem; max-width: 440px; margin: 0 auto; }
+.newsletter-form input { flex: 1; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25); color: white; padding: .85rem 1.3rem; border-radius: 30px; font-size: .92rem; font-family: 'DM Sans', sans-serif; outline: none; transition: border .3s; }
+.newsletter-form input::placeholder { color: rgba(255,255,255,.4); }
+.newsletter-form input:focus { border-color: rgba(255,255,255,.6); }
+.newsletter-form button { flex-shrink: 0; }
+.newsletter-note { margin-top: 1rem; font-size: .78rem; color: rgba(255,255,255,.35); }
+
+/* ---- PRESSE ---- */
+.presse-section { padding: 6rem 2rem; background: var(--off-white); }
+.presse-inner { max-width: 1100px; margin: 0 auto; }
+.presse-list { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; margin-top: 2.5rem; }
+.presse-item { background: white; border-radius: 16px; border: 1px solid var(--border); padding: 1.8rem; display: flex; gap: 1.5rem; align-items: flex-start; transition: all .3s; opacity: 0; transform: translateY(18px); }
+.presse-item.vis { opacity: 1; transform: none; }
+.presse-item:hover { box-shadow: var(--shadow-sm); transform: translateY(-3px); }
+.presse-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--violet-pale); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+.presse-content h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--text-dark); margin-bottom: .3rem; }
+.presse-content p { font-size: .85rem; line-height: 1.7; margin-bottom: .7rem; }
+.presse-link { font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--violet); text-decoration: none; font-weight: 500; }
+.presse-link:hover { color: var(--rose); }
+
+@media (max-width: 900px) {
+  .actu-featured-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .actu-list { grid-template-columns: 1fr 1fr; }
+  .presse-list { grid-template-columns: 1fr; }
+  .newsletter-form { flex-direction: column; }
+  .newsletter-form input, .newsletter-form button { width: 100%; }
+}
+@media (max-width: 600px) {
+  .actu-list { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav" class="light-nav">
+  <a href="index.html" class="nav-logo"><img src="Petit_logo_retour_accueil.png" alt="L'Eancre — Accueil"></a>
+  <ul class="nav-links">
+    <li><a href="apropos.html">Notre mission</a></li>
+    <li><a href="projets.html">Nos projets</a></li>
+    <li><a href="actualites.html" class="active">Actualités</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="don.html" class="nav-cta">Faire un don</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <button class="nav-mobile-close" id="navClose">✕</button>
+  <a href="index.html">Accueil</a><a href="apropos.html">Notre mission</a><a href="projets.html">Nos projets</a><a href="actualites.html">Actualités</a><a href="don.html">Faire un don</a><a href="contact.html">Contact</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-content">
+  <img src="logo_principal.png" alt="L'Eancre" style="height:60px;width:auto;margin-bottom:1.5rem;mix-blend-mode:lighten;opacity:.9" />
+    <span class="section-tag" style="color:var(--rose-light)">Vie de l'association</span>
+    <h1>Nos <em>actualités</em></h1>
+    <p>Expositions, conférences, presse, événements — suivez toute la vie de L'Eancre.</p>
+  </div>
+</div>
+<div class="wave-bottom"><svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:60px;width:100%;display:block"><path d="M0,30 C480,65 960,-5 1440,30 L1440,60 L0,60 Z" fill="var(--off-white)"/></svg></div>
+
+<!-- ACTU EN VEDETTE -->
+<section class="actu-featured">
+  <div class="actu-featured-inner">
+    <div class="reveal">
+      <div class="actu-featured-img">
+        <img src="Affiche.jpeg" alt="Première / Dernière Exposition — Hervé Balmisse" onerror="this.style.display='none'">
+        <div class="actu-featured-img-placeholder"><span style="font-size:3rem">🖼</span><br>Affiche de l'exposition</div>
+      </div>
+    </div>
+    <div class="actu-featured-text reveal" style="transition-delay:.15s">
+      <span class="actu-featured-cat">Exposition · En cours</span>
+      <h2>Première / Dernière<br><em>Exposition</em> — Hervé Balmisse</h2>
+      <p>Une exposition artistique pensée au service du soin et de l'accompagnement. Les œuvres d'Hervé Balmisse investissent la Place Saint-Jean de Riom du 7 mai au 28 août 2025.</p>
+      <p>Un vernissage public a rassemblé patients, soignants, proches et citoyens le 28 août 2025 à 18h30, créant un moment fort de partage autour de l'art et de la vie.</p>
+      <div class="actu-featured-meta">
+        <div class="meta-chip"><span>📅</span>7 mai — 28 août 2025</div>
+        <div class="meta-chip"><span>📍</span>6 Place Saint-Jean, 63200 Riom</div>
+        <div class="meta-chip"><span>🎟</span>Entrée libre et gratuite</div>
+        <div class="meta-chip"><span>🕐</span>10h–13h30 &amp; 15h–19h30</div>
+      </div>
+      <a href="https://www.lamontagne.fr/riom-63200/actualites/l-art-au-service-de-l-hopital-pour-embellir-le-quotidien-des-patients-en-soins-palliatifs_14728334/" target="_blank" class="btn-rose">Lire l'article de presse</a>
+    </div>
+  </div>
+</section>
+<div style="background:var(--off-white)"><svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:60px;width:100%;display:block"><path d="M0,30 C480,65 960,-5 1440,30 L1440,60 L0,60 Z" fill="white"/></svg></div>
+
+<!-- LISTE ACTUALITÉS -->
+<section class="actu-list-section">
+  <div class="actu-list-inner">
+    <div class="actu-list-header reveal">
+      <div>
+        <span class="section-tag tag-violet">Toutes les nouvelles</span>
+        <h2 style="margin-top:.5rem">Nos <em>dernières</em> publications</h2>
+      </div>
+    </div>
+    <div class="actu-list">
+
+      <div class="actu-item">
+        <div class="actu-item-img">
+          <div class="actu-item-img-bg" style="background:linear-gradient(135deg,var(--bleu-dark),var(--violet))">🖼</div>
+          <img src="Affiche.jpeg" alt="" onerror="this.style.display='none'">
+          <span class="actu-cat-pill pill-rose">Exposition</span>
+        </div>
+        <div class="actu-item-body">
+          <div class="actu-item-date">Mai 2025</div>
+          <h3>« RV 89/2025 » — Première / Dernière Exposition</h3>
+          <p>Exposition-vente au profit de L'Eancre. Hervé Balmisse, artiste atteint d'un cancer incurable, expose des œuvres réalisées entre 1989 et 2025. Vernissage de clôture le 28 août 2025 à 18h30.</p>
+          <a href="https://www.asso-eancre.fr/Pourquoi cette expo.pdf" target="_blank" class="actu-item-link">Mot de l'artiste →</a>
+        </div>
+      </div>
+
+      <div class="actu-item">
+        <div class="actu-item-img">
+          <div class="actu-item-img-bg" style="background:linear-gradient(135deg,#1a1040,var(--bleu))">📰</div>
+          <span class="actu-cat-pill pill-bleu">Presse</span>
+        </div>
+        <div class="actu-item-body">
+          <div class="actu-item-date">Avril 2025</div>
+          <h3>L'Eancre dans « La Montagne »</h3>
+          <p>Le quotidien régional consacre un article à notre action et à l'exposition à venir à la Place Saint-Jean de Riom.</p>
+          <a href="https://www.lamontagne.fr/riom-63200/actualites/l-art-au-service-de-l-hopital-pour-embellir-le-quotidien-des-patients-en-soins-palliatifs_14728334/" target="_blank" class="actu-item-link">Lire l'article →</a>
+        </div>
+      </div>
+
+      <div class="actu-item">
+        <div class="actu-item-img">
+          <div class="actu-item-img-bg" style="background:linear-gradient(135deg,var(--violet),#3d1040)">🎤</div>
+          <span class="actu-cat-pill pill-violet">Événement</span>
+        </div>
+        <div class="actu-item-body">
+          <div class="actu-item-date">Octobre 2023</div>
+          <h3>Table ronde — Soins palliatifs et société</h3>
+          <p>Une rencontre ouverte réunissant soignants, patients et familles pour parler librement de l'accompagnement en fin de vie.</p>
+          <a href="#" class="actu-item-link">Lire la suite →</a>
+        </div>
+      </div>
+
+      <div class="actu-item">
+        <div class="actu-item-img">
+          <div class="actu-item-img-bg" style="background:linear-gradient(135deg,var(--rose),#8a0050)">🎵</div>
+          <span class="actu-cat-pill pill-rose">Culture</span>
+        </div>
+        <div class="actu-item-body">
+          <div class="actu-item-date">Juin 2022</div>
+          <h3>Concert de musique de chambre à l'hôpital</h3>
+          <p>Un moment de grâce pour les patients, leurs proches et les équipes soignantes du Centre Hospitalier de Riom.</p>
+          <a href="#" class="actu-item-link">Lire la suite →</a>
+        </div>
+      </div>
+
+      <div class="actu-item">
+        <div class="actu-item-img">
+          <div class="actu-item-img-bg" style="background:linear-gradient(135deg,#0a3a20,var(--bleu))">🌿</div>
+          <span class="actu-cat-pill pill-bleu">Vie asso</span>
+        </div>
+        <div class="actu-item-body">
+          <div class="actu-item-date">Septembre 2019</div>
+          <h3>10 ans de L'Eancre — Célébration</h3>
+          <p>L'association fête ses 10 ans avec l'inauguration du jardin thérapeutique et une journée portes ouvertes au CH de Riom.</p>
+          <a href="#" class="actu-item-link">Lire la suite →</a>
+        </div>
+      </div>
+
+      <div class="actu-item">
+        <div class="actu-item-img">
+          <div class="actu-item-img-bg" style="background:linear-gradient(135deg,#2a1a40,var(--rose))">💜</div>
+          <span class="actu-cat-pill pill-violet">Sensibilisation</span>
+        </div>
+        <div class="actu-item-body">
+          <div class="actu-item-date">Mai 2018</div>
+          <h3>Journées nationales des soins palliatifs</h3>
+          <p>Participation active aux JNSP avec ateliers, stands et rencontres pour sensibiliser le grand public à Riom.</p>
+          <a href="#" class="actu-item-link">Lire la suite →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRESSE -->
+<section class="presse-section">
+  <div class="presse-inner">
+    <div class="reveal">
+      <span class="section-tag tag-bleu">Ils parlent de nous</span>
+      <h2 style="margin-top:.5rem">Revue de <em>presse</em></h2>
+    </div>
+    <div class="presse-list">
+      <div class="presse-item">
+        <div class="presse-icon">📰</div>
+        <div class="presse-content">
+          <h4>La Montagne — Avril 2025</h4>
+          <p>« L'art au service de l'hôpital pour embellir le quotidien des patients en soins palliatifs »</p>
+          <a href="https://www.lamontagne.fr/riom-63200/actualites/l-art-au-service-de-l-hopital-pour-embellir-le-quotidien-des-patients-en-soins-palliatifs_14728334/" target="_blank" class="presse-link">Voir l'article →</a>
+        </div>
+      </div>
+      <div class="presse-item">
+        <div class="presse-icon">🎹</div>
+        <div class="presse-content">
+          <h4>Festival Piano à Riom — Juin 2025</h4>
+          <p>Le festival Piano à Riom cite l'exposition d'Hervé Balmisse parmi les événements culturels incontournables de l'été à Riom.</p>
+          <a href="https://www.piano-a-riom.com/en-attendant-votre-concert/" target="_blank" class="presse-link">Voir la mention →</a>
+        </div>
+      </div>
+      <div class="presse-item">
+        <div class="presse-icon">📄</div>
+        <div class="presse-content">
+          <h4>Mot de l'artiste — Hervé Balmisse</h4>
+          <p>Hervé Balmisse explique pourquoi il organise cette exposition au profit de L'Eancre, association qui l'accompagne depuis plus de cinq ans.</p>
+          <a href="https://www.asso-eancre.fr/Pourquoi cette expo.pdf" target="_blank" class="presse-link">Lire le document →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter-section">
+  <div class="newsletter-inner reveal">
+    <span class="section-tag">Rester informé</span>
+    <h2 style="color:white;margin:.5rem 0 1rem">Ne manquez aucune <em style="color:#f0a0d0">actualité</em></h2>
+    <p>Inscrivez-vous à notre lettre d'information pour suivre les projets, événements et nouvelles de L'Eancre.</p>
+    <div class="newsletter-form">
+      <input type="email" placeholder="Votre adresse e-mail" aria-label="Adresse e-mail">
+      <button class="btn-rose" onclick="handleNewsletter(event)">S'inscrire</button>
+    </div>
+    <p class="newsletter-note">Pas de spam. Désinscription à tout moment.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-logo-img"><img src="logo_de_bas_de_page.png" alt="L'Eancre"></div><p class="footer-desc">Association loi 1901 créée en 2009. Nous œuvrons pour rendre les soins palliatifs plus humains à Riom.</p><div class="footer-dots"><div class="footer-dot" style="background:var(--rose)"></div><div class="footer-dot" style="background:var(--violet)"></div><div class="footer-dot" style="background:var(--bleu)"></div></div></div>
+    <div class="footer-col"><h4>Pages</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="apropos.html">Qui sommes-nous</a></li><li><a href="projets.html">Nos projets</a></li><li><a href="actualites.html">Actualités</a></li><li><a href="don.html">Faire un don</a></li><li><a href="contact.html">Contact</a></li><li><a href="mentions-legales.html">Mentions légales</a></li></ul></div>
+    <div class="footer-col"><h4>Nous contacter</h4><ul><li><a href="mailto:eancre63@gmail.com">eancre63@gmail.com</a></li><li><a>79 Bd Etienne Clémentel<br>63200 RIOM</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 L'Eancre — Association loi 1901. Tous droits réservés.</span><span style="color:rgba(255,255,255,.2)">GitHub Pages · OVH</span></div>
+</footer>
+
+<script>
+// ── Menu mobile ────────────────────────────────────────────────
+const burger = document.getElementById('burger');
+const navMob = document.getElementById('navMobile');
+
+function menuOpen() {
+  navMob.classList.add('open');
+  burger.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function menuClose() {
+  navMob.classList.remove('open');
+  burger.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Toggle au clic sur le burger
+burger.addEventListener('click', () => {
+  burger.classList.contains('open') ? menuClose() : menuOpen();
+});
+
+// Fermer au clic sur un lien du menu
+navMob.querySelectorAll('a').forEach(a => a.addEventListener('click', menuClose));
+
+// Fermer avec Échap
+document.addEventListener('keydown', e => { if (e.key === 'Escape') menuClose(); });
+// ───────────────────────────────────────────────────────────────
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.reveal,.actu-item,.presse-item').forEach((el,i)=>{
+  if(el.classList.contains('actu-item')||el.classList.contains('presse-item'))el.style.transitionDelay=(i%3)*0.12+'s';
+  io.observe(el);
+});
+function handleNewsletter(e){
+  e.preventDefault();
+  const input=document.querySelector('.newsletter-form input');
+  if(input.value){
+    input.value='';
+    const btn=document.querySelector('.newsletter-form button');
+    btn.textContent='✓ Inscrit !';
+    btn.style.background='var(--violet)';
+    setTimeout(()=>{btn.textContent="S'inscrire";btn.style.background='';},3000);
+  }
+}
+</script>
+</body>
+</html>

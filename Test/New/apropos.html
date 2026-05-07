@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="logo_onglet.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Qui sommes-nous ? L'histoire, la mission et l'équipe de l'association L'Eancre, fondée en 2009 à Riom.">
+<title>Qui sommes-nous — L'Eancre</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ---- VALEURS ---- */
+.values-section { padding: 6rem 2rem; background: var(--off-white); }
+.values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; max-width: 1100px; margin-left: auto; margin-right: auto; }
+.value-card { background: white; border-radius: 20px; padding: 2.2rem; border: 1px solid var(--border); transition: all .4s; opacity: 0; transform: translateY(24px); }
+.value-card.vis { opacity: 1; transform: none; }
+.value-card:hover { box-shadow: 0 16px 40px rgba(155,84,156,.12); transform: translateY(-4px); border-color: var(--violet); }
+.value-num { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 600; line-height: 1; background: linear-gradient(135deg, var(--rose), var(--violet)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: .8rem; }
+.value-card h3 { font-size: 1.2rem; font-weight: 600; color: var(--text-dark); margin-bottom: .7rem; }
+.value-card p { font-size: .9rem; }
+
+/* ---- INTRO ---- */
+.intro-section { padding: 7rem 2rem; }
+.intro-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+.intro-text p { margin-bottom: 1.2rem; font-size: 1rem; }
+.intro-visual { position: sticky; top: 6rem; }
+.intro-img-box { border-radius: 20px; overflow: hidden; aspect-ratio: 4/3; background: linear-gradient(135deg, var(--bleu-dark), #3a1060); display: flex; align-items: center; justify-content: center; }
+.intro-img-box img { width: 100%; height: 100%; object-fit: cover; }
+.intro-img-placeholder { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; color: rgba(255,255,255,.4); text-align: center; padding: 2rem; }
+.intro-caption { margin-top: 1rem; font-size: .85rem; color: var(--text-light); font-style: italic; }
+
+/* ---- TIMELINE ---- */
+.timeline-section { background: var(--bleu-dark); padding: 7rem 2rem; }
+.timeline-header { text-align: center; margin-bottom: 5rem; }
+.timeline-header .section-tag { color: var(--rose-light); }
+.timeline-header h2 { color: white; margin-top: .5rem; }
+.timeline { max-width: 800px; margin: 0 auto; position: relative; }
+.timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--rose), var(--violet), var(--bleu)); transform: translateX(-50%); }
+.tl-item { display: grid; grid-template-columns: 1fr 60px 1fr; gap: 0; margin-bottom: 3rem; align-items: start; opacity: 0; transform: translateY(20px); transition: all .6s ease; }
+.tl-item.vis { opacity: 1; transform: none; }
+.tl-left { text-align: right; padding-right: 2.5rem; }
+.tl-right { padding-left: 2.5rem; }
+.tl-center { display: flex; flex-direction: column; align-items: center; gap: .4rem; position: relative; z-index: 1; }
+.tl-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--rose); flex-shrink: 0; box-shadow: 0 0 0 4px rgba(230,43,135,.2); }
+.tl-dot.violet { background: var(--violet); box-shadow: 0 0 0 4px rgba(155,84,156,.2); }
+.tl-dot.bleu   { background: var(--bleu-light); box-shadow: 0 0 0 4px rgba(47,106,158,.2); }
+.tl-year { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: rgba(255,255,255,.5); }
+.tl-content h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: white; margin-bottom: .4rem; }
+.tl-content p { font-size: .88rem; color: rgba(255,255,255,.55); line-height: 1.75; font-weight: 300; }
+.tl-item.even .tl-left { order: 3; text-align: left; padding-right: 0; padding-left: 2.5rem; }
+.tl-item.even .tl-right { order: 1; text-align: right; padding-left: 0; padding-right: 2.5rem; }
+.tl-item.even .tl-center { order: 2; }
+
+/* ---- EQUIPE ---- */
+.team-section { padding: 7rem 2rem; }
+.team-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; margin-top: 3rem; max-width: 1100px; margin-left: auto; margin-right: auto; }
+.team-card { text-align: center; opacity: 0; transform: translateY(22px); transition: all .5s ease; }
+.team-card.vis { opacity: 1; transform: none; }
+.team-avatar { width: 90px; height: 90px; border-radius: 50%; margin: 0 auto 1.2rem; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: white; font-weight: 600; position: relative; }
+.team-avatar::after { content: ''; position: absolute; inset: -3px; border-radius: 50%; background: linear-gradient(135deg, var(--rose), var(--violet)); z-index: -1; }
+.team-card h3 { font-size: 1.05rem; font-weight: 600; color: var(--text-dark); margin-bottom: .3rem; }
+.team-card p { font-size: .82rem; color: var(--text-light); font-weight: 400; }
+
+/* ---- PARTENAIRES ---- */
+.partners-section { background: var(--off-white); padding: 5rem 2rem; text-align: center; }
+.partners-logos { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; align-items: center; max-width: 900px; margin: 2.5rem auto 0; }
+.partner-pill { background: white; border: 1px solid var(--border); border-radius: 30px; padding: .8rem 1.8rem; font-size: .9rem; font-weight: 500; color: var(--text-mid); transition: all .3s; }
+.partner-pill:hover { border-color: var(--violet); color: var(--violet); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+
+@media (max-width: 900px) {
+  .intro-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .intro-visual { position: static; }
+  .values-grid, .team-grid { grid-template-columns: repeat(2,1fr); }
+  .timeline::before { left: 24px; }
+  .tl-item { grid-template-columns: 48px 1fr; }
+  .tl-item .tl-left { display: none; }
+  .tl-item.even .tl-left { display: none; }
+  .tl-item.even .tl-right { order: 2; text-align: left; padding-left: 1.5rem; padding-right: 0; }
+  .tl-item.even .tl-center { order: 1; }
+  .tl-right, .tl-item.even .tl-right { padding-left: 1.5rem; }
+}
+@media (max-width: 600px) {
+  .values-grid, .team-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav" class="light-nav">
+  <a href="index.html" class="nav-logo"><img src="Petit_logo_retour_accueil.png" alt="L'Eancre — Accueil"></a>
+  <ul class="nav-links">
+    <li><a href="apropos.html" class="active">Notre mission</a></li>
+    <li><a href="projets.html">Nos projets</a></li>
+    <li><a href="actualites.html">Actualités</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="don.html" class="nav-cta">Faire un don</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <button class="nav-mobile-close" id="navClose">✕</button>
+  <a href="index.html">Accueil</a><a href="apropos.html">Notre mission</a><a href="projets.html">Nos projets</a><a href="actualites.html">Actualités</a><a href="don.html">Faire un don</a><a href="contact.html">Contact</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-content">
+  <img src="logo_principal.png" alt="L'Eancre" style="height:60px;width:auto;margin-bottom:1.5rem;mix-blend-mode:lighten;opacity:.9" />
+    <span class="section-tag" style="color:var(--rose-light)">Fondée en 2009</span>
+    <h1>Qui <em>sommes</em>-nous ?</h1>
+    <p>L'histoire d'une association née de l'humain, pour l'humain — au service des patients en soins palliatifs et de leurs proches.</p>
+  </div>
+</div>
+<div class="wave-bottom"><svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:60px;width:100%;display:block"><path d="M0,30 C480,65 960,-5 1440,30 L1440,60 L0,60 Z" fill="var(--off-white)"/></svg></div>
+
+<!-- VALEURS / CHIFFRES CLÉS -->
+<section class="values-section">
+  <div class="container">
+    <div class="section-center reveal">
+      <span class="section-tag tag-violet">En quelques chiffres</span>
+      <h2>L'Eancre <em>en bref</em></h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card"><div class="value-num">16</div><h3>Ans d'existence</h3><p>Depuis 2009, l'association agit chaque année pour améliorer le quotidien des patients et de leurs proches à Riom.</p></div>
+      <div class="value-card"><div class="value-num">12+</div><h3>Projets financés</h3><p>Expositions, installations, événements culturels et artistiques pensés pour les patients hospitalisés en soins palliatifs.</p></div>
+      <div class="value-card"><div class="value-num">25</div><h3>Bénévoles actifs</h3><p>Des femmes et des hommes engagés, au quotidien, pour que chaque patient se sente entouré avec dignité et humanité.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro-section">
+  <div class="intro-inner">
+    <div class="reveal">
+      <span class="section-tag tag-rose">Notre histoire</span>
+      <h2 style="margin:.5rem 0 2rem">Une association <em>née de la vie</em></h2>
+      <p>L'Eancre est née en 2009 d'une rencontre singulière : une patiente en soins palliatifs, ses proches, et des professionnels de santé du Centre Hospitalier de Riom ont décidé ensemble qu'il était possible de faire mieux.</p>
+      <p>Mieux accueillir. Mieux accompagner. Mieux humaniser un temps de vie qui est, par définition, unique pour chacun.</p>
+      <p>Depuis lors, l'association œuvre pour que le soin palliatif ne soit pas seulement médical — mais humain, culturel, digne. Elle réunit aujourd'hui patients, familles, soignants et citoyens autour d'une conviction commune : la vie, même en fin de parcours, mérite d'être belle.</p>
+      <div style="margin-top:2rem;padding:1.8rem;background:var(--rose-pale);border-radius:16px;border-left:3px solid var(--rose)">
+        <p style="font-size:1rem;font-style:italic;color:var(--text-dark);margin:0">"Nous agissons concrètement pour améliorer les conditions d'accueil et d'accompagnement, et pour sensibiliser le grand public et les professionnels aux soins palliatifs."</p>
+      </div>
+    </div>
+    <div class="intro-visual reveal" style="transition-delay:.25s">
+      <div class="intro-img-box">
+        <div class="intro-img-placeholder">Photo de l'équipe ou du Centre Hospitalier de Riom</div>
+      </div>
+      <p class="intro-caption">L'Eancre agit au sein et autour du Centre Hospitalier de Riom, 63200.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <div class="timeline-header reveal">
+    <span class="section-tag">Notre parcours</span>
+    <h2>Une histoire en <em>mouvement</em></h2>
+  </div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-content"><h3>Création de l'association</h3><p>Fondée par une patiente, ses proches et des soignants du CH de Riom. Déclaration en préfecture.</p></div></div>
+      <div class="tl-center"><div class="tl-dot"></div><div class="tl-year">2009</div></div>
+      <div class="tl-right"></div>
+    </div>
+    <div class="tl-item even">
+      <div class="tl-left"></div>
+      <div class="tl-center"><div class="tl-dot violet"></div><div class="tl-year">2012</div></div>
+      <div class="tl-right"><div class="tl-content"><h3>Premiers projets artistiques</h3><p>Mise en place des premières expositions d'art au sein du service de soins palliatifs du Centre Hospitalier.</p></div></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-content"><h3>Sensibilisation grand public</h3><p>Organisation des premières conférences et tables rondes ouvertes au public sur les soins palliatifs.</p></div></div>
+      <div class="tl-center"><div class="tl-dot bleu"></div><div class="tl-year">2015</div></div>
+      <div class="tl-right"></div>
+    </div>
+    <div class="tl-item even">
+      <div class="tl-left"></div>
+      <div class="tl-center"><div class="tl-dot violet"></div><div class="tl-year">2019</div></div>
+      <div class="tl-right"><div class="tl-content"><h3>10 ans d'engagement</h3><p>Célébration du 10e anniversaire avec un événement rassemblant patients, proches, soignants et partenaires.</p></div></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-content"><h3>Exposition Hervé Balmisse</h3><p>Grande exposition artistique à la Place Saint-Jean de Riom, du 7 mai au 28 août 2025.</p></div></div>
+      <div class="tl-center"><div class="tl-dot"></div><div class="tl-year">2025</div></div>
+      <div class="tl-right"></div>
+    </div>
+  </div>
+</section>
+<div style="background:var(--bleu-dark)"><svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:60px;width:100%;display:block"><path d="M0,30 C480,65 960,-5 1440,30 L1440,60 L0,60 Z" fill="white"/></svg></div>
+
+<!-- ÉQUIPE -->
+<section class="team-section">
+  <div class="container">
+    <div class="section-center reveal">
+      <span class="section-tag tag-bleu">Les personnes</span>
+      <h2>Notre <em>équipe</em></h2>
+      <p style="max-width:540px;margin:.8rem auto 0;font-size:1rem">Des bénévoles passionnés qui donnent de leur temps et de leur cœur pour que chaque patient soit entouré avec dignité.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card"><div class="team-avatar" style="background:var(--rose)">P</div><h3>Présidente</h3><p>Direction de l'association</p></div>
+      <div class="team-card"><div class="team-avatar" style="background:var(--violet)">T</div><h3>Trésorière</h3><p>Gestion financière</p></div>
+      <div class="team-card"><div class="team-avatar" style="background:var(--bleu)">S</div><h3>Secrétaire</h3><p>Administration</p></div>
+      <div class="team-card"><div class="team-avatar" style="background:linear-gradient(135deg,var(--rose),var(--violet))">B</div><h3>Bénévoles</h3><p>+22 membres actifs</p></div>
+    </div>
+    <p style="text-align:center;margin-top:2.5rem;font-size:.9rem;color:var(--text-light)">Vous souhaitez rejoindre l'équipe ? <a href="contact.html" style="color:var(--rose);text-decoration:none;font-weight:500">Contactez-nous →</a></p>
+  </div>
+</section>
+
+<!-- PARTENAIRES -->
+<section class="partners-section">
+  <div class="reveal">
+    <span class="section-tag tag-violet">Ils nous font confiance</span>
+    <h2 style="margin-top:.5rem">Nos <em>partenaires</em></h2>
+  </div>
+  <div class="partners-logos">
+    <div class="partner-pill">Centre Hospitalier de Riom</div>
+    <div class="partner-pill">Ville de Riom</div>
+    <div class="partner-pill">Agence Régionale de Santé</div>
+    <div class="partner-pill">SFAP</div>
+    <div class="partner-pill">Bénévoles et donateurs</div>
+    <div class="partner-pill">Riom Limagne &amp; Volcans</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-logo-img"><img src="logo_de_bas_de_page.png" alt="L'Eancre"></div><p class="footer-desc">Association loi 1901 créée en 2009. Nous œuvrons pour rendre les soins palliatifs plus humains à Riom.</p><div class="footer-dots"><div class="footer-dot" style="background:var(--rose)"></div><div class="footer-dot" style="background:var(--violet)"></div><div class="footer-dot" style="background:var(--bleu)"></div></div></div>
+    <div class="footer-col"><h4>Pages</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="apropos.html">Qui sommes-nous</a></li><li><a href="projets.html">Nos projets</a></li><li><a href="actualites.html">Actualités</a></li><li><a href="don.html">Faire un don</a></li><li><a href="contact.html">Contact</a></li><li><a href="mentions-legales.html">Mentions légales</a></li></ul></div>
+    <div class="footer-col"><h4>Nous contacter</h4><ul><li><a href="mailto:eancre63@gmail.com">eancre63@gmail.com</a></li><li><a>79 Bd Etienne Clémentel<br>63200 RIOM</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 L'Eancre — Association loi 1901. Tous droits réservés.</span><span style="color:rgba(255,255,255,.2)">GitHub Pages · OVH</span></div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+// ── Menu mobile ────────────────────────────────────────────────
+const burger = document.getElementById('burger');
+const navMob = document.getElementById('navMobile');
+
+function menuOpen() {
+  navMob.classList.add('open');
+  burger.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function menuClose() {
+  navMob.classList.remove('open');
+  burger.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Toggle au clic sur le burger
+burger.addEventListener('click', () => {
+  burger.classList.contains('open') ? menuClose() : menuOpen();
+});
+
+// Fermer au clic sur un lien du menu
+navMob.querySelectorAll('a').forEach(a => a.addEventListener('click', menuClose));
+
+// Fermer avec Échap
+document.addEventListener('keydown', e => { if (e.key === 'Escape') menuClose(); });
+// ───────────────────────────────────────────────────────────────
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.reveal,.value-card,.tl-item,.team-card').forEach((el,i)=>{
+  if(el.classList.contains('value-card')||el.classList.contains('team-card'))el.style.transitionDelay=(i%4)*0.1+'s';
+  if(el.classList.contains('tl-item'))el.style.transitionDelay=(i*0.15)+'s';
+  io.observe(el);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="logo_onglet.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Contacter L'Eancre — association pour les soins palliatifs à Riom.">
+<title>Contact — L'Eancre</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ---- CONTACT LAYOUT ---- */
+.contact-section { padding: 4rem 2rem 7rem; }
+.contact-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: start; }
+
+/* ---- INFOS ---- */
+.contact-info h2 { font-size: clamp(2rem, 4vw, 2.8rem); margin: .5rem 0 1.5rem; }
+.contact-info h2 em { color: var(--rose); }
+.contact-info > p { font-size: 1rem; margin-bottom: 2.5rem; }
+.info-cards { display: flex; flex-direction: column; gap: 1.2rem; }
+.info-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem 1.8rem; display: flex; align-items: flex-start; gap: 1.2rem; transition: all .3s; }
+.info-card:hover { box-shadow: var(--shadow-sm); transform: translateY(-2px); border-color: var(--violet); }
+.info-card-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+.info-card h4 { font-family: 'DM Sans', sans-serif; font-size: .78rem; letter-spacing: .15em; text-transform: uppercase; color: var(--text-light); margin-bottom: .3rem; font-weight: 500; }
+.info-card p, .info-card a { font-size: .95rem; color: var(--text-dark); text-decoration: none; font-weight: 400; line-height: 1.5; }
+.info-card a:hover { color: var(--rose); }
+
+/* ---- BÉNÉVOLES ---- */
+.benevolat-box { background: linear-gradient(135deg, var(--bleu-dark), #2a1a5a); border-radius: 20px; padding: 2rem; margin-top: 2.5rem; position: relative; overflow: hidden; }
+.benevolat-box::before { content: ''; position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, rgba(230,43,135,.3), transparent 70%); }
+.benevolat-box h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: white; margin-bottom: .7rem; }
+.benevolat-box p { font-size: .88rem; color: rgba(255,255,255,.6); line-height: 1.75; margin-bottom: 1.3rem; font-weight: 300; }
+
+/* ---- FORMULAIRE ---- */
+.contact-form-wrap { background: white; border-radius: 24px; border: 1px solid var(--border); padding: 3rem; box-shadow: var(--shadow-sm); }
+.contact-form-wrap h3 { font-size: 1.5rem; margin-bottom: .3rem; }
+.contact-form-wrap > p { font-size: .88rem; color: var(--text-light); margin-bottom: 2.5rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+.form-group { margin-bottom: 1.3rem; }
+.form-group label { display: block; font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-mid); font-weight: 500; margin-bottom: .5rem; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; background: var(--off-white); border: 2px solid var(--border); border-radius: 12px; padding: .85rem 1.1rem; font-size: .95rem; font-family: 'DM Sans', sans-serif; color: var(--text-dark); outline: none; transition: border .3s, box-shadow .3s; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--violet); box-shadow: 0 0 0 3px rgba(155,84,156,.12); background: white; }
+.form-group textarea { resize: vertical; min-height: 130px; }
+.form-group select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a9ab5' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1.1rem center; padding-right: 2.5rem; }
+.form-check { display: flex; align-items: flex-start; gap: .8rem; margin-bottom: 1.5rem; }
+.form-check input[type=checkbox] { width: 18px; height: 18px; border-radius: 4px; border: 2px solid var(--border); margin-top: .15rem; cursor: pointer; accent-color: var(--rose); flex-shrink: 0; }
+.form-check label { font-size: .85rem; color: var(--text-mid); line-height: 1.6; cursor: pointer; }
+.form-check label a { color: var(--rose); text-decoration: none; }
+.submit-btn { width: 100%; padding: 1.1rem; font-size: 1rem; }
+
+/* ---- SUCCESS ---- */
+.success-msg { display: none; text-align: center; padding: 3rem 2rem; }
+.success-msg .success-icon { font-size: 3.5rem; margin-bottom: 1.2rem; animation: float 2s ease infinite; display: block; }
+.success-msg h3 { font-size: 1.8rem; margin-bottom: .8rem; }
+.success-msg p { font-size: 1rem; max-width: 360px; margin: 0 auto; }
+
+/* ---- MAP ---- */
+.map-section { background: var(--off-white); padding: 6rem 2rem; }
+.map-inner { max-width: 1100px; margin: 0 auto; }
+.map-header { text-align: center; margin-bottom: 3rem; }
+.map-embed { border-radius: 20px; overflow: hidden; height: 380px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+.map-embed iframe { width: 100%; height: 100%; border: none; }
+.map-placeholder { width: 100%; height: 100%; background: linear-gradient(135deg, var(--bleu-dark), #2a1a5a); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; color: rgba(255,255,255,.6); font-size: 1rem; }
+.map-placeholder span { font-size: 3rem; }
+
+@media (max-width: 900px) {
+  .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .contact-form-wrap { padding: 2rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav" class="light-nav">
+  <a href="index.html" class="nav-logo"><img src="Petit_logo_retour_accueil.png" alt="L'Eancre — Accueil"></a>
+  <ul class="nav-links">
+    <li><a href="apropos.html">Notre mission</a></li>
+    <li><a href="projets.html">Nos projets</a></li>
+    <li><a href="actualites.html">Actualités</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+    <li><a href="don.html" class="nav-cta">Faire un don</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <button class="nav-mobile-close" id="navClose">✕</button>
+  <a href="index.html">Accueil</a><a href="apropos.html">Notre mission</a><a href="projets.html">Nos projets</a><a href="actualites.html">Actualités</a><a href="don.html">Faire un don</a><a href="contact.html">Contact</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-content">
+  <img src="logo_principal.png" alt="L'Eancre" style="height:60px;width:auto;margin-bottom:1.5rem;mix-blend-mode:lighten;opacity:.9" />
+    <span class="section-tag" style="color:var(--rose-light)">Écrivez-nous</span>
+    <h1>Nous <em>contacter</em></h1>
+    <p>Une question, une proposition de projet, ou simplement envie de nous rejoindre ? Nous vous répondrons avec plaisir.</p>
+  </div>
+</div>
+<div class="wave-bottom"><svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:60px;width:100%;display:block"><path d="M0,30 C480,65 960,-5 1440,30 L1440,60 L0,60 Z" fill="white"/></svg></div>
+
+<!-- CONTACT SECTION -->
+<section class="contact-section">
+  <div class="contact-inner">
+
+    <!-- INFOS -->
+    <div class="reveal">
+      <span class="section-tag tag-rose">Nous trouver</span>
+      <h2>Restons en <em>contact</em></h2>
+      <p>L'équipe de L'Eancre est toujours disponible pour répondre à vos questions, parler de nos projets ou accueillir vos idées.</p>
+      <div class="info-cards">
+        <div class="info-card">
+          <div class="info-card-icon" style="background:var(--rose-pale)">📧</div>
+          <div><h4>E-mail</h4><a href="mailto:eancre63@gmail.com">eancre63@gmail.com</a></div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon" style="background:#e3edf5">📍</div>
+          <div><h4>Adresse</h4><p>79 Bd Etienne Clémentel<br>63200 Riom, Puy-de-Dôme</p></div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon" style="background:var(--violet-pale)">🏥</div>
+          <div><h4>Lieu d'action principal</h4><p>Centre Hospitalier de Riom<br>Service de soins palliatifs</p></div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon" style="background:var(--rose-pale)">🕐</div>
+          <div><h4>Délai de réponse</h4><p>Nous vous répondons sous 48h<br>en jours ouvrés</p></div>
+        </div>
+      </div>
+      <div class="benevolat-box">
+        <h4>💜 Devenir bénévole</h4>
+        <p>Vous souhaitez donner de votre temps à L'Eancre ? Que vous soyez artiste, soignant, retraité ou simplement motivé, nous accueillons toutes les bonnes volontés.</p>
+        <a href="#" onclick="document.getElementById('sujet').value='Devenir bénévole';document.getElementById('message').focus();" class="btn-rose" style="font-size:.88rem;padding:.7rem 1.6rem">Je souhaite m'engager →</a>
+      </div>
+    </div>
+
+    <!-- FORMULAIRE -->
+    <div class="contact-form-wrap reveal" style="transition-delay:.2s">
+      <div id="formContent">
+        <h3>Envoyez-nous un <em>message</em></h3>
+        <p>Tous les champs marqués * sont obligatoires</p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="prenom">Prénom *</label>
+            <input type="text" id="prenom" placeholder="Jean" required>
+          </div>
+          <div class="form-group">
+            <label for="nom">Nom *</label>
+            <input type="text" id="nom" placeholder="Dupont" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Adresse e-mail *</label>
+          <input type="email" id="email" placeholder="jean.dupont@email.fr" required>
+        </div>
+
+        <div class="form-group">
+          <label for="sujet">Sujet *</label>
+          <select id="sujet" required>
+            <option value="" disabled selected>Choisissez un sujet</option>
+            <option>Question générale sur l'association</option>
+            <option>Proposer un projet artistique</option>
+            <option>Devenir bénévole</option>
+            <option>Faire un don</option>
+            <option>Partenariat institutionnel</option>
+            <option>Demande presse / médias</option>
+            <option>Autre</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Votre message *</label>
+          <textarea id="message" placeholder="Décrivez votre demande en quelques mots…" required></textarea>
+        </div>
+
+        <div class="form-check">
+          <input type="checkbox" id="rgpd" required>
+          <label for="rgpd">J'accepte que mes données soient utilisées pour traiter ma demande, conformément à notre <a href="mentions-legales.html">politique de confidentialité</a>. *</label>
+        </div>
+
+        <button class="btn-rose submit-btn" onclick="submitForm(event)">Envoyer le message</button>
+      </div>
+
+      <div class="success-msg" id="successMsg">
+        <span class="success-icon">💌</span>
+        <h3>Message envoyé !</h3>
+        <p>Merci pour votre message. Nous vous répondrons dans les 48 heures.</p>
+        <a href="index.html" class="btn-bleu" style="margin-top:2rem">Retour à l'accueil</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CARTE -->
+<section class="map-section">
+  <div class="map-inner">
+    <div class="map-header reveal">
+      <span class="section-tag tag-bleu">Nous trouver</span>
+      <h2 style="margin-top:.5rem">L'Eancre à <em>Riom</em></h2>
+    </div>
+    <div class="map-embed reveal" style="transition-delay:.15s">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2762.!2d3.115!3d45.893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f71b7b7b7b7b7b%3A0x0!2s79+Bd+Etienne+Cl%C3%A9mentel%2C+63200+Riom!5e0!3m2!1sfr!2sfr!4v1234567890"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="L'Eancre — 79 Bd Etienne Clémentel, 63200 Riom"
+        onerror="this.style.display='none'"
+      ></iframe>
+      <div class="map-placeholder" id="mapFallback" style="display:none">
+        <span>📍</span>
+        <p>79 Bd Etienne Clémentel, 63200 Riom</p>
+        <a href="https://maps.google.com/?q=Riom+63200" target="_blank" class="btn-outline-white" style="margin-top:.5rem;font-size:.88rem">Ouvrir dans Maps</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-logo-img"><img src="logo_de_bas_de_page.png" alt="L'Eancre"></div><p class="footer-desc">Association loi 1901 créée en 2009. Nous œuvrons pour rendre les soins palliatifs plus humains à Riom.</p><div class="footer-dots"><div class="footer-dot" style="background:var(--rose)"></div><div class="footer-dot" style="background:var(--violet)"></div><div class="footer-dot" style="background:var(--bleu)"></div></div></div>
+    <div class="footer-col"><h4>Pages</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="apropos.html">Qui sommes-nous</a></li><li><a href="projets.html">Nos projets</a></li><li><a href="actualites.html">Actualités</a></li><li><a href="don.html">Faire un don</a></li><li><a href="contact.html">Contact</a></li><li><a href="mentions-legales.html">Mentions légales</a></li></ul></div>
+    <div class="footer-col"><h4>Nous contacter</h4><ul><li><a href="mailto:eancre63@gmail.com">eancre63@gmail.com</a></li><li><a>79 Bd Etienne Clémentel<br>63200 RIOM</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 L'Eancre — Association loi 1901. Tous droits réservés.</span><span style="color:rgba(255,255,255,.2)">GitHub Pages · OVH</span></div>
+</footer>
+
+<script>
+// ── Menu mobile ────────────────────────────────────────────────
+const burger = document.getElementById('burger');
+const navMob = document.getElementById('navMobile');
+
+function menuOpen() {
+  navMob.classList.add('open');
+  burger.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function menuClose() {
+  navMob.classList.remove('open');
+  burger.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Toggle au clic sur le burger
+burger.addEventListener('click', () => {
+  burger.classList.contains('open') ? menuClose() : menuOpen();
+});
+
+// Fermer au clic sur un lien du menu
+navMob.querySelectorAll('a').forEach(a => a.addEventListener('click', menuClose));
+
+// Fermer avec Échap
+document.addEventListener('keydown', e => { if (e.key === 'Escape') menuClose(); });
+// ───────────────────────────────────────────────────────────────
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// Vérifier si la carte s'est bien chargée
+const iframe=document.querySelector('.map-embed iframe');
+if(iframe){iframe.onerror=()=>{iframe.style.display='none';document.getElementById('mapFallback').style.display='flex';};}
+
+function submitForm(e){
+  e.preventDefault();
+  const prenom=document.getElementById('prenom').value.trim();
+  const email=document.getElementById('email').value.trim();
+  const message=document.getElementById('message').value.trim();
+  const rgpd=document.getElementById('rgpd').checked;
+  if(!prenom||!email||!message||!rgpd){
+    alert('Merci de remplir tous les champs obligatoires et d\'accepter la politique de confidentialité.');
+    return;
+  }
+  // Simuler envoi (remplacer par votre formulaire backend / formspree / netlify)
+  document.getElementById('formContent').style.display='none';
+  document.getElementById('successMsg').style.display='block';
+}
+</script>
+</body>
+</html>

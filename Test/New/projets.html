@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="logo_onglet.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Les projets de L'Eancre — expositions artistiques, événements culturels et actions de sensibilisation pour les soins palliatifs à Riom.">
+<title>Nos projets — L'Eancre</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ---- FILTRES ---- */
+.filters-bar { padding: 3rem 2rem 0; }
+.filters-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: .8rem; flex-wrap: wrap; align-items: center; }
+.filter-label { font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; color: var(--text-light); margin-right: .5rem; }
+.filter-btn { background: white; border: 1.5px solid var(--border); color: var(--text-mid); padding: .5rem 1.3rem; border-radius: 30px; font-size: .85rem; font-weight: 400; cursor: pointer; transition: all .3s; font-family: 'DM Sans', sans-serif; }
+.filter-btn:hover { border-color: var(--violet); color: var(--violet); }
+.filter-btn.active { background: var(--violet); border-color: var(--violet); color: white; }
+
+/* ---- GRID PROJETS ---- */
+.projets-section { padding: 4rem 2rem 7rem; }
+.projets-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+.projet-card { background: white; border-radius: 20px; border: 1px solid var(--border); overflow: hidden; transition: all .45s ease; opacity: 0; transform: translateY(28px); }
+.projet-card.vis { opacity: 1; transform: none; }
+.projet-card:hover { box-shadow: 0 20px 55px rgba(36,80,117,.14); transform: translateY(-6px); }
+.projet-img { height: 200px; position: relative; overflow: hidden; }
+.projet-img-bg { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 4rem; transition: transform .6s ease; }
+.projet-card:hover .projet-img-bg { transform: scale(1.07); }
+.projet-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; position: absolute; inset: 0; }
+.projet-card:hover .projet-img img { transform: scale(1.07); }
+.projet-badge { position: absolute; top: 1rem; right: 1rem; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; padding: .3rem .9rem; border-radius: 20px; font-weight: 500; color: white; }
+.badge-art    { background: var(--rose); }
+.badge-event  { background: var(--bleu); }
+.badge-actu   { background: var(--violet); }
+.badge-done   { background: rgba(0,0,0,.35); }
+.projet-body { padding: 1.8rem; }
+.projet-year { font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-light); margin-bottom: .5rem; }
+.projet-body h3 { font-size: 1.3rem; color: var(--text-dark); margin-bottom: .7rem; line-height: 1.25; }
+.projet-body p { font-size: .88rem; line-height: 1.75; }
+.projet-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.2rem; }
+.projet-tag { font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; padding: .25rem .8rem; border-radius: 20px; font-weight: 500; }
+.tag-pill-rose   { background: var(--rose-pale);   color: var(--rose); }
+.tag-pill-violet { background: var(--violet-pale); color: var(--violet); }
+.tag-pill-bleu   { background: #e3edf5;            color: var(--bleu); }
+
+/* ---- FEATURED PROJECT ---- */
+.featured-section { background: linear-gradient(135deg, var(--bleu-dark) 0%, #2a1a5a 100%); padding: 7rem 2rem; }
+.featured-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.featured-text .section-tag { color: var(--rose-light); }
+.featured-text h2 { color: white; margin: .5rem 0 1.5rem; }
+.featured-text p { color: rgba(255,255,255,.65); font-size: 1rem; margin-bottom: 1.2rem; line-height: 1.9; }
+.featured-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0; }
+.meta-item { background: rgba(255,255,255,.07); border-radius: 12px; padding: 1rem 1.2rem; }
+.meta-label { font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: .3rem; }
+.meta-val { font-size: .95rem; color: white; font-weight: 400; }
+.featured-img { border-radius: 20px; overflow: hidden; aspect-ratio: 4/3; background: linear-gradient(135deg, rgba(155,84,156,.3), rgba(230,43,135,.2)); display: flex; align-items: center; justify-content: center; position: relative; }
+.featured-img img { width: 100%; height: 100%; object-fit: cover; }
+.featured-img-placeholder { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: rgba(255,255,255,.4); text-align: center; padding: 2rem; }
+
+/* ---- CTA SOUTIEN ---- */
+.soutien-section { background: var(--off-white); padding: 6rem 2rem; text-align: center; }
+.soutien-inner { max-width: 680px; margin: 0 auto; }
+.soutien-section h2 { margin: .5rem 0 1.2rem; }
+.soutien-section p { font-size: 1rem; margin-bottom: 2.5rem; max-width: 520px; margin-left: auto; margin-right: auto; }
+.soutien-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+@media (max-width: 900px) {
+  .projets-grid { grid-template-columns: 1fr 1fr; }
+  .featured-inner { grid-template-columns: 1fr; gap: 3rem; }
+}
+@media (max-width: 600px) {
+  .projets-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav" class="light-nav">
+  <a href="index.html" class="nav-logo"><img src="Petit_logo_retour_accueil.png" alt="L'Eancre — Accueil"></a>
+  <ul class="nav-links">
+    <li><a href="apropos.html">Notre mission</a></li>
+    <li><a href="projets.html" class="active">Nos projets</a></li>
+    <li><a href="actualites.html">Actualités</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="don.html" class="nav-cta">Faire un don</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <button class="nav-mobile-close" id="navClose">✕</button>
+  <a href="index.html">Accueil</a><a href="apropos.html">Notre mission</a><a href="projets.html">Nos projets</a><a href="actualites.html">Actualités</a><a href="don.html">Faire un don</a><a href="contact.html">Contact</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-content">
+  <img src="logo_principal.png" alt="L'Eancre" style="height:60px;width:auto;margin-bottom:1.5rem;mix-blend-mode:lighten;opacity:.9" />
+    <span class="section-tag" style="color:var(--rose-light)">Depuis 2009</span>
+    <h1>Nos <em>projets</em></h1>
+    <p>Des expositions, événements et actions concrètes pour rendre les soins palliatifs plus humains, plus beaux, plus dignes.</p>
+  </div>
+</div>
+<div class="wave-bottom"><svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:60px;width:100%;display:block"><path d="M0,30 C480,65 960,-5 1440,30 L1440,60 L0,60 Z" fill="white"/></svg></div>
+
+<!-- PROJET VEDETTE -->
+<section class="featured-section">
+  <div class="featured-inner">
+    <div class="reveal">
+      <span class="section-tag">Projet en cours · 2025</span>
+      <h2>Première / Dernière<br><em>Exposition</em> — Hervé Balmisse</h2>
+      <p>Atteint d'un cancer incurable, Hervé Balmisse fréquente depuis plus de cinq ans le service de soins palliatifs du CH de Riom. En signe de gratitude et de soutien, il expose ses œuvres réalisées entre 1989 et 2025 — des dessins, peintures et collages — dont l'emblématique <em>Repenti d'Autoportrait ultime</em>.</p>
+      <p>Toutes les ventes sont intégralement reversées à L'Eancre. L'exposition est ouverte tous les jours de 10h à 13h30 et de 15h à 19h30, entrée libre. Vernissage de clôture le 28 août à 18h30.</p>
+      <div class="featured-meta">
+        <div class="meta-item"><div class="meta-label">Dates</div><div class="meta-val">7 mai — 28 août 2025</div></div>
+        <div class="meta-item"><div class="meta-label">Lieu</div><div class="meta-val">6 Place Saint-Jean, Riom</div></div>
+        <div class="meta-item"><div class="meta-label">Entrée</div><div class="meta-val">Libre et gratuite</div></div>
+        <div class="meta-item"><div class="meta-label">Horaires</div><div class="meta-val">10h–13h30 &amp; 15h–19h30</div></div>
+        <div class="meta-item"><div class="meta-label">Vernissage clôture</div><div class="meta-val">28 août à 18h30</div></div>
+      </div>
+      <a href="actualites.html" class="btn-rose" style="margin-right:.8rem">Voir l'actualité complète</a><a href="https://www.asso-eancre.fr/Pourquoi cette expo.pdf" target="_blank" class="btn-outline" style="color:white;border-color:rgba(255,255,255,.4)">Mot de l'artiste</a>
+    </div>
+    <div class="reveal" style="transition-delay:.2s">
+      <div class="featured-img">
+        <img src="Affiche.jpeg" alt="Première / Dernière Exposition — Hervé Balmisse" onerror="this.style.display='none'">
+        <div class="featured-img-placeholder">Affiche de l'exposition<br>Hervé Balmisse · 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div style="background:linear-gradient(135deg,var(--bleu-dark),#2a1a5a)"><svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:60px;width:100%;display:block"><path d="M0,30 C480,65 960,-5 1440,30 L1440,60 L0,60 Z" fill="white"/></svg></div>
+
+<!-- FILTRES -->
+<div class="filters-bar">
+  <div class="filters-inner">
+    <span class="filter-label">Filtrer :</span>
+    <button class="filter-btn active" data-filter="all">Tous</button>
+    <button class="filter-btn" data-filter="art">Art & Expositions</button>
+    <button class="filter-btn" data-filter="event">Événements</button>
+    <button class="filter-btn" data-filter="actu">Sensibilisation</button>
+  </div>
+</div>
+
+<!-- GRILLE PROJETS -->
+<section class="projets-section">
+  <div class="projets-grid" id="projetsGrid">
+
+    <div class="projet-card" data-cat="art">
+      <div class="projet-img">
+        <div class="projet-img-bg" style="background:linear-gradient(135deg,var(--bleu-dark),var(--violet))">🎨</div>
+        <img src="Affiche.jpeg" alt="Exposition 2025" onerror="this.style.display='none'">
+        <span class="projet-badge badge-art">En cours</span>
+      </div>
+      <div class="projet-body">
+        <div class="projet-year">2025</div>
+        <h3>Première / Dernière Exposition — Hervé Balmisse</h3>
+        <p>Exposition artistique ouverte au public du 7 mai au 28 août 2025, Place Saint-Jean à Riom.</p>
+        <div class="projet-tags"><span class="projet-tag tag-pill-rose">Art</span><span class="projet-tag tag-pill-violet">Espace public</span></div>
+      </div>
+    </div>
+
+    <div class="projet-card" data-cat="event">
+      <div class="projet-img">
+        <div class="projet-img-bg" style="background:linear-gradient(135deg,#1a1040,var(--bleu))">🎤</div>
+        <span class="projet-badge badge-event">Passé</span>
+      </div>
+      <div class="projet-body">
+        <div class="projet-year">2023</div>
+        <h3>Table ronde — Paroles de soignants</h3>
+        <p>Rencontre ouverte au grand public réunissant soignants, patients et bénévoles autour des soins palliatifs.</p>
+        <div class="projet-tags"><span class="projet-tag tag-pill-bleu">Conférence</span><span class="projet-tag tag-pill-violet">Grand public</span></div>
+      </div>
+    </div>
+
+    <div class="projet-card" data-cat="art">
+      <div class="projet-img">
+        <div class="projet-img-bg" style="background:linear-gradient(135deg,var(--rose),#8a0050)">🖼</div>
+        <span class="projet-badge badge-done">Terminé</span>
+      </div>
+      <div class="projet-body">
+        <div class="projet-year">2022</div>
+        <h3>Exposition itinérante — Présences</h3>
+        <p>Série de photographies et d'œuvres plastiques exposées dans les couloirs du Centre Hospitalier de Riom.</p>
+        <div class="projet-tags"><span class="projet-tag tag-pill-rose">Photographie</span><span class="projet-tag tag-pill-bleu">Hôpital</span></div>
+      </div>
+    </div>
+
+    <div class="projet-card" data-cat="actu">
+      <div class="projet-img">
+        <div class="projet-img-bg" style="background:linear-gradient(135deg,var(--violet),#4a0070)">📖</div>
+        <span class="projet-badge badge-actu">Sensibilisation</span>
+      </div>
+      <div class="projet-body">
+        <div class="projet-year">2021</div>
+        <h3>Journées nationales des soins palliatifs</h3>
+        <p>Participation et organisation d'ateliers et d'animations lors des JNSP à Riom et environs.</p>
+        <div class="projet-tags"><span class="projet-tag tag-pill-violet">Sensibilisation</span><span class="projet-tag tag-pill-rose">Atelier</span></div>
+      </div>
+    </div>
+
+    <div class="projet-card" data-cat="art">
+      <div class="projet-img">
+        <div class="projet-img-bg" style="background:linear-gradient(135deg,#0a3a20,var(--bleu))">🌿</div>
+        <span class="projet-badge badge-done">Terminé</span>
+      </div>
+      <div class="projet-body">
+        <div class="projet-year">2019</div>
+        <h3>Jardin thérapeutique — 10 ans</h3>
+        <p>Création d'un espace végétal et apaisé pour les patients et leurs proches, inauguré lors du 10e anniversaire.</p>
+        <div class="projet-tags"><span class="projet-tag tag-pill-bleu">Environnement</span><span class="projet-tag tag-pill-violet">Bien-être</span></div>
+      </div>
+    </div>
+
+    <div class="projet-card" data-cat="event">
+      <div class="projet-img">
+        <div class="projet-img-bg" style="background:linear-gradient(135deg,#3d1040,var(--rose))">🎵</div>
+        <span class="projet-badge badge-done">Terminé</span>
+      </div>
+      <div class="projet-body">
+        <div class="projet-year">2017</div>
+        <h3>Concert — Musique en soins</h3>
+        <p>Concert de musique de chambre organisé au sein du service palliatif pour les patients et soignants.</p>
+        <div class="projet-tags"><span class="projet-tag tag-pill-rose">Musique</span><span class="projet-tag tag-pill-bleu">Hôpital</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SOUTIEN CTA -->
+<section class="soutien-section">
+  <div class="soutien-inner reveal">
+    <span class="section-tag tag-rose">Participer</span>
+    <h2>Vous avez un <em>projet</em> à proposer ?</h2>
+    <p>L'Eancre soutient toute initiative artistique, culturelle ou humaine en lien avec les soins palliatifs. Proposez-nous votre idée ou rejoignez nos bénévoles.</p>
+    <div class="soutien-btns">
+      <a href="contact.html" class="btn-rose">Proposer un projet</a>
+      <a href="don.html" class="btn-outline">Soutenir financièrement</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-logo-img"><img src="logo_de_bas_de_page.png" alt="L'Eancre"></div><p class="footer-desc">Association loi 1901 créée en 2009. Nous œuvrons pour rendre les soins palliatifs plus humains à Riom.</p><div class="footer-dots"><div class="footer-dot" style="background:var(--rose)"></div><div class="footer-dot" style="background:var(--violet)"></div><div class="footer-dot" style="background:var(--bleu)"></div></div></div>
+    <div class="footer-col"><h4>Pages</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="apropos.html">Qui sommes-nous</a></li><li><a href="projets.html">Nos projets</a></li><li><a href="actualites.html">Actualités</a></li><li><a href="don.html">Faire un don</a></li><li><a href="contact.html">Contact</a></li><li><a href="mentions-legales.html">Mentions légales</a></li></ul></div>
+    <div class="footer-col"><h4>Nous contacter</h4><ul><li><a href="mailto:eancre63@gmail.com">eancre63@gmail.com</a></li><li><a>79 Bd Etienne Clémentel<br>63200 RIOM</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 L'Eancre — Association loi 1901. Tous droits réservés.</span><span style="color:rgba(255,255,255,.2)">GitHub Pages · OVH</span></div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+// ── Menu mobile ────────────────────────────────────────────────
+const burger = document.getElementById('burger');
+const navMob = document.getElementById('navMobile');
+
+function menuOpen() {
+  navMob.classList.add('open');
+  burger.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function menuClose() {
+  navMob.classList.remove('open');
+  burger.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Toggle au clic sur le burger
+burger.addEventListener('click', () => {
+  burger.classList.contains('open') ? menuClose() : menuOpen();
+});
+
+// Fermer au clic sur un lien du menu
+navMob.querySelectorAll('a').forEach(a => a.addEventListener('click', menuClose));
+
+// Fermer avec Échap
+document.addEventListener('keydown', e => { if (e.key === 'Escape') menuClose(); });
+// ───────────────────────────────────────────────────────────────
+
+// Reveal
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.reveal,.projet-card').forEach((el,i)=>{
+  if(el.classList.contains('projet-card'))el.style.transitionDelay=(i%3)*0.12+'s';
+  io.observe(el);
+});
+
+// Filtres
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f=btn.dataset.filter;
+    document.querySelectorAll('.projet-card').forEach((card,i)=>{
+      const show=f==='all'||card.dataset.cat===f;
+      card.style.opacity='0';
+      card.style.transform='translateY(20px)';
+      setTimeout(()=>{
+        card.style.display=show?'':'none';
+        if(show){setTimeout(()=>{card.style.opacity='1';card.style.transform='none';},50);}
+      },200);
+    });
+  });
+});
+</script>
+</body>
+</html>

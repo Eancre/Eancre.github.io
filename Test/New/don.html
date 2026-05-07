@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="logo_onglet.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Faire un don à L'Eancre — Soutenez notre association pour les soins palliatifs à Riom.">
+<title>Faire un don — L'Eancre</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ---- DON HERO ---- */
+.don-hero { background: linear-gradient(135deg, var(--bleu-dark) 0%, #2a1a5a 100%); padding: 10rem 2rem 4rem; position: relative; overflow: hidden; }
+.don-hero::before { content: ''; position: absolute; top: -30%; right: -10%; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(230,43,135,.25) 0%, transparent 65%); }
+.don-hero::after  { content: ''; position: absolute; bottom: -30%; left: -10%; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(155,84,156,.2) 0%, transparent 65%); }
+.don-hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; position: relative; z-index: 1; }
+.don-hero-text .section-tag { color: var(--rose-light); }
+.don-hero-text h1 { color: white; font-size: clamp(2.5rem, 6vw, 4rem); margin: .5rem 0 1.3rem; }
+.don-hero-text h1 em { color: var(--rose-light); }
+.don-hero-text p { color: rgba(255,255,255,.65); font-size: 1rem; line-height: 1.9; }
+
+/* ---- WIDGET DON ---- */
+.don-widget { background: white; border-radius: 24px; padding: 2.8rem; box-shadow: 0 30px 80px rgba(0,0,0,.35); }
+.don-widget h3 { font-size: 1.3rem; font-weight: 600; color: var(--text-dark); margin-bottom: .3rem; }
+.don-widget > p { font-size: .88rem; color: var(--text-light); margin-bottom: 2rem; }
+.don-type-tabs { display: flex; background: var(--off-white); border-radius: 12px; padding: .3rem; margin-bottom: 1.8rem; }
+.don-tab { flex: 1; padding: .7rem; text-align: center; border-radius: 10px; font-size: .85rem; font-weight: 500; cursor: pointer; transition: all .3s; border: none; background: none; font-family: 'DM Sans', sans-serif; color: var(--text-mid); }
+.don-tab.active { background: white; color: var(--text-dark); box-shadow: 0 2px 12px rgba(0,0,0,.1); }
+.montants-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: .7rem; margin-bottom: 1rem; }
+.montant-btn { background: var(--off-white); border: 2px solid var(--border); color: var(--text-dark); padding: 1rem .5rem; border-radius: 12px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all .3s; font-family: 'Cormorant Garamond', serif; display: flex; flex-direction: column; align-items: center; gap: .2rem; }
+.montant-btn small { font-family: 'DM Sans', sans-serif; font-size: .72rem; font-weight: 400; color: var(--text-light); }
+.montant-btn:hover, .montant-btn.active { background: var(--rose-pale); border-color: var(--rose); color: var(--rose); }
+.montant-btn.active small { color: var(--rose); opacity: .7; }
+.don-custom { width: 100%; background: var(--off-white); border: 2px solid var(--border); border-radius: 12px; padding: .9rem 1.2rem; font-size: 1rem; font-family: 'DM Sans', sans-serif; color: var(--text-dark); margin-bottom: 1.5rem; outline: none; transition: border .3s; }
+.don-custom:focus { border-color: var(--rose); }
+.don-impact { background: var(--violet-pale); border-radius: 12px; padding: 1.2rem 1.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; }
+.don-impact-icon { font-size: 1.8rem; }
+.don-impact p { font-size: .88rem; color: var(--violet); line-height: 1.6; margin: 0; font-weight: 400; }
+.don-impact strong { font-weight: 600; }
+.don-info { font-size: .8rem; color: var(--text-light); text-align: center; margin-top: 1.2rem; line-height: 1.6; }
+.don-info a { color: var(--bleu); }
+
+/* ---- POURQUOI DON ---- */
+.pourquoi-section { padding: 7rem 2rem; }
+.pourquoi-inner { max-width: 1100px; margin: 0 auto; }
+.pourquoi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-top: 3.5rem; }
+.pourquoi-card { border-radius: 20px; padding: 2.2rem; border: 1px solid var(--border); opacity: 0; transform: translateY(24px); transition: all .5s ease; }
+.pourquoi-card.vis { opacity: 1; transform: none; }
+.pourquoi-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+.pourquoi-icon { font-size: 2.2rem; margin-bottom: 1.2rem; display: block; }
+.pourquoi-card h3 { font-size: 1.2rem; font-weight: 600; color: var(--text-dark); margin-bottom: .7rem; }
+.pourquoi-card p { font-size: .9rem; }
+
+/* ---- AVANTAGES FISCAUX ---- */
+.fiscal-section { background: var(--off-white); padding: 6rem 2rem; }
+.fiscal-inner { max-width: 900px; margin: 0 auto; }
+.fiscal-box { background: white; border-radius: 20px; padding: 3rem; border: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+.fiscal-highlight { font-family: 'Cormorant Garamond', serif; font-size: 4.5rem; font-weight: 600; line-height: 1; background: linear-gradient(135deg, var(--rose), var(--violet)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.fiscal-subtitle { font-size: 1rem; color: var(--text-mid); margin-top: .3rem; }
+.fiscal-text p { font-size: .95rem; margin-bottom: 1rem; }
+.fiscal-text ul { list-style: none; }
+.fiscal-text ul li { font-size: .9rem; color: var(--text-mid); padding: .4rem 0; display: flex; align-items: flex-start; gap: .6rem; }
+.fiscal-text ul li::before { content: '→'; color: var(--rose); font-weight: 600; flex-shrink: 0; }
+
+/* ---- TEMOIGNAGES ---- */
+.temoignages-section { padding: 7rem 2rem; background: linear-gradient(135deg, var(--bleu-dark) 0%, #2a1a5a 100%); }
+.temoignages-inner { max-width: 1100px; margin: 0 auto; }
+.temoignages-inner .section-tag { color: var(--rose-light); }
+.temoignages-inner h2 { color: white; margin: .5rem 0 3rem; }
+.temoignages-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 2rem; }
+.temoignage-card { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 20px; padding: 2.2rem; opacity: 0; transform: translateY(22px); transition: all .5s ease; }
+.temoignage-card.vis { opacity: 1; transform: none; }
+.temoignage-card p { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: rgba(255,255,255,.85); line-height: 1.6; margin-bottom: 1.5rem; }
+.temoignage-author { display: flex; align-items: center; gap: .8rem; }
+.author-dot { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .9rem; color: white; font-weight: 600; flex-shrink: 0; }
+.author-name { font-size: .85rem; color: rgba(255,255,255,.7); font-weight: 500; }
+.author-role { font-size: .75rem; color: rgba(255,255,255,.4); }
+
+@media (max-width: 900px) {
+  .don-hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .pourquoi-grid, .temoignages-grid { grid-template-columns: 1fr; }
+  .fiscal-box { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+  .montants-grid { grid-template-columns: repeat(2,1fr); }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav" class="light-nav">
+  <a href="index.html" class="nav-logo"><img src="Petit_logo_retour_accueil.png" alt="L'Eancre — Accueil"></a>
+  <ul class="nav-links">
+    <li><a href="apropos.html">Notre mission</a></li>
+    <li><a href="projets.html">Nos projets</a></li>
+    <li><a href="actualites.html">Actualités</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="don.html" class="nav-cta active" style="background:var(--violet)">Faire un don</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <button class="nav-mobile-close" id="navClose">✕</button>
+  <a href="index.html">Accueil</a><a href="apropos.html">Notre mission</a><a href="projets.html">Nos projets</a><a href="actualites.html">Actualités</a><a href="don.html">Faire un don</a><a href="contact.html">Contact</a>
+</div>
+
+<!-- DON HERO -->
+<div class="don-hero">
+  <div class="don-hero-inner">
+    <div class="reveal">
+      <span class="section-tag">Soutenir l'association</span>
+      <h1>Votre don <em>fait la différence</em></h1>
+      <p>Chaque contribution finance directement nos projets artistiques et culturels au Centre Hospitalier de Riom, pour que chaque patient puisse vivre cette période avec dignité et beauté.</p>
+      <div style="margin-top:2.5rem;display:flex;flex-direction:column;gap:.8rem">
+        <div style="display:flex;align-items:center;gap:.8rem;color:rgba(255,255,255,.7);font-size:.92rem"><span style="color:var(--rose-light)">✓</span>Don déductible des impôts à 66%</div>
+        <div style="display:flex;align-items:center;gap:.8rem;color:rgba(255,255,255,.7);font-size:.92rem"><span style="color:var(--rose-light)">✓</span>Reçu fiscal envoyé automatiquement</div>
+        <div style="display:flex;align-items:center;gap:.8rem;color:rgba(255,255,255,.7);font-size:.92rem"><span style="color:var(--rose-light)">✓</span>100% reversé à nos projets</div>
+      </div>
+    </div>
+    <div class="reveal" style="transition-delay:.2s">
+      <div class="don-widget">
+        <h3>Je fais un don</h3>
+        <p>Ponctuel ou mensuel, chaque geste compte</p>
+        <div class="don-type-tabs">
+          <button class="don-tab active" onclick="switchTab(this,'ponctuel')">Don ponctuel</button>
+          <button class="don-tab" onclick="switchTab(this,'mensuel')">Don mensuel</button>
+        </div>
+        <div class="montants-grid" id="montantsGrid">
+          <button class="montant-btn" onclick="selectMontant(this,15)">15 €<small>Un café par mois</small></button>
+          <button class="montant-btn active" onclick="selectMontant(this,50)">50 €<small>Coût réel : 17 €</small></button>
+          <button class="montant-btn" onclick="selectMontant(this,100)">100 €<small>Coût réel : 34 €</small></button>
+          <button class="montant-btn" onclick="selectMontant(this,200)">200 €<small>Coût réel : 68 €</small></button>
+          <button class="montant-btn" onclick="selectMontant(this,500)">500 €<small>Coût réel : 170 €</small></button>
+          <button class="montant-btn" onclick="selectMontant(this,null)">Autre<small>Montant libre</small></button>
+        </div>
+        <input type="number" class="don-custom" id="customAmt" placeholder="Autre montant en €" style="display:none" oninput="updateImpact(this.value)">
+        <div class="don-impact" id="impactBox">
+          <div class="don-impact-icon">🎨</div>
+          <p id="impactText"><strong>50 €</strong> financent une partie d'une exposition artistique pour les patients.</p>
+        </div>
+        <a href="mailto:eancre63@gmail.com?subject=Don%20à%20L'Eancre&body=Bonjour%2C%20je%20souhaite%20faire%20un%20don%20à%20L'Eancre." class="btn-rose" style="width:100%;text-align:center;display:block">Faire mon don maintenant</a>
+        <p class="don-info">Paiement sécurisé · Reçu fiscal par e-mail<br>Association loi 1901 — <a href="mentions-legales.html">Mentions légales</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="background:linear-gradient(135deg,var(--bleu-dark),#2a1a5a)"><svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:60px;width:100%;display:block"><path d="M0,30 C480,65 960,-5 1440,30 L1440,60 L0,60 Z" fill="white"/></svg></div>
+
+<!-- POURQUOI DONNER -->
+<section class="pourquoi-section">
+  <div class="pourquoi-inner">
+    <div class="section-center reveal">
+      <span class="section-tag tag-violet">Votre impact</span>
+      <h2>Pourquoi <em>donner</em> à L'Eancre ?</h2>
+    </div>
+    <div class="pourquoi-grid">
+      <div class="pourquoi-card" style="border-top:3px solid var(--rose)">
+        <span class="pourquoi-icon">🎨</span>
+        <h3>Financer l'art en soins palliatifs</h3>
+        <p>Votre don finance directement expositions, concerts et installations artistiques qui apaisent le quotidien des patients hospitalisés.</p>
+      </div>
+      <div class="pourquoi-card" style="border-top:3px solid var(--violet)">
+        <span class="pourquoi-icon">🤝</span>
+        <h3>Soutenir les familles</h3>
+        <p>Au-delà des patients, L'Eancre accompagne aussi les proches et les aidants, souvent épuisés et isolés dans ces moments difficiles.</p>
+      </div>
+      <div class="pourquoi-card" style="border-top:3px solid var(--bleu)">
+        <span class="pourquoi-icon">💙</span>
+        <h3>Changer le regard sur la mort</h3>
+        <p>Nous sensibilisons le grand public pour que la fin de vie soit abordée avec sérénité, dignité et humanité dans notre société.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AVANTAGES FISCAUX -->
+<section class="fiscal-section">
+  <div class="fiscal-inner">
+    <div class="section-center reveal" style="margin-bottom:2.5rem">
+      <span class="section-tag tag-rose">Avantage fiscal</span>
+      <h2>Votre don est <em>déductible</em></h2>
+    </div>
+    <div class="fiscal-box reveal" style="transition-delay:.15s">
+      <div style="text-align:center">
+        <div class="fiscal-highlight">66%</div>
+        <div class="fiscal-subtitle">de réduction d'impôt sur le revenu</div>
+        <div style="margin-top:1.5rem;background:var(--rose-pale);border-radius:12px;padding:1.2rem">
+          <p style="font-size:.85rem;color:var(--rose);margin:0">Un don de <strong>50 €</strong><br>ne vous coûte en réalité que <strong>17 €</strong></p>
+        </div>
+      </div>
+      <div class="fiscal-text">
+        <p>L'Eancre est une association d'intérêt général. Vos dons ouvrent droit à une réduction d'impôt sur le revenu de <strong>66 % du montant versé</strong>, dans la limite de 20 % du revenu imposable.</p>
+        <ul>
+          <li>Reçu fiscal envoyé par e-mail après votre don</li>
+          <li>À déclarer dans votre déclaration de revenus</li>
+          <li>Applicable aux particuliers comme aux entreprises</li>
+          <li>Valable pour dons ponctuels et mensuels</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TÉMOIGNAGES -->
+<section class="temoignages-section">
+  <div class="temoignages-inner">
+    <span class="section-tag">Ils soutiennent L'Eancre</span>
+    <h2>Ce qu'ils <em>disent</em></h2>
+    <div class="temoignages-grid">
+      <div class="temoignage-card">
+        <p>"Donner à L'Eancre, c'est savoir que mon argent va directement améliorer le quotidien de personnes en grande fragilité. C'est un geste concret et profondément humain."</p>
+        <div class="temoignage-author">
+          <div class="author-dot" style="background:var(--rose)">M</div>
+          <div><div class="author-name">Marie D.</div><div class="author-role">Donatrice depuis 2018</div></div>
+        </div>
+      </div>
+      <div class="temoignage-card">
+        <p>"J'ai perdu mon père dans ce service. L'Eancre avait organisé une exposition dans les couloirs — ce souvenir de beauté au milieu de la douleur reste gravé en moi."</p>
+        <div class="temoignage-author">
+          <div class="author-dot" style="background:var(--violet)">P</div>
+          <div><div class="author-name">Pierre L.</div><div class="author-role">Proche de patient · Donateur</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div style="background:linear-gradient(135deg,var(--bleu-dark),#2a1a5a)"><svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:60px;width:100%;display:block"><path d="M0,30 C480,65 960,-5 1440,30 L1440,60 L0,60 Z" fill="#0d1f2e"/></svg></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-logo-img"><img src="logo_de_bas_de_page.png" alt="L'Eancre"></div><p class="footer-desc">Association loi 1901 créée en 2009. Nous œuvrons pour rendre les soins palliatifs plus humains à Riom.</p><div class="footer-dots"><div class="footer-dot" style="background:var(--rose)"></div><div class="footer-dot" style="background:var(--violet)"></div><div class="footer-dot" style="background:var(--bleu)"></div></div></div>
+    <div class="footer-col"><h4>Pages</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="apropos.html">Qui sommes-nous</a></li><li><a href="projets.html">Nos projets</a></li><li><a href="actualites.html">Actualités</a></li><li><a href="don.html">Faire un don</a></li><li><a href="contact.html">Contact</a></li><li><a href="mentions-legales.html">Mentions légales</a></li></ul></div>
+    <div class="footer-col"><h4>Nous contacter</h4><ul><li><a href="mailto:eancre63@gmail.com">eancre63@gmail.com</a></li><li><a>79 Bd Etienne Clémentel<br>63200 RIOM</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 L'Eancre — Association loi 1901. Tous droits réservés.</span><span style="color:rgba(255,255,255,.2)">GitHub Pages · OVH</span></div>
+</footer>
+
+<script>
+// ── Menu mobile ────────────────────────────────────────────────
+const burger = document.getElementById('burger');
+const navMob = document.getElementById('navMobile');
+
+function menuOpen() {
+  navMob.classList.add('open');
+  burger.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function menuClose() {
+  navMob.classList.remove('open');
+  burger.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Toggle au clic sur le burger
+burger.addEventListener('click', () => {
+  burger.classList.contains('open') ? menuClose() : menuOpen();
+});
+
+// Fermer au clic sur un lien du menu
+navMob.querySelectorAll('a').forEach(a => a.addEventListener('click', menuClose));
+
+// Fermer avec Échap
+document.addEventListener('keydown', e => { if (e.key === 'Escape') menuClose(); });
+// ───────────────────────────────────────────────────────────────
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.reveal,.pourquoi-card,.temoignage-card').forEach((el,i)=>{
+  if(el.classList.contains('pourquoi-card')||el.classList.contains('temoignage-card'))el.style.transitionDelay=(i%3)*0.12+'s';
+  io.observe(el);
+});
+
+let currentMontant=50;
+const impacts={
+  15:"<strong>15 €</strong> offrent un moment d'art et de beauté à un patient pour une journée entière.",
+  50:"<strong>50 €</strong> financent une partie d'une exposition artistique pour les patients.",
+  100:"<strong>100 €</strong> couvrent le transport et l'installation d'une œuvre au sein de l'hôpital.",
+  200:"<strong>200 €</strong> participent à l'organisation d'un événement culturel pour patients et soignants.",
+  500:"<strong>500 €</strong> financent intégralement un projet artistique complet pour les patients."
+};
+
+function selectMontant(btn,val){
+  document.querySelectorAll('.montant-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const custom=document.getElementById('customAmt');
+  if(val===null){custom.style.display='block';custom.focus();}
+  else{custom.style.display='none';currentMontant=val;updateImpact(val);}
+}
+function updateImpact(val){
+  val=parseInt(val)||50;
+  const keys=Object.keys(impacts).map(Number).sort((a,b)=>a-b);
+  let chosen=keys[0];
+  for(const k of keys){if(val>=k)chosen=k;}
+  document.getElementById('impactText').innerHTML=impacts[chosen]||impacts[500];
+}
+function switchTab(btn,type){
+  document.querySelectorAll('.don-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+}
+updateImpact(50);
+</script>
+</body>
+</html>
