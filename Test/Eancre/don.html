@@ -62,22 +62,14 @@
 .fiscal-text ul li::before { content: '→'; color: var(--rose); font-weight: 600; flex-shrink: 0; }
 
 /* ---- TEMOIGNAGES ---- */
-.temoignages-section { padding: 7rem 2rem; background: linear-gradient(135deg, var(--bleu-dark) 0%, #2a1a5a 100%); }
-.temoignages-inner { max-width: 1100px; margin: 0 auto; }
-.temoignages-inner .section-tag { color: var(--rose-light); }
-.temoignages-inner h2 { color: white; margin: .5rem 0 3rem; }
-.temoignages-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 2rem; }
-.temoignage-card { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 20px; padding: 2.2rem; opacity: 0; transform: translateY(22px); transition: all .5s ease; }
-.temoignage-card.vis { opacity: 1; transform: none; }
-.temoignage-card p { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: rgba(255,255,255,.85); line-height: 1.6; margin-bottom: 1.5rem; }
-.temoignage-author { display: flex; align-items: center; gap: .8rem; }
+
 .author-dot { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .9rem; color: white; font-weight: 600; flex-shrink: 0; }
 .author-name { font-size: .85rem; color: rgba(255,255,255,.7); font-weight: 500; }
 .author-role { font-size: .75rem; color: rgba(255,255,255,.4); }
 
 @media (max-width: 900px) {
   .don-hero-inner { grid-template-columns: 1fr; gap: 3rem; }
-  .pourquoi-grid, .temoignages-grid { grid-template-columns: 1fr; }
+  .pourquoi-grid { grid-template-columns: 1fr; }
   .fiscal-box { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
   .montants-grid { grid-template-columns: repeat(2,1fr); }
 }
@@ -198,30 +190,7 @@
   </div>
 </section>
 
-<!-- TÉMOIGNAGES -->
-<section class="temoignages-section">
-  <div class="temoignages-inner">
-    <span class="section-tag">Ils soutiennent l'eancre</span>
-    <h2>Ce qu'ils <em>disent</em></h2>
-    <div class="temoignages-grid">
-      <div class="temoignage-card">
-        <p>"Donner à l'eancre, c'est savoir que mon argent va directement améliorer le quotidien de personnes en grande fragilité. C'est un geste concret et profondément humain."</p>
-        <div class="temoignage-author">
-          <div class="author-dot" style="background:var(--rose)">M</div>
-          <div><div class="author-name">Marie D.</div><div class="author-role">Donatrice depuis 2018</div></div>
-        </div>
-      </div>
-      <div class="temoignage-card">
-        <p>"J'ai perdu mon père dans ce service. l'eancre avait organisé une exposition dans les couloirs — ce souvenir de beauté au milieu de la douleur reste gravé en moi."</p>
-        <div class="temoignage-author">
-          <div class="author-dot" style="background:var(--violet)">P</div>
-          <div><div class="author-name">Pierre L.</div><div class="author-role">Proche de patient · Donateur</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<div style="background:linear-gradient(135deg,var(--bleu-dark),#2a1a5a)"><svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:60px;width:100%;display:block"><path d="M0,30 C480,65 960,-5 1440,30 L1440,60 L0,60 Z" fill="#0d1f2e"/></svg></div>
+
 
 <!-- FOOTER -->
 <footer>
@@ -261,8 +230,8 @@ navMob.querySelectorAll('a').forEach(a => a.addEventListener('click', menuClose)
 document.addEventListener('keydown', e => { if (e.key === 'Escape') menuClose(); });
 // ───────────────────────────────────────────────────────────────
 const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});},{threshold:.1});
-document.querySelectorAll('.reveal,.pourquoi-card,.temoignage-card').forEach((el,i)=>{
-  if(el.classList.contains('pourquoi-card')||el.classList.contains('temoignage-card'))el.style.transitionDelay=(i%3)*0.12+'s';
+document.querySelectorAll('.reveal,.pourquoi-card').forEach((el,i)=>{
+  if(el.classList.contains('pourquoi-card'))el.style.transitionDelay=(i%3)*0.12+'s';
   io.observe(el);
 });
 
