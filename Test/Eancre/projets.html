@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="logo_onglet.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Les projets et réalisations de l'eancre — confort, soins de support, soutien aux soignants.">
+<title>Nos projets — l'eancre</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* FEATURED */
+.featured-section { background:linear-gradient(135deg,var(--bleu-dark) 0%,#2a1a5a 100%); padding:7rem 2rem; }
+.featured-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+.featured-text .section-tag { color:var(--rose-light); }
+.featured-text h2 { color:white; margin:.5rem 0 1.5rem; }
+.featured-text p { color:rgba(255,255,255,.65); font-size:1rem; margin-bottom:1.2rem; line-height:1.9; }
+.featured-meta { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:2rem 0; }
+.meta-item { background:rgba(255,255,255,.07); border-radius:12px; padding:1rem 1.2rem; }
+.meta-label { font-size:.72rem; letter-spacing:.15em; text-transform:uppercase; color:rgba(255,255,255,.4); margin-bottom:.3rem; }
+.meta-val { font-size:.95rem; color:white; font-weight:400; }
+.featured-img { border-radius:20px; overflow:hidden; aspect-ratio:4/3; background:linear-gradient(135deg,rgba(155,84,156,.3),rgba(230,43,135,.2)); display:flex; align-items:center; justify-content:center; position:relative; }
+.featured-img img { width:100%; height:100%; object-fit:cover; }
+.featured-img-placeholder { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-style:italic; color:rgba(255,255,255,.4); text-align:center; padding:2rem; }
+
+/* RÉALISATIONS PAR CATÉGORIE */
+.cat-section { padding:6rem 2rem; }
+.cat-section:nth-child(even) { background:var(--off-white); }
+.cat-inner { max-width:1100px; margin:0 auto; }
+.cat-header { display:flex; align-items:center; gap:1.5rem; margin-bottom:3rem; }
+.cat-icon { width:60px; height:60px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:1.8rem; flex-shrink:0; }
+.cat-header-text h2 { margin-bottom:.3rem; }
+.cat-header-text p { font-size:.95rem; }
+
+.real-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+.real-card { background:white; border-radius:16px; padding:1.8rem; border:1px solid var(--border); transition:all .4s; opacity:0; transform:translateY(22px); }
+.cat-section:nth-child(even) .real-card { background:white; }
+.real-card.vis { opacity:1; transform:none; }
+.real-card:hover { box-shadow:var(--shadow-md); transform:translateY(-4px); }
+.real-emoji { font-size:1.8rem; margin-bottom:1rem; display:block; }
+.real-card h3 { font-size:1.1rem; font-weight:600; color:var(--text-dark); margin-bottom:.6rem; }
+.real-card p { font-size:.87rem; line-height:1.75; }
+.real-badge { display:inline-block; font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; padding:.25rem .7rem; border-radius:20px; font-weight:500; margin-top:.8rem; }
+.badge-rose   { background:var(--rose-pale); color:var(--rose); }
+.badge-violet { background:var(--violet-pale); color:var(--violet); }
+.badge-bleu   { background:#e3edf5; color:var(--bleu); }
+.badge-green  { background:#e8f5e9; color:#2e7d32; }
+
+/* SOINS DE SUPPORT */
+.support-section { background:var(--bleu-dark); padding:7rem 2rem; }
+.support-inner { max-width:1100px; margin:0 auto; }
+.support-header { margin-bottom:3.5rem; }
+.support-header .section-tag { color:var(--rose-light); }
+.support-header h2 { color:white; margin:.5rem 0 1rem; }
+.support-header p { color:rgba(255,255,255,.6); font-size:1rem; max-width:680px; }
+.support-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+.support-card { background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.1); border-radius:16px; padding:2rem; opacity:0; transform:translateY(22px); transition:all .5s; }
+.support-card.vis { opacity:1; transform:none; }
+.support-card:hover { background:rgba(255,255,255,.1); }
+.support-card .s-icon { font-size:2rem; margin-bottom:1rem; display:block; }
+.support-card h3 { font-family:'Cormorant Garamond',serif; font-size:1.25rem; color:white; margin-bottom:.6rem; }
+.support-card p { font-size:.88rem; color:rgba(255,255,255,.55); line-height:1.75; }
+.support-note { background:rgba(255,255,255,.06); border-radius:16px; padding:2rem; margin-top:2rem; display:grid; grid-template-columns:auto 1fr; gap:1.5rem; align-items:center; }
+.support-note p { color:rgba(255,255,255,.65); font-size:.92rem; line-height:1.7; margin:0; }
+
+/* SOIGNANTS */
+.soignants-section { padding:7rem 2rem; }
+.soignants-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
+.soignants-text p { font-size:1rem; margin-bottom:1.2rem; }
+.piliers-list { list-style:none; margin-top:1.5rem; }
+.pilier-item { display:flex; gap:1.2rem; padding:1.2rem; border-radius:12px; margin-bottom:1rem; background:var(--off-white); border:1px solid var(--border); transition:all .3s; }
+.pilier-item:hover { border-color:var(--violet); background:var(--violet-pale); }
+.pilier-icon { font-size:1.5rem; flex-shrink:0; }
+.pilier-text h4 { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:600; color:var(--text-dark); margin-bottom:.3rem; }
+.pilier-text p { font-size:.87rem; margin:0; }
+.soignants-quote { background:linear-gradient(135deg,var(--violet),var(--rose)); border-radius:20px; padding:3rem; color:white; }
+.soignants-quote blockquote { font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-style:italic; line-height:1.45; margin-bottom:1.5rem; }
+.soignants-quote cite { font-size:.82rem; letter-spacing:.12em; text-transform:uppercase; opacity:.75; font-style:normal; }
+
+@media (max-width:900px) {
+  .featured-inner,.soignants-inner { grid-template-columns:1fr; gap:3rem; }
+  .real-grid,.support-grid { grid-template-columns:1fr; }
+  .featured-meta { grid-template-columns:1fr 1fr; }
+  .support-note { grid-template-columns:1fr; }
+}
+@media (max-width:600px) {
+  .featured-meta { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav" class="light-nav">
+  <a href="index.html" class="nav-logo"><img src="Petit_logo_retour_accueil.png" alt="l'eancre — Accueil"></a>
+  <ul class="nav-links">
+    <li><a href="apropos.html">Notre mission</a></li>
+    <li><a href="projets.html" class="active">Nos projets</a></li>
+    <li><a href="actualites.html">Actualités</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="don.html" class="nav-cta">Faire un don</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <button class="nav-mobile-close" id="navClose">✕</button>
+  <a href="index.html">Accueil</a><a href="apropos.html">Notre mission</a><a href="projets.html">Nos projets</a><a href="actualites.html">Actualités</a><a href="don.html">Faire un don</a><a href="contact.html">Contact</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-content">
+    <img src="logo_principal.png" alt="l'eancre" style="height:60px;width:auto;margin-bottom:1.5rem;mix-blend-mode:lighten;opacity:.9"/>
+    <span class="section-tag" style="color:var(--rose-light)">Depuis 2009</span>
+    <h1>Nos projets &amp; <em>réalisations</em></h1>
+    <p>En se concentrant sur les aspects du quotidien qui font toute la différence, l'eancre s'attache à maintenir et renforcer le bien-être des patients et de leur entourage.</p>
+  </div>
+</div>
+<div class="wave-bottom"><svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:60px;width:100%;display:block"><path d="M0,30 C480,65 960,-5 1440,30 L1440,60 L0,60 Z" fill="var(--off-white)"/></svg></div>
+
+<!-- EXPOSITION VEDETTE -->
+<div style="background:var(--off-white)">
+  <div style="max-width:1100px;margin:0 auto;padding:5rem 2rem 0">
+    <div class="section-center reveal">
+      <span class="section-tag tag-rose">Événement culturel · 2025</span>
+      <h2>Exposition solidaire <em>Hervé Balmisse</em></h2>
+    </div>
+  </div>
+</div>
+<section class="featured-section" style="padding-top:3rem">
+  <div class="featured-inner">
+    <div class="reveal">
+      <span class="section-tag">Mai — Août 2025 · Riom</span>
+      <h2>Première / Dernière <em>Exposition</em></h2>
+      <p>Hervé Balmisse, ancien élève des Beaux-Arts et patient en soins palliatifs accompagné sur l'hôpital de jour du CH de Riom depuis plus de cinq ans, a organisé une exposition au bénéfice de l'eancre.</p>
+      <p>Pour surmonter l'annonce de la maladie et témoigner de l'immense dévouement humain du personnel hospitalier, il a exposé ses œuvres réalisées entre 1989 et 2025 — dessins, peintures et collages, dont le <em>Repenti d'Autoportrait ultime</em>.</p>
+      <p>L'intégralité des ventes a été reversée à l'eancre. L'exposition a été rendue possible grâce à la municipalité de Riom, à Riom Limagne &amp; Volcans et aux bénévoles.</p>
+      <div class="featured-meta">
+        <div class="meta-item"><div class="meta-label">Dates</div><div class="meta-val">7 mai — 28 août 2025</div></div>
+        <div class="meta-item"><div class="meta-label">Lieu</div><div class="meta-val">6 Place Saint-Jean, Riom</div></div>
+        <div class="meta-item"><div class="meta-label">Vernissage</div><div class="meta-val">6 mai 2025</div></div>
+        <div class="meta-item"><div class="meta-label">Dévernissage</div><div class="meta-val">28 août à 18h30</div></div>
+      </div>
+      <div style="display:flex;gap:.8rem;flex-wrap:wrap">
+        <a href="actualites.html" class="btn-rose">Voir les actualités</a>
+        <a href="https://www.asso-eancre.fr/Pourquoi cette expo.pdf" target="_blank" class="btn-outline-white">Mot de l'artiste</a>
+      </div>
+    </div>
+    <div class="reveal" style="transition-delay:.2s">
+      <div class="featured-img">
+        <img src="Affiche.jpeg" alt="Exposition Hervé Balmisse" onerror="this.style.display='none'">
+        <div class="featured-img-placeholder">Affiche de l'exposition<br>Hervé Balmisse · 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div style="background:linear-gradient(135deg,var(--bleu-dark),#2a1a5a)"><svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:60px;width:100%;display:block"><path d="M0,30 C480,65 960,-5 1440,30 L1440,60 L0,60 Z" fill="white"/></svg></div>
+
+<!-- CONFORT & ESPACES -->
+<section class="cat-section">
+  <div class="cat-inner">
+    <div class="cat-header reveal">
+      <div class="cat-icon icon-rose">🛋️</div>
+      <div class="cat-header-text">
+        <span class="section-tag tag-rose">Aménagement d'espaces</span>
+        <h2>Confort &amp; espaces de <em>vie</em></h2>
+        <p>Des lieux pensés pour que patients et proches se sentent accueillis avec chaleur et dignité.</p>
+      </div>
+    </div>
+    <div class="real-grid">
+      <div class="real-card">
+        <span class="real-emoji">🛋️</span>
+        <h3>Le Salon des familles</h3>
+        <p>Installé en 2014 au sein du CH, cet espace propose un lieu d'intimité privilégié, à l'écart des zones de soins. Canapé, équipement audio, micro-ondes et cafetière permettent aux patients et leurs proches de se réunir dans un environnement apaisé.</p>
+        <span class="real-badge badge-rose">Depuis 2014</span>
+      </div>
+      <div class="real-card">
+        <span class="real-emoji">🎨</span>
+        <h3>Fresque murale de l'hôpital de jour</h3>
+        <p>l'eancre a financé les fournitures nécessaires à la réalisation d'une fresque murale colorée et poétique dans la salle d'accueil de l'hôpital de jour oncologique, peinte par l'artiste LÂm street art.</p>
+        <span class="real-badge badge-violet">Art & espace</span>
+      </div>
+      <div class="real-card">
+        <span class="real-emoji">🧊</span>
+        <h3>Tables de nuit réfrigérées</h3>
+        <p>Après plusieurs années de persévérance, nous avons financé l'équipement de 8 chambres de Lits Identifiés de Soins Palliatifs (LISP) en tables de nuit réfrigérées, installées en 2025. Les retours des patients sont extrêmement positifs.</p>
+        <span class="real-badge badge-green">Installées en 2025</span>
+      </div>
+      <div class="real-card">
+        <span class="real-emoji">🪑</span>
+        <h3>Fauteuils-lits accompagnants</h3>
+        <p>Pour améliorer le confort des proches qui passent la nuit auprès de leur parent hospitalisé, l'association a financé plusieurs fauteuils-lits ergonomiques déployés dans différents services du CH.</p>
+        <span class="real-badge badge-bleu">Confort des proches</span>
+      </div>
+      <div class="real-card">
+        <span class="real-emoji">🧘</span>
+        <h3>Matériel de relaxation</h3>
+        <p>Galets de méditation Morphée Zen, huiles essentielles, lecteurs MP3 et casques audio pour des séances de détente au lit — l'eancre fournit régulièrement aux équipes du matériel d'apaisement individuel.</p>
+        <span class="real-badge badge-violet">Bien-être</span>
+      </div>
+      <div class="real-card">
+        <span class="real-emoji">💅</span>
+        <h3>Chariot d'esthétique &amp; Snoezelen</h3>
+        <p>Kits de manucure, chariot de soin pour les ateliers esthétiques, et matériel d'approche Snoezelen pour l'hôpital de jour — pour prendre soin du corps et de l'esprit.</p>
+        <span class="real-badge badge-rose">Esthétique & bien-être</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOINS DE SUPPORT -->
+<section class="support-section">
+  <div class="support-inner">
+    <div class="support-header reveal">
+      <span class="section-tag">Un virage ambitieux · depuis 2026</span>
+      <h2 style="color:white">Soins de support en <em style="color:var(--rose-light)">oncologie</em></h2>
+      <p>Depuis 2026, grâce à de nouveaux partenariats et au soutien de l'association Le Ruban Rose Entre Limagne et Volcans 63, l'eancre finance des interventions professionnelles entièrement gratuites pour les patients en traitement à l'hôpital de jour.</p>
+    </div>
+    <div class="support-grid">
+      <div class="support-card">
+        <span class="s-icon">💆‍♀️</span>
+        <h3>Socio-esthétique</h3>
+        <p>Interventions de professionnelles en socio-esthétique au chevet des patients — soins du visage, des mains, manucure — pour restaurer l'estime de soi pendant les traitements.</p>
+      </div>
+      <div class="support-card">
+        <span class="s-icon">🌿</span>
+        <h3>Aromathérapie</h3>
+        <p>Séances d'aromathérapie pour atténuer les effets secondaires des traitements, réduire l'anxiété et apporter détente et bien-être aux patients accompagnés.</p>
+      </div>
+      <div class="support-card">
+        <span class="s-icon">🤲</span>
+        <h3>Ostéopathie</h3>
+        <p>Interventions d'ostéopathes spécialisés pour soulager les douleurs physiques et améliorer le confort global des patients en oncologie.</p>
+      </div>
+    </div>
+    <div class="support-note reveal">
+      <span style="font-size:2.5rem">🤝</span>
+      <p>Ces interventions sont organisées par demi-journées, coordonnées en partenariat avec la commission de soins de support du Centre Hospitalier de Riom. Les équipes soignantes repèrent les besoins individuels et orientent les interventions. <strong style="color:white">Accès entièrement gratuit pour tous les patients.</strong></p>
+    </div>
+  </div>
+</section>
+<div style="background:var(--bleu-dark)"><svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:60px;width:100%;display:block"><path d="M0,30 C480,65 960,-5 1440,30 L1440,60 L0,60 Z" fill="white"/></svg></div>
+
+<!-- SOUTIEN AUX SOIGNANTS -->
+<section class="soignants-section">
+  <div class="soignants-inner">
+    <div class="reveal">
+      <span class="section-tag tag-violet">Depuis fin 2025</span>
+      <h2>Soutien aux <em>professionnels</em></h2>
+      <p>Au quotidien, les professionnels de santé intervenant en oncologie et sur les LISP font preuve d'un engagement profond. Face à la maladie grave et à la fin de vie, leur investissement est à la fois technique et relationnel.</p>
+      <p>l'eancre a déployé un nouvel axe d'action centré sur le prendre-soin des soignants eux-mêmes.</p>
+      <ul class="piliers-list">
+        <li class="pilier-item">
+          <span class="pilier-icon">🎓</span>
+          <div class="pilier-text">
+            <h4>La formation</h4>
+            <p>Financement d'inscriptions au congrès de la SFAP (Société Française d'Accompagnement et de Soins Palliatifs) pour permettre aux professionnels de nourrir leurs pratiques et actualiser leurs connaissances.</p>
+          </div>
+        </li>
+        <li class="pilier-item">
+          <span class="pilier-icon">💬</span>
+          <div class="pilier-text">
+            <h4>La réflexion éthique</h4>
+            <p>Soutien à l'organisation de journées de réflexion éthique et professionnelle pour croiser les regards, débriefer des situations complexes et souder les équipes.</p>
+          </div>
+        </li>
+        <li class="pilier-item">
+          <span class="pilier-icon">🧘</span>
+          <div class="pilier-text">
+            <h4>Yoga &amp; Pilates Santé</h4>
+            <p>Séances régulières de yoga et pilates santé adaptées — un sas de décompression essentiel pour évacuer les tensions et cultiver leur propre capital santé.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="reveal" style="transition-delay:.2s">
+      <div class="soignants-quote">
+        <blockquote>"Pour prendre soin des autres, il faut d'abord prendre soin de soi."</blockquote>
+        <cite>— Philosophie de l'eancre</cite>
+      </div>
+      <div style="margin-top:1.5rem;background:var(--off-white);border-radius:16px;padding:1.8rem;border:1px solid var(--border)">
+        <p style="font-size:.9rem;margin:0"><strong style="color:var(--text-dark)">Un financement collectif</strong><br>Cette structuration est le fruit d'un élan de solidarité exceptionnel. La campagne de l'association Le Ruban Rose Entre Limagne et Volcans 63 a permis de lever 26 600 € de contributions, permettant à l'eancre de déployer ces actions d'envergure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-logo-img"><img src="logo_de_bas_de_page.png" alt="l'eancre"></div><p class="footer-desc">Association loi 1901 reconnue d'utilité générale depuis 2017. Nous œuvrons pour rendre les soins palliatifs plus humains au CH de Riom.</p><div class="footer-dots"><div class="footer-dot" style="background:var(--rose)"></div><div class="footer-dot" style="background:var(--violet)"></div><div class="footer-dot" style="background:var(--bleu)"></div></div></div>
+    <div class="footer-col"><h4>Pages</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="apropos.html">Qui sommes-nous</a></li><li><a href="projets.html">Nos projets</a></li><li><a href="actualites.html">Actualités</a></li><li><a href="don.html">Faire un don</a></li><li><a href="contact.html">Contact</a></li><li><a href="mentions-legales.html">Mentions légales</a></li></ul></div>
+    <div class="footer-col"><h4>Nous contacter</h4><ul><li><a href="mailto:eancre63@gmail.com">eancre63@gmail.com</a></li><li><a>CH Guy Thomas<br>79 Bd Etienne Clémentel<br>63200 RIOM</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 l'eancre — Association loi 1901. Tous droits réservés.</span><span style="color:rgba(255,255,255,.2)">GitHub Pages · OVH</span></div>
+</footer>
+
+<script>
+const burger=document.getElementById('burger'),navMob=document.getElementById('navMobile');
+function menuOpen(){navMob.classList.add('open');burger.classList.add('open');document.body.style.overflow='hidden';}
+function menuClose(){navMob.classList.remove('open');burger.classList.remove('open');document.body.style.overflow='';}
+burger.addEventListener('click',()=>burger.classList.contains('open')?menuClose():menuOpen());
+navMob.querySelectorAll('a').forEach(a=>a.addEventListener('click',menuClose));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')menuClose();});
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.reveal,.real-card,.support-card').forEach((el,i)=>{
+  if(el.classList.contains('real-card')||el.classList.contains('support-card'))el.style.transitionDelay=(i%3)*0.12+'s';
+  io.observe(el);
+});
+</script>
+</body>
+</html>
