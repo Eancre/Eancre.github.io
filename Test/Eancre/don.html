@@ -14,9 +14,9 @@
 .don-hero::after  { content: ''; position: absolute; bottom: -30%; left: -10%; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(155,84,156,.2) 0%, transparent 65%); }
 .don-hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; position: relative; z-index: 1; }
 .don-hero-text .section-tag { color: var(--rose-light); }
-.don-hero-text h1 { color: white; font-size: clamp(2.5rem, 6vw, 4rem); margin: .5rem 0 1.3rem; }
+.don-hero-text h1 { color: white; font-size: clamp(2.5rem, 6vw, 4rem); margin: .5rem 0 1.3rem; text-shadow: 0 2px 20px rgba(0,0,0,.25); }
 .don-hero-text h1 em { color: var(--rose-light); }
-.don-hero-text p { color: rgba(255,255,255,.65); font-size: 1rem; line-height: 1.9; }
+.don-hero-text p { color: rgba(255,255,255,.88); font-size: 1rem; line-height: 1.9; }
 
 /* ---- WIDGET DON ---- */
 .don-widget { background: white; border-radius: 24px; padding: 2.8rem; box-shadow: 0 30px 80px rgba(0,0,0,.35); }
@@ -96,7 +96,7 @@
 <!-- DON HERO -->
 <div class="don-hero">
   <div class="don-hero-inner">
-    <div class="reveal">
+    <div class="reveal don-hero-text">
       <span class="section-tag">Soutenir l'association</span>
       <h1>Votre don <em>fait la différence</em></h1>
       <p>100 % des fonds recueillis sont directement réinvestis dans l'achat de matériel de confort ou le financement de soins de support auprès des patients du Centre Hospitalier Guy Thomas de Riom.</p>
