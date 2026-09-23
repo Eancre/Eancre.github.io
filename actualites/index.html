@@ -2,11 +2,11 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" type="image/png" href="images/logo_onglet.png">
+<link rel="icon" type="image/png" href="/images/logo_onglet.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Les actualités de l'eancre — événements, expositions, presse et vie de l'association.">
 <title>Actualités — l'eancre</title>
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="style.css">
 <style>
 /* ACTU VEDETTE */
 .actu-featured { padding:5rem 2rem; background:var(--off-white); }
@@ -58,21 +58,21 @@
 .presse-link:hover { color:var(--rose); }
 
 /* NEWSLETTER */
-
-
-
-
-
-
-
-
-
+.newsletter-section { background:linear-gradient(135deg,var(--bleu-dark) 0%,#2a1a5a 100%); padding:6rem 2rem; text-align:center; }
+.newsletter-inner { max-width:560px; margin:0 auto; }
+.newsletter-inner h2 { color:white; margin:.5rem 0 1rem; }
+.newsletter-inner p { color:rgba(255,255,255,.6); margin-bottom:2.5rem; font-size:1rem; }
+.newsletter-form { display:flex; gap:.8rem; max-width:440px; margin:0 auto; }
+.newsletter-form input { flex:1; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.25); color:white; padding:.85rem 1.3rem; border-radius:30px; font-size:.92rem; font-family:'DM Sans',sans-serif; outline:none; transition:border .3s; }
+.newsletter-form input::placeholder { color:rgba(255,255,255,.4); }
+.newsletter-form input:focus { border-color:rgba(255,255,255,.6); }
+.newsletter-note { margin-top:1rem; font-size:.78rem; color:rgba(255,255,255,.35); }
 
 @media (max-width:900px) {
   .actu-featured-inner { grid-template-columns:1fr; gap:3rem; }
   .actu-list { grid-template-columns:1fr 1fr; }
   .presse-grid { grid-template-columns:1fr; }
-  
+  .newsletter-form { flex-direction:column; }
 }
 @media (max-width:600px) {
   .actu-list { grid-template-columns:1fr; }
@@ -82,24 +82,24 @@
 <body>
 
 <nav id="nav" class="light-nav">
-  <a href="../" class="nav-logo"><img src="../images/Petit_logo_retour_accueil.png" alt="l'eancre — Accueil"></a>
+  <a href="index.html" class="nav-logo"><img src="/images/Petit_logo_retour_accueil.png" alt="l'eancre — Accueil"></a>
   <ul class="nav-links">
-    <li><a href="../apropos/">Notre mission</a></li>
-    <li><a href="../projets/">Nos projets</a></li>
-    <li><a href="../actualites/" class="active">Actualités</a></li>
-    <li><a href="../contact/">Contact</a></li>
-    <li><a href="../don/" class="nav-cta">Faire un don</a></li>
+    <li><a href="apropos.html">Notre mission</a></li>
+    <li><a href="projets.html">Nos projets</a></li>
+    <li><a href="actualites.html" class="active">Actualités</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="don.html" class="nav-cta">Faire un don</a></li>
   </ul>
   <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="nav-mobile" id="navMobile">
   <button class="nav-mobile-close" id="navClose">✕</button>
-  <a href="../">Accueil</a><a href="../apropos/">Notre mission</a><a href="../projets/">Nos projets</a><a href="../actualites/">Actualités</a><a href="../don/">Faire un don</a><a href="../contact/">Contact</a>
+  <a href="index.html">Accueil</a><a href="apropos.html">Notre mission</a><a href="projets.html">Nos projets</a><a href="actualites.html">Actualités</a><a href="don.html">Faire un don</a><a href="contact.html">Contact</a>
 </div>
 
 <div class="page-hero">
   <div class="page-hero-content">
-    <img src="../images/logo_principal.png" alt="l'eancre" style="height:60px;width:auto;margin-bottom:1.5rem;mix-blend-mode:lighten;opacity:.9"/>
+    <img src="/images/logo_principal.png" alt="l'eancre" style="height:60px;width:auto;margin-bottom:1.5rem;mix-blend-mode:lighten;opacity:.9"/>
     <span class="section-tag" style="color:var(--rose-light)">Vie de l'association</span>
     <h1>Nos <em>actualités</em></h1>
     <p>Expositions, conférences, presse, événements — suivez toute la vie de l'eancre.</p>
@@ -111,47 +111,25 @@
 <section class="actu-featured">
   <div class="actu-featured-inner">
     <div class="reveal">
-      <div class="actu-featured-img" style="background:linear-gradient(135deg,#8c003a,#e62b87);display:flex;align-items:center;justify-content:center">
-        <div style="text-align:center;padding:2rem">
-          <div style="font-size:5rem;margin-bottom:1rem">🎀</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:white;font-style:italic">Octobre Rose 2026</div>
-          <div style="font-size:.85rem;color:rgba(255,255,255,.65);margin-top:.5rem;letter-spacing:.1em;text-transform:uppercase">Ruban Rose Entre Limagne et Volcans</div>
-        </div>
+      <div class="actu-featured-img">
+        <div class="actu-featured-img-placeholder"><span style="font-size:3rem">🎗️</span><br>Programme Octobre Rose 2026</div>
       </div>
     </div>
     <div class="actu-featured-text reveal" style="transition-delay:.15s">
-      <span class="actu-cat-badge" style="background:var(--rose)">En cours · Octobre 2026</span>
-      <h2>Les Rendez-vous du <em>Ruban Rose</em> 2026</h2>
-      <p>L'association Le Ruban Rose Entre Limagne et Volcans organise ses Rendez-vous d'Octobre Rose — théâtre, randonnées, golf, concerts, after work… autour de Riom et ses environs.</p>
-      <p><strong>60 % des dons récoltés seront reversés à l'eancre</strong> pour financer les soins de support des patients pris en charge sur l'Hôpital de Jour du Centre Hospitalier de Riom.</p>
+      <span class="actu-cat-badge">Partenariat · Octobre 2026</span>
+      <h2>Octobre Rose 2026 avec le <em>Ruban Rose</em></h2>
+      <p>L'association Le Ruban Rose Entre Limagne et Volcans 63 reverse 60 % des dons recueillis pendant sa campagne d'Octobre Rose à l'eancre, pour financer les soins de support des patients pris en charge à l'Hôpital de Jour du CH de Riom.</p>
+      <p>Théâtre, randos, concerts, balade culturelle, greens roses... un programme riche vous attend du 25 septembre au 12 décembre pour soutenir la cause ensemble.</p>
       <div class="actu-meta">
-        <div class="meta-chip"><span>📅</span>Septembre — Décembre 2026</div>
-        <div class="meta-chip"><span>📍</span>Riom et environs</div>
-        <div class="meta-chip"><span>💝</span>60 % reversés à l'eancre</div>
-        <div class="meta-chip"><span>📞</span>06 84 29 37 89</div>
+        <div class="meta-chip"><span>📅</span>25 sept. — 12 déc. 2026</div>
+        <div class="meta-chip"><span>📍</span>Riom, Mozac, Virlet, Pessat-Villeneuve…</div>
+        <div class="meta-chip"><span>🎗️</span>60 % reversés à l'eancre</div>
       </div>
-      <div style="display:flex;gap:.8rem;flex-wrap:wrap">
-        <a href="../doc/Flyer_2026.pdf" target="_blank" class="btn-rose">Télécharger le programme →</a>
-        <a href="../don/" class="btn-outline">Faire un don</a>
-      </div>
+      <a href="/doc/octobre-rose-2026.pdf" target="_blank" class="btn-rose">Voir le programme complet →</a>
     </div>
   </div>
 </section>
-<div style="background:var(--off-white)"><svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:60px;width:100%;display:block"><path d="M0,30 C480,65 960,-5 1440,30 L1440,60 L0,60 Z" fill="#9b0040"/></svg></div>
-
-<!-- ENCART RUBAN ROSE OCTOBRE 2026 -->
-<div style="background:linear-gradient(135deg,#9b0040,#e62b87);padding:3.5rem 2rem;text-align:center">
-  <div style="max-width:800px;margin:0 auto">
-    <span style="display:inline-block;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:.8rem">🎀 À diffuser autour de vous</span>
-    <h2 style="font-family:'Cormorant Garamond',serif;color:white;font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:1rem">Les Rendez-vous du <em>Ruban Rose</em> 2026</h2>
-    <p style="color:rgba(255,255,255,.8);font-size:1rem;max-width:600px;margin:0 auto 2rem;line-height:1.85;font-weight:300">Théâtre, randonnées, golf, concerts, after work… L'association Le Ruban Rose Entre Limagne et Volcans organise ses Rendez-vous d'Octobre Rose. <strong style="color:white">60 % des dons récoltés seront reversés à l'eancre</strong> pour financer les soins de support des patients de l'Hôpital de Jour.</p>
-    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-      <a href="../doc/Flyer_2026.pdf" target="_blank" style="display:inline-block;background:white;color:#9b0040;padding:.85rem 2.2rem;border-radius:30px;font-size:.9rem;font-weight:600;text-decoration:none">📄 Télécharger le programme</a>
-      <a href="../don/" style="display:inline-block;background:rgba(255,255,255,.15);color:white;border:1.5px solid rgba(255,255,255,.5);padding:.85rem 2.2rem;border-radius:30px;font-size:.9rem;font-weight:400;text-decoration:none">Faire un don →</a>
-    </div>
-  </div>
-</div>
-<div style="background:#9b0040"><svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:60px;width:100%;display:block"><path d="M0,30 C480,65 960,-5 1440,30 L1440,60 L0,60 Z" fill="white"/></svg></div>
+<div style="background:var(--off-white)"><svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:60px;width:100%;display:block"><path d="M0,30 C480,65 960,-5 1440,30 L1440,60 L0,60 Z" fill="white"/></svg></div>
 
 <!-- LISTE ACTUALITÉS -->
 <section class="actu-list-section">
@@ -161,36 +139,6 @@
       <h2 style="margin-top:.5rem">Événements &amp; <em>publications</em></h2>
     </div>
     <div class="actu-list">
-      <!-- NOUVELLE ACTU : Ruban Rose Octobre 2026 -->
-      <div class="actu-item">
-        <div class="actu-item-img">
-          <div class="actu-item-img-bg" style="background:linear-gradient(135deg,#c8005a,#e62b87);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem">
-            <span style="font-size:3rem">🎀</span>
-            <span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:rgba(255,255,255,.85);font-style:italic">Octobre Rose 2026</span>
-          </div>
-          <span class="actu-cat-pill pill-rose">Nouveau</span>
-        </div>
-        <div class="actu-item-body">
-          <div class="actu-item-date">Octobre 2026 · Riom &amp; alentours</div>
-          <h3>Les Rendez-vous du Ruban Rose 2026</h3>
-          <p>L'association Le Ruban Rose Entre Limagne et Volcans organise ses rendez-vous d'Octobre Rose. 60 % des dons récoltés seront reversés à l'eancre pour financer les soins de support de nos patients.</p>
-          <a href="../doc/Flyer_2026.pdf" target="_blank" class="actu-item-link">Voir le programme complet →</a>
-        </div>
-      </div>
-
-      <div class="actu-item">
-        <div class="actu-item-img">
-          <div class="actu-item-img-bg" style="background:linear-gradient(135deg,var(--bleu-dark),var(--violet))">🖼</div>
-          <img src="../images/Affiche.jpeg" alt="" onerror="this.style.display='none'">
-          <span class="actu-cat-pill pill-rose">Exposition</span>
-        </div>
-        <div class="actu-item-body">
-          <div class="actu-item-date">Mai — Août 2025</div>
-          <h3>Exposition solidaire d'Hervé Balmisse</h3>
-          <p>4 mois d'exposition-vente au profit de l'eancre, vernissage en présence des élus locaux et de la direction de l'hôpital le 6 mai 2025.</p>
-          <a href="https://www.asso-eancre.fr/doc/Pourquoi cette expo.pdf" target="_blank" class="actu-item-link">Mot de l'artiste →</a>
-        </div>
-      </div>
       <div class="actu-item">
         <div class="actu-item-img">
           <div class="actu-item-img-bg" style="background:linear-gradient(135deg,#1a1040,var(--bleu))">💙</div>
@@ -212,7 +160,7 @@
           <div class="actu-item-date">Depuis 2026</div>
           <h3>Déploiement des soins de support</h3>
           <p>Socio-esthétique, aromathérapie, ostéopathie — des interventions gratuites pour les patients en oncologie au CH de Riom, coordonnées avec les équipes soignantes.</p>
-          <a href="../projets/" class="actu-item-link">En savoir plus →</a>
+          <a href="projets.html" class="actu-item-link">En savoir plus →</a>
         </div>
       </div>
       <div class="actu-item">
@@ -315,12 +263,25 @@
   </div>
 </section>
 
+<!-- NEWSLETTER -->
+<section class="newsletter-section">
+  <div class="newsletter-inner reveal">
+    <span class="section-tag" style="color:var(--rose-light)">Rester informé</span>
+    <h2>Ne manquez aucune <em style="color:#f0a0d0">actualité</em></h2>
+    <p>Inscrivez-vous pour suivre les projets, événements et nouvelles de l'eancre.</p>
+    <div class="newsletter-form">
+      <input type="email" placeholder="Votre adresse e-mail" aria-label="Adresse e-mail">
+      <button class="btn-rose" onclick="handleNL(event)">S'inscrire</button>
+    </div>
+    <p class="newsletter-note">Pas de spam. Désinscription à tout moment.</p>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-grid">
-    <div><div class="footer-logo-img"><img src="../images/logo_de_bas_de_page.png" alt="l'eancre"></div><p class="footer-desc">Association loi 1901 reconnue d'utilité générale depuis 2017. Nous œuvrons à améliorer le quotidien des patients confrontés à la maladie grave au CH de Riom.</p><div class="footer-dots"><div class="footer-dot" style="background:var(--rose)"></div><div class="footer-dot" style="background:var(--violet)"></div><div class="footer-dot" style="background:var(--bleu)"></div></div></div>
-    <div class="footer-col"><h4>Pages</h4><ul><li><a href="../">Accueil</a></li><li><a href="../apropos/">Qui sommes-nous</a></li><li><a href="../projets/">Nos projets</a></li><li><a href="../actualites/">Actualités</a></li><li><a href="../don/">Faire un don</a></li><li><a href="../contact/">Contact</a></li><li><a href="../mentions-legales/">Mentions légales</a></li></ul></div>
+    <div><div class="footer-logo-img"><img src="/images/logo_de_bas_de_page.png" alt="l'eancre"></div><p class="footer-desc">Association loi 1901 reconnue d'utilité générale depuis 2017. Nous œuvrons à améliorer le quotidien des patients confrontés à la maladie grave au CH de Riom.</p><div class="footer-dots"><div class="footer-dot" style="background:var(--rose)"></div><div class="footer-dot" style="background:var(--violet)"></div><div class="footer-dot" style="background:var(--bleu)"></div></div></div>
+    <div class="footer-col"><h4>Pages</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="apropos.html">Qui sommes-nous</a></li><li><a href="projets.html">Nos projets</a></li><li><a href="actualites.html">Actualités</a></li><li><a href="don.html">Faire un don</a></li><li><a href="contact.html">Contact</a></li><li><a href="mentions-legales.html">Mentions légales</a></li></ul></div>
     <div class="footer-col"><h4>Nous contacter</h4><ul><li><a href="mailto:eancre63@gmail.com">eancre63@gmail.com</a></li><li><a>CH Guy Thomas<br>79 Bd Etienne Clémentel<br>63200 RIOM</a></li></ul></div>
   </div>
   <div class="footer-bottom"><span>© 2025 l'eancre — Association loi 1901. Tous droits réservés.</span><span style="color:rgba(255,255,255,.2)">GitHub Pages · OVH</span></div>
@@ -338,6 +299,10 @@ document.querySelectorAll('.reveal,.actu-item,.presse-item').forEach((el,i)=>{
   if(el.classList.contains('actu-item')||el.classList.contains('presse-item'))el.style.transitionDelay=(i%3)*0.12+'s';
   io.observe(el);
 });
+function handleNL(e){
+  e.preventDefault();
+  const input=document.querySelector('.newsletter-form input');
+  if(input.value){input.value='';const btn=document.querySelector('.newsletter-form button');btn.textContent='✓ Inscrit !';btn.style.background='var(--violet)';setTimeout(()=>{btn.textContent="S'inscrire";btn.style.background='';},3000);}
 }
 </script>
 </body>
