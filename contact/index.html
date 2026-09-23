@@ -2,11 +2,11 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" type="image/png" href="images/logo_onglet.png">
+<link rel="icon" type="image/png" href="/images/logo_onglet.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Contacter l'eancre — association pour les soins palliatifs à Riom.">
 <title>Contact — l'eancre</title>
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="style.css">
 <style>
 /* ---- CONTACT LAYOUT ---- */
 .contact-section { padding: 4rem 2rem 7rem; }
@@ -25,7 +25,10 @@
 .info-card a:hover { color: var(--rose); }
 
 /* ---- BÉNÉVOLES ---- */
-
+.benevolat-box { background: linear-gradient(135deg, var(--bleu-dark), #2a1a5a); border-radius: 20px; padding: 2rem; margin-top: 2.5rem; position: relative; overflow: hidden; }
+.benevolat-box::before { content: ''; position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, rgba(230,43,135,.3), transparent 70%); }
+.benevolat-box h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: white; margin-bottom: .7rem; }
+.benevolat-box p { font-size: .88rem; color: rgba(255,255,255,.6); line-height: 1.75; margin-bottom: 1.3rem; font-weight: 300; }
 
 /* ---- FORMULAIRE ---- */
 .contact-form-wrap { background: white; border-radius: 24px; border: 1px solid var(--border); padding: 3rem; box-shadow: var(--shadow-sm); }
@@ -69,25 +72,25 @@
 <body>
 
 <nav id="nav" class="light-nav">
-  <a href="../" class="nav-logo"><img src="../images/Petit_logo_retour_accueil.png" alt="l'eancre — Accueil"></a>
+  <a href="index.html" class="nav-logo"><img src="/images/Petit_logo_retour_accueil.png" alt="l'eancre — Accueil"></a>
   <ul class="nav-links">
-    <li><a href="../apropos/">Notre mission</a></li>
-    <li><a href="../projets/">Nos projets</a></li>
-    <li><a href="../actualites/">Actualités</a></li>
-    <li><a href="../contact/" class="active">Contact</a></li>
-    <li><a href="../don/" class="nav-cta">Faire un don</a></li>
+    <li><a href="apropos.html">Notre mission</a></li>
+    <li><a href="projets.html">Nos projets</a></li>
+    <li><a href="actualites.html">Actualités</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+    <li><a href="don.html" class="nav-cta">Faire un don</a></li>
   </ul>
   <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="nav-mobile" id="navMobile">
   <button class="nav-mobile-close" id="navClose">✕</button>
-  <a href="../">Accueil</a><a href="../apropos/">Notre mission</a><a href="../projets/">Nos projets</a><a href="../actualites/">Actualités</a><a href="../don/">Faire un don</a><a href="../contact/">Contact</a>
+  <a href="index.html">Accueil</a><a href="apropos.html">Notre mission</a><a href="projets.html">Nos projets</a><a href="actualites.html">Actualités</a><a href="don.html">Faire un don</a><a href="contact.html">Contact</a>
 </div>
 
 <!-- PAGE HERO -->
 <div class="page-hero">
   <div class="page-hero-content">
-  <img src="../images/logo_principal.png" alt="l'eancre" style="height:60px;width:auto;margin-bottom:1.5rem;mix-blend-mode:lighten;opacity:.9" />
+  <img src="/images/logo_principal.png" alt="l'eancre" style="height:60px;width:auto;margin-bottom:1.5rem;mix-blend-mode:lighten;opacity:.9" />
     <span class="section-tag" style="color:var(--rose-light)">Écrivez-nous</span>
     <h1>Nous <em>contacter</em></h1>
     <p>Une question, une proposition de projet, ou simplement envie de nous soutenir ? Nous vous répondrons avec plaisir.</p>
@@ -115,11 +118,9 @@
         </div>
         <div class="info-card">
           <div class="info-card-icon" style="background:var(--violet-pale)">🏥</div>
-          <div><h4>Lieu d'action principal</h4><p>Centre Hospitalier Guy Thomas de Riom</p></div>
+          <div><h4>Lieu d'action principal</h4><p>Centre Hospitalier de Riom</p></div>
         </div>
-
       </div>
-
     </div>
 
     <!-- FORMULAIRE -->
@@ -150,7 +151,7 @@
             <option value="" disabled selected>Choisissez un sujet</option>
             <option>Question générale sur l'association</option>
             <option>Proposer un projet artistique</option>
-            <option>Soutenir l'association</option>
+            <option>Devenir bénévole</option>
             <option>Faire un don</option>
             <option>Partenariat institutionnel</option>
             <option>Demande presse / médias</option>
@@ -165,7 +166,7 @@
 
         <div class="form-check">
           <input type="checkbox" id="rgpd" required>
-          <label for="rgpd">J'accepte que mes données soient utilisées pour traiter ma demande, conformément à notre <a href="../mentions-legales/">politique de confidentialité</a>. *</label>
+          <label for="rgpd">J'accepte que mes données soient utilisées pour traiter ma demande, conformément à notre <a href="mentions-legales.html">politique de confidentialité</a>. *</label>
         </div>
 
         <button class="btn-rose submit-btn" onclick="submitForm(event)">Envoyer le message</button>
@@ -175,7 +176,7 @@
         <span class="success-icon">💌</span>
         <h3>Message envoyé !</h3>
         <p>Merci pour votre message. Nous vous répondrons dans les 48 heures.</p>
-        <a href="../" class="btn-bleu" style="margin-top:2rem">Retour à l'accueil</a>
+        <a href="index.html" class="btn-bleu" style="margin-top:2rem">Retour à l'accueil</a>
       </div>
     </div>
 
@@ -209,8 +210,8 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-grid">
-    <div><div class="footer-logo-img"><img src="../images/logo_de_bas_de_page.png" alt="l'eancre"></div><p class="footer-desc">Association loi 1901 créée en 2009. Nous œuvrons à améliorer le quotidien des patients confrontés à la maladie grave au CH de Riom.</p><div class="footer-dots"><div class="footer-dot" style="background:var(--rose)"></div><div class="footer-dot" style="background:var(--violet)"></div><div class="footer-dot" style="background:var(--bleu)"></div></div></div>
-    <div class="footer-col"><h4>Pages</h4><ul><li><a href="../">Accueil</a></li><li><a href="../apropos/">Qui sommes-nous</a></li><li><a href="../projets/">Nos projets</a></li><li><a href="../actualites/">Actualités</a></li><li><a href="../don/">Faire un don</a></li><li><a href="../contact/">Contact</a></li><li><a href="../mentions-legales/">Mentions légales</a></li></ul></div>
+    <div><div class="footer-logo-img"><img src="/images/logo_de_bas_de_page.png" alt="l'eancre"></div><p class="footer-desc">Association loi 1901 créée en 2009. Nous œuvrons à améliorer le quotidien des patients confrontés à la maladie grave au CH de Riom.</p><div class="footer-dots"><div class="footer-dot" style="background:var(--rose)"></div><div class="footer-dot" style="background:var(--violet)"></div><div class="footer-dot" style="background:var(--bleu)"></div></div></div>
+    <div class="footer-col"><h4>Pages</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="apropos.html">Qui sommes-nous</a></li><li><a href="projets.html">Nos projets</a></li><li><a href="actualites.html">Actualités</a></li><li><a href="don.html">Faire un don</a></li><li><a href="contact.html">Contact</a></li><li><a href="mentions-legales.html">Mentions légales</a></li></ul></div>
     <div class="footer-col"><h4>Nous contacter</h4><ul><li><a href="mailto:eancre63@gmail.com">eancre63@gmail.com</a></li><li><a>79 Bd Etienne Clémentel<br>63200 RIOM</a></li></ul></div>
   </div>
   <div class="footer-bottom"><span>© 2025 l'eancre — Association loi 1901. Tous droits réservés.</span><span style="color:rgba(255,255,255,.2)">GitHub Pages · OVH</span></div>
