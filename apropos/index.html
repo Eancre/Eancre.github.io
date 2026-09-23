@@ -2,10 +2,10 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" type="image/png" href="/logo_onglet.png">
+<link rel="icon" type="image/png" href="images/logo_onglet.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Qui sommes-nous — l'eancre</title>
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="../style.css">
 <style>
 /* CHIFFRES CLÉS */
 .values-section { padding:6rem 2rem; background:var(--off-white); }
@@ -87,9 +87,11 @@
   .team-grid { grid-template-columns:repeat(2,1fr); }
   .timeline::before { left:24px; }
   .tl-item { grid-template-columns:48px 1fr; }
-  .tl-item .tl-left:empty, .tl-item .tl-right:empty { display:none; }
-  .tl-item .tl-center, .tl-item.even .tl-center { order:1; }
-  .tl-item .tl-left, .tl-item .tl-right, .tl-item.even .tl-left, .tl-item.even .tl-right { order:2; text-align:left; padding-left:1.5rem; padding-right:0; }
+  .tl-item .tl-left { display:none; }
+  .tl-item.even .tl-left { display:none; }
+  .tl-item.even .tl-right { order:2; text-align:left; padding-left:1.5rem; padding-right:0; }
+  .tl-item.even .tl-center { order:1; }
+  .tl-right, .tl-item.even .tl-right { padding-left:1.5rem; }
 }
 @media (max-width:600px) {
   .values-grid,.team-grid { grid-template-columns:1fr; }
@@ -99,26 +101,27 @@
 <body>
 
 <nav id="nav" class="light-nav">
-  <a href="/" class="nav-logo"><img src="/Petit_logo_retour_accueil.png" alt="l'eancre — Accueil"></a>
+  <a href="../" class="nav-logo"><img src="../images/Petit_logo_retour_accueil.png" alt="l'eancre — Accueil"></a>
   <ul class="nav-links">
-    <li><a href="/apropos/" class="active">Notre mission</a></li>
-    <li><a href="/projets/">Nos projets</a></li>
-    <li><a href="/actualites/">Actualités</a></li>
-    <li><a href="/contact/">Contact</a></li>
-    <li><a href="/don/" class="nav-cta">Faire un don</a></li>
+    <li><a href="../apropos/" class="active">Notre mission</a></li>
+    <li><a href="../projets/">Nos projets</a></li>
+    <li><a href="../actualites/">Actualités</a></li>
+    <li><a href="../contact/">Contact</a></li>
+    <li><a href="../don/" class="nav-cta">Faire un don</a></li>
   </ul>
   <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="nav-mobile" id="navMobile">
   <button class="nav-mobile-close" id="navClose">✕</button>
-  <a href="/">Accueil</a><a href="/apropos/">Notre mission</a><a href="/projets/">Nos projets</a><a href="/actualites/">Actualités</a><a href="/don/">Faire un don</a><a href="/contact/">Contact</a>
+  <a href="../">Accueil</a><a href="../apropos/">Notre mission</a><a href="../projets/">Nos projets</a><a href="../actualites/">Actualités</a><a href="../don/">Faire un don</a><a href="../contact/">Contact</a>
 </div>
 
 <div class="page-hero">
   <div class="page-hero-content">
-    <img src="/logo_principal.png" alt="l'eancre" style="height:60px;width:auto;margin-bottom:1.5rem;mix-blend-mode:lighten;opacity:.9"/>
+    <img src="../images/logo_principal.png" alt="l'eancre" style="height:60px;width:auto;margin-bottom:1.5rem;mix-blend-mode:lighten;opacity:.9"/>
     <span class="section-tag" style="color:var(--rose-light)">Fondée en 2009 à Riom</span>
     <h1>Qui <em>sommes</em>-nous ?</h1>
+    <p>Une association née de rencontres dans des temps d'épreuves — au service des patients confrontés à la maladie grave, de leurs proches et en soutien des professionnels de santé.</p>
   </div>
 </div>
 <div class="wave-bottom"><svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:60px;width:100%;display:block"><path d="M0,30 C480,65 960,-5 1440,30 L1440,60 L0,60 Z" fill="var(--off-white)"/></svg></div>
@@ -206,10 +209,10 @@
     <div class="tl-item even">
       <div class="tl-left"></div>
       <div class="tl-center"><div class="tl-dot v"></div><div class="tl-year">2014</div></div>
-      <div class="tl-right"><div class="tl-content"><h3>Inauguration du Salon des familles</h3><p>Mars 2014 — Espace d'intimité au CH de Riom — canapé, équipement audio, micro-ondes — pour patients et proches.</p></div></div>
+      <div class="tl-right"><div class="tl-content"><h3>Inauguration du Salon des familles</h3><p>Espace d'intimité au CH de Riom — canapé, équipement audio, micro-ondes — pour patients et proches.</p></div></div>
     </div>
     <div class="tl-item">
-      <div class="tl-left"><div class="tl-content"><h3>Premières conférences publiques</h3><p>Soirée débat sur les soins palliatifs à la Maison des Associations de Riom (oct. 2015). Journée sportive au parc du Cerey (juin 2015). Vente de sapins au CH de Riom (déc. 2015).</p></div></div>
+      <div class="tl-left"><div class="tl-content"><h3>Premières conférences publiques</h3><p>Soirée débat sur les soins palliatifs à la Maison des Associations de Riom (oct. 2015). Journée sportive au parc du Cerey (juin 2015).</p></div></div>
       <div class="tl-center"><div class="tl-dot b"></div><div class="tl-year">2015</div></div>
       <div class="tl-right"></div>
     </div>
@@ -270,7 +273,7 @@
       <div class="team-card"><div class="team-avatar" style="background:var(--violet)">PP</div><h3>Pauline De Pinho</h3><p>Membre du CA</p></div>
       <div class="team-card"><div class="team-avatar" style="background:linear-gradient(135deg,var(--rose),var(--violet))">FB</div><h3>Flavien Bec</h3><p>Responsable de publication</p></div>
     </div>
-    <p style="text-align:center;margin-top:2rem;font-size:.9rem;color:var(--text-light)">+ 22 bénévoles actifs · <a href="/contact/" style="color:var(--rose);text-decoration:none;font-weight:500">Nous contacter →</a></p>
+    <p style="text-align:center;margin-top:2rem;font-size:.9rem;color:var(--text-light)">+ 22 bénévoles actifs · <a href="../contact/" style="color:var(--rose);text-decoration:none;font-weight:500">Nous contacter →</a></p>
   </div>
 </section>
 
@@ -297,8 +300,8 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-grid">
-    <div><div class="footer-logo-img"><img src="/logo_de_bas_de_page.png" alt="l'eancre"></div><p class="footer-desc">Association loi 1901 reconnue d'utilité générale depuis 2017. Nous œuvrons pour rendre les soins palliatifs plus humains au CH de Riom.</p><div class="footer-dots"><div class="footer-dot" style="background:var(--rose)"></div><div class="footer-dot" style="background:var(--violet)"></div><div class="footer-dot" style="background:var(--bleu)"></div></div></div>
-    <div class="footer-col"><h4>Pages</h4><ul><li><a href="/">Accueil</a></li><li><a href="/apropos/">Qui sommes-nous</a></li><li><a href="/projets/">Nos projets</a></li><li><a href="/actualites/">Actualités</a></li><li><a href="/don/">Faire un don</a></li><li><a href="/contact/">Contact</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul></div>
+    <div><div class="footer-logo-img"><img src="../images/logo_de_bas_de_page.png" alt="l'eancre"></div><p class="footer-desc">Association loi 1901 reconnue d'utilité générale depuis 2017. Nous œuvrons à améliorer le quotidien des patients confrontés à la maladie grave au CH de Riom.</p><div class="footer-dots"><div class="footer-dot" style="background:var(--rose)"></div><div class="footer-dot" style="background:var(--violet)"></div><div class="footer-dot" style="background:var(--bleu)"></div></div></div>
+    <div class="footer-col"><h4>Pages</h4><ul><li><a href="../">Accueil</a></li><li><a href="../apropos/">Qui sommes-nous</a></li><li><a href="../projets/">Nos projets</a></li><li><a href="../actualites/">Actualités</a></li><li><a href="../don/">Faire un don</a></li><li><a href="../contact/">Contact</a></li><li><a href="../mentions-legales/">Mentions légales</a></li></ul></div>
     <div class="footer-col"><h4>Nous contacter</h4><ul><li><a href="mailto:eancre63@gmail.com">eancre63@gmail.com</a></li><li><a>CH Guy Thomas<br>79 Bd Etienne Clémentel<br>63200 RIOM</a></li></ul></div>
   </div>
   <div class="footer-bottom"><span>© 2025 l'eancre — Association loi 1901. Tous droits réservés.</span><span style="color:rgba(255,255,255,.2)">GitHub Pages · OVH</span></div>
