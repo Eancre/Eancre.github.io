@@ -318,6 +318,8 @@ function menuOpen(){navMob.classList.add('open');burger.classList.add('open');do
 function menuClose(){navMob.classList.remove('open');burger.classList.remove('open');document.body.style.overflow='';}
 burger.addEventListener('click',()=>burger.classList.contains('open')?menuClose():menuOpen());
 navMob.querySelectorAll('a').forEach(a=>a.addEventListener('click',menuClose));
+document.getElementById('navClose').addEventListener('click', menuClose);
+document.addEventListener('click', e => { if (navMob.classList.contains('open') && !navMob.contains(e.target) && !burger.contains(e.target)) menuClose(); });
 document.addEventListener('keydown',e=>{if(e.key==='Escape')menuClose();});
 const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});},{threshold:.1});
 document.querySelectorAll('.reveal,.value-card,.tl-item,.team-card,.mission-item').forEach((el,i)=>{
