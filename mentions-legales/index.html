@@ -21,6 +21,12 @@
 .legal-block ul li { font-size: .95rem; color: var(--text-mid); padding: .3rem 0; display: flex; gap: .6rem; }
 .legal-block ul li::before { content: '—'; color: var(--violet); flex-shrink: 0; }
 .legal-tag { display: inline-block; background: var(--rose-pale); color: var(--rose); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; padding: .3rem .8rem; border-radius: 20px; font-weight: 500; margin-bottom: 1rem; }
+.siren-badge { display: flex; align-items: flex-start; gap: .9rem; background: var(--violet-pale); border: 1px solid var(--border); border-radius: 14px; padding: 1.1rem 1.4rem; margin-top: 1.3rem; }
+.siren-badge-icon { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--violet); color: white; display: flex; align-items: center; justify-content: center; font-size: .8rem; font-weight: 700; margin-top: .1rem; }
+.siren-badge p { font-size: .9rem; line-height: 1.75; color: var(--text-mid); margin: 0; }
+.siren-badge strong { color: var(--text-dark); }
+.siren-badge a { color: var(--violet); font-weight: 500; text-decoration: underline; text-decoration-color: rgba(155,84,156,.35); text-underline-offset: 2px; }
+.siren-badge a:hover { color: var(--rose); text-decoration-color: var(--rose); }
 </style>
 </head>
 <body>
@@ -65,7 +71,10 @@
         <li>Année de création : 2009</li>
         <li>Objet : Amélioration des conditions d'accueil des patients en soins palliatifs et de leurs proches</li>
       </ul>
-      <p style="font-size:.95rem;color:var(--text-mid);margin-top:.8rem">SIREN : 810 380 642 — association déclarée et immatriculée, consultable sur l'<a href="https://annuaire-entreprises.data.gouv.fr/entreprise/l-eancre-810380642" target="_blank" rel="noopener">Annuaire des Entreprises</a> (data.gouv.fr).</p>
+      <div class="siren-badge">
+        <span class="siren-badge-icon">✓</span>
+        <p><strong>SIREN 810 380 642</strong> — association déclarée et immatriculée, consultable sur l'<a href="https://annuaire-entreprises.data.gouv.fr/entreprise/l-eancre-810380642" target="_blank" rel="noopener">Annuaire des Entreprises (data.gouv.fr)</a>.</p>
+      </div>
     </div>
 
     <div class="legal-block reveal">
