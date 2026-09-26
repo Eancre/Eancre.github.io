@@ -229,6 +229,8 @@ burger.addEventListener('click', () => {
 
 // Fermer au clic sur un lien du menu
 navMob.querySelectorAll('a').forEach(a => a.addEventListener('click', menuClose));
+document.getElementById('navClose').addEventListener('click', menuClose);
+document.addEventListener('click', e => { if (navMob.classList.contains('open') && !navMob.contains(e.target) && !burger.contains(e.target)) menuClose(); });
 
 // Fermer avec Échap
 document.addEventListener('keydown', e => { if (e.key === 'Escape') menuClose(); });
