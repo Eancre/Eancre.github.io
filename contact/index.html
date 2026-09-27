@@ -6,6 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Contacter l'eancre — association pour les soins palliatifs à Riom.">
 <title>Contact — l'eancre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap">
 <link rel="stylesheet" href="../style.css">
 <style>
 /* ---- CONTACT LAYOUT ---- */
@@ -20,14 +23,13 @@
 .info-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem 1.8rem; display: flex; align-items: flex-start; gap: 1.2rem; transition: all .3s; }
 .info-card:hover { box-shadow: var(--shadow-sm); transform: translateY(-2px); border-color: var(--violet); }
 .info-card-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
-.info-card h4 { font-family: 'DM Sans', sans-serif; font-size: .78rem; letter-spacing: .15em; text-transform: uppercase; color: var(--text-light); margin-bottom: .3rem; font-weight: 500; }
+.info-card h3 { font-family: 'DM Sans', sans-serif; font-size: .78rem; letter-spacing: .15em; text-transform: uppercase; color: var(--text-light); margin-bottom: .3rem; font-weight: 500; }
 .info-card p, .info-card a { font-size: .95rem; color: var(--text-dark); text-decoration: none; font-weight: 400; line-height: 1.5; }
 .info-card a:hover { color: var(--rose); }
 
 /* ---- BÉNÉVOLES ---- */
 .benevolat-box { background: linear-gradient(135deg, var(--bleu-dark), #2a1a5a); border-radius: 20px; padding: 2rem; margin-top: 2.5rem; position: relative; overflow: hidden; }
 .benevolat-box::before { content: ''; position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, rgba(230,43,135,.3), transparent 70%); }
-.benevolat-box h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: white; margin-bottom: .7rem; }
 .benevolat-box p { font-size: .88rem; color: rgba(255,255,255,.6); line-height: 1.75; margin-bottom: 1.3rem; font-weight: 300; }
 
 /* ---- FORMULAIRE ---- */
@@ -72,7 +74,7 @@
 <body>
 
 <nav id="nav" class="light-nav">
-  <a href="/" class="nav-logo"><img src="/images/Petit_logo_retour_accueil.png" alt="l'eancre — Accueil"></a>
+  <a href="/" class="nav-logo"><img src="/images/Petit_logo_retour_accueil.png" width="29" height="52" alt="l'eancre — Accueil"></a>
   <ul class="nav-links">
     <li><a href="/apropos/">Notre mission</a></li>
     <li><a href="/projets/">Nos projets</a></li>
@@ -90,7 +92,7 @@
 <!-- PAGE HERO -->
 <div class="page-hero">
   <div class="page-hero-content">
-  <img src="/images/logo_principal.png" alt="l'eancre" style="height:60px;width:auto;margin-bottom:1.5rem;mix-blend-mode:lighten;opacity:.9" />
+  <img src="/images/logo_principal.png" width="139" height="60" alt="l'eancre" style="height:60px;width:auto;margin-bottom:1.5rem;mix-blend-mode:lighten;opacity:.9" />
     <span class="section-tag" style="color:var(--rose-light)">Écrivez-nous</span>
     <h1>Nous <em>contacter</em></h1>
     <p>Une question, une proposition de projet, ou simplement envie de nous soutenir ? Nous vous répondrons avec plaisir.</p>
@@ -110,15 +112,15 @@
       <div class="info-cards">
         <div class="info-card">
           <div class="info-card-icon" style="background:var(--rose-pale)">📧</div>
-          <div><h4>E-mail</h4><a href="mailto:eancre63@gmail.com">eancre63@gmail.com</a></div>
+          <div><h3>E-mail</h3><a href="mailto:eancre63@gmail.com">eancre63@gmail.com</a></div>
         </div>
         <div class="info-card">
           <div class="info-card-icon" style="background:#e3edf5">📍</div>
-          <div><h4>Adresse</h4><p>CH Guy Thomas<br>79 Bd Etienne Clémentel<br>63200 RIOM</p></div>
+          <div><h3>Adresse</h3><p>CH Guy Thomas<br>79 Bd Etienne Clémentel<br>63200 RIOM</p></div>
         </div>
         <div class="info-card">
           <div class="info-card-icon" style="background:var(--violet-pale)">🏥</div>
-          <div><h4>Lieu d'action principal</h4><p>Centre Hospitalier de Riom</p></div>
+          <div><h3>Lieu d'action principal</h3><p>Centre Hospitalier de Riom</p></div>
         </div>
       </div>
     </div>
@@ -211,12 +213,12 @@
 <footer>
   <div class="footer-grid">
     <div>
-      <div class="footer-logo-img"><img src="/images/logo_de_bas_de_page.png" alt="l'eancre"></div>
+      <div class="footer-logo-img"><img src="/images/logo_de_bas_de_page.png" width="98" height="70" alt="l'eancre"></div>
       <p class="footer-desc">Association loi 1901 reconnue d'utilité générale depuis 2017. Nous œuvrons à améliorer le quotidien des patients confrontés à la maladie grave au CH de Riom.</p>
       <div class="footer-dots"><div class="footer-dot" style="background:var(--rose)"></div><div class="footer-dot" style="background:var(--violet)"></div><div class="footer-dot" style="background:var(--bleu)"></div></div>
     </div>
-    <div class="footer-col"><h4>Pages</h4><ul><li><a href="/">Accueil</a></li><li><a href="/apropos/">Qui sommes-nous</a></li><li><a href="/projets/">Nos projets</a></li><li><a href="/actualites/">Actualités</a></li><li><a href="/don/">Faire un don</a></li><li><a href="/contact/">Contact</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul></div>
-    <div class="footer-col"><h4>Nous contacter</h4><ul><li><a href="mailto:eancre63@gmail.com">eancre63@gmail.com</a></li><li><a href="https://www.google.com/maps/place/H%C3%B4pital+de+Riom-+Centre+Hospitalier+GUY+THOMAS/@45.8901022,3.1122246,606m/data=!3m2!1e3!4b1!4m6!3m5!1s0x47f72226115f29cf:0x3ce248046ad13b1!8m2!3d45.8901022!4d3.1122246!16s%2Fg%2F1tgqhs9y?authuser=0&entry=ttu&g_ep=EgoyMDI2MDkyMS4wIKXMDSoASAFQAw%3D%3D">CH Guy Thomas<br>79 Bd Etienne Clémentel<br>63200 RIOM</a></li></ul><br><h4>Notre Facebook</h4><ul><li><a href="https://www.facebook.com/CHRiom63">Centre Hospitalier Guy Thomas</a></li></ul></div>
+    <div class="footer-col"><h3>Pages</h3><ul><li><a href="/">Accueil</a></li><li><a href="/apropos/">Qui sommes-nous</a></li><li><a href="/projets/">Nos projets</a></li><li><a href="/actualites/">Actualités</a></li><li><a href="/don/">Faire un don</a></li><li><a href="/contact/">Contact</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul></div>
+    <div class="footer-col"><h3>Nous contacter</h3><ul><li><a href="mailto:eancre63@gmail.com">eancre63@gmail.com</a></li><li><a href="https://www.google.com/maps/place/H%C3%B4pital+de+Riom-+Centre+Hospitalier+GUY+THOMAS/@45.8901022,3.1122246,606m/data=!3m2!1e3!4b1!4m6!3m5!1s0x47f72226115f29cf:0x3ce248046ad13b1!8m2!3d45.8901022!4d3.1122246!16s%2Fg%2F1tgqhs9y?authuser=0&entry=ttu&g_ep=EgoyMDI2MDkyMS4wIKXMDSoASAFQAw%3D%3D">CH Guy Thomas<br>79 Bd Etienne Clémentel<br>63200 RIOM</a></li></ul><br><h3>Notre Facebook</h3><ul><li><a href="https://www.facebook.com/CHRiom63">Centre Hospitalier Guy Thomas</a></li></ul></div>
   </div>
   <div class="footer-bottom"><span>© 2025 l'eancre — Association loi 1901. Tous droits réservés.</span><span style="color:rgba(255,255,255,.2)">GitHub Pages · OVH</span></div>
 </footer>
