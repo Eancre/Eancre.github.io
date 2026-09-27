@@ -6,6 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Les actualités de l'eancre — événements, expositions, presse et vie de l'association.">
 <title>Actualités — l'eancre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap">
 <link rel="stylesheet" href="../style.css">
 <style>
 /* ACTU VEDETTE */
@@ -52,7 +55,7 @@
 .presse-item.vis { opacity:1; transform:none; }
 .presse-item:hover { box-shadow:var(--shadow-sm); transform:translateY(-3px); }
 .presse-icon { width:48px; height:48px; border-radius:12px; background:var(--violet-pale); display:flex; align-items:center; justify-content:center; font-size:1.4rem; flex-shrink:0; }
-.presse-content h4 { font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:var(--text-dark); margin-bottom:.3rem; }
+.presse-content h3 { font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:var(--text-dark); margin-bottom:.3rem; }
 .presse-content p { font-size:.85rem; line-height:1.7; margin-bottom:.7rem; }
 .presse-link { font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--violet); text-decoration:none; font-weight:500; }
 .presse-link:hover { color:var(--rose); }
@@ -82,7 +85,7 @@
 <body>
 
 <nav id="nav" class="light-nav">
-  <a href="/" class="nav-logo"><img src="/images/Petit_logo_retour_accueil.png" alt="l'eancre — Accueil"></a>
+  <a href="/" class="nav-logo"><img src="/images/Petit_logo_retour_accueil.png" width="29" height="52" alt="l'eancre — Accueil"></a>
   <ul class="nav-links">
     <li><a href="/apropos/">Notre mission</a></li>
     <li><a href="/projets/">Nos projets</a></li>
@@ -99,7 +102,7 @@
 
 <div class="page-hero">
   <div class="page-hero-content">
-    <img src="/images/logo_principal.png" alt="l'eancre" style="height:60px;width:auto;margin-bottom:1.5rem;mix-blend-mode:lighten;opacity:.9"/>
+    <img src="/images/logo_principal.png" width="139" height="60" alt="l'eancre" style="height:60px;width:auto;margin-bottom:1.5rem;mix-blend-mode:lighten;opacity:.9"/>
     <span class="section-tag" style="color:var(--rose-light)">Vie de l'association</span>
     <h1>Nos <em>actualités</em></h1>
     <p>Expositions, conférences, presse, événements — suivez toute la vie de l'eancre.</p>
@@ -111,24 +114,22 @@
 <section class="actu-featured">
   <div class="actu-featured-inner">
     <div class="reveal">
-      <div class="actu-featured-img">
-        <div class="actu-featured-img-placeholder"><span style="font-size:3rem">🎗️</span><br>Programme Octobre Rose 2026</div>
+      <div class="actu-featured-img" style="aspect-ratio:2/3;max-width:420px;margin:0 auto;box-shadow:var(--shadow-lg)">
+        <img src="/images/octobre-rose-affiche.jpg" width="700" height="1050" alt="Affiche Octobre Rose — Portez la broche de la solidarité, 8€ la broche dont 5€ reversés à l'eancre">
       </div>
     </div>
     <div class="actu-featured-text reveal" style="transition-delay:.15s">
       <span class="actu-cat-badge">Partenariat · Octobre 2026</span>
-      <h2>Octobre Rose 2026 avec le <em>Ruban Rose</em></h2>
-      <p>L'association Le Ruban Rose Entre Limagne et Volcans 63 reverse 60 % des dons recueillis pendant sa campagne d'Octobre Rose à l'eancre, pour financer les soins de support des patients pris en charge à l'Hôpital de Jour du CH de Riom.</p>
-      <p>Théâtre, randos, concerts, balade culturelle, greens roses... un programme riche vous attend du 25 septembre au 12 décembre pour soutenir la cause ensemble.</p>
+      <h2>Portez la broche de <em>la solidarité</em></h2>
+      <p>Pour Octobre Rose, la créatrice Marion Grasset (Coquette &amp; Paillette) propose de jolies broches en résine en forme de ruban, à 8&nbsp;€ pièce. Durant tout le mois d'octobre, <strong>5&nbsp;€ sont reversés à l'eancre</strong> pour chaque broche vendue.</p>
+      <p>En vente sur le marché d'Ennezat et au Centre Hospitalier de Riom — un petit geste pour une grande cause.</p>
       <div class="actu-meta">
-        <div class="meta-chip"><span>📅</span>25 sept. — 12 déc. 2026</div>
-        <div class="meta-chip"><span>📍</span>Riom, Mozac, Virlet, Pessat-Villeneuve…</div>
-        <div class="meta-chip"><span>🎗️</span>60 % reversés à l'eancre</div>
+        <div class="meta-chip"><span>💰</span>8&nbsp;€ la broche</div>
+        <div class="meta-chip"><span>💶</span>5&nbsp;€ reversés à l'eancre</div>
+        <div class="meta-chip"><span>🎗️</span>Coquette &amp; Paillette</div>
       </div>
-      <a href="/doc/octobre-rose-2026.pdf" target="_blank" class="btn-rose">Voir le programme complet →</a>
-      <br>
-      <br>
-      <a href="https://octobrerose.fondation-arc.org/" target="_blank" class="btn-rose">Voir le site officiel de l'événement →</a>
+      <a href="https://www.instagram.com/p/DdwNpxejmC0/?stkn=MTlhbWVvMTQyOGZzcQ==" target="_blank" rel="noopener" class="btn-rose">▶ Voir la vidéo Instagram →</a>
+      <p style="margin-top:1.2rem;font-size:.85rem"><a href="https://www.instagram.com/coquetteetpaillette/" target="_blank" rel="noopener" style="color:var(--violet);text-decoration:underline">@coquetteetpaillette</a> sur Instagram</p>
     </div>
   </div>
 </section>
@@ -142,6 +143,18 @@
       <h2 style="margin-top:.5rem">Événements &amp; <em>publications</em></h2>
     </div>
     <div class="actu-list">
+      <div class="actu-item">
+        <div class="actu-item-img">
+          <div class="actu-item-img-bg" style="background:linear-gradient(135deg,var(--rose),var(--violet))">🎗️</div>
+          <span class="actu-cat-pill pill-rose">Partenariat</span>
+        </div>
+        <div class="actu-item-body">
+          <div class="actu-item-date">25 sept. — 12 déc. 2026</div>
+          <h3>Octobre Rose 2026 avec le Ruban Rose</h3>
+          <p>Théâtre, randos, concerts, balade culturelle... Le Ruban Rose Entre Limagne et Volcans 63 reverse 60&nbsp;% de ses dons à l'eancre pour financer les soins de support à l'Hôpital de Jour.</p>
+          <a href="/doc/octobre-rose-2026.pdf" target="_blank" class="actu-item-link">Voir le programme complet →</a>
+        </div>
+      </div>
       <div class="actu-item">
         <div class="actu-item-img">
           <div class="actu-item-img-bg" style="background:linear-gradient(135deg,#1a1040,var(--bleu))">💙</div>
@@ -217,7 +230,7 @@
       <div class="presse-item">
         <div class="presse-icon">📰</div>
         <div class="presse-content">
-          <h4>La Montagne — 10 décembre 2025</h4>
+          <h3>La Montagne — 10 décembre 2025</h3>
           <p>« Avec 26 600 € récoltés, le Ruban Rose Entre Limagne et Volcans soutient les personnes atteintes d'un cancer »</p>
           <a href="https://www.lamontagne.fr/riom-63200/actualites/avec-26-600-recoltes-le-ruban-rose-entre-limagne-et-volcans-soutient-les-personnes-atteintes-d-un-cancer_14796732/" class="presse-link">Voir l'article →</a>
         </div>
@@ -225,7 +238,7 @@
       <div class="presse-item">
         <div class="presse-icon">📰</div>
         <div class="presse-content">
-          <h4>La Montagne — 2025</h4>
+          <h3>La Montagne — 2025</h3>
           <p>« De l'art pour dédramatiser l'hôpital » — Charlotte Dossolin — article complet sur l'exposition d'Hervé Balmisse et l'action de l'eancre.</p>
           <a href="https://www.lamontagne.fr/riom-63200/actualites/l-art-au-service-de-l-hopital-pour-embellir-le-quotidien-des-patients-en-soins-palliatifs_14728334/" class="presse-link">Voir l'article →</a>
         </div>
@@ -233,7 +246,7 @@
       <div class="presse-item">
         <div class="presse-icon">📖</div>
         <div class="presse-content">
-          <h4>Mag'Éruptif — 16 octobre 2025</h4>
+          <h3>Mag'Éruptif — 16 octobre 2025</h3>
           <p>« Première dernière exposition : Hervé Balmisse » — une œuvre artistique puissante et intime qui force le visiteur à un salutaire changement de regard.</p>
           <a href="https://www.magmaauvernha.org/2025/10/16/premiere-derniere-exposition-herve-balmisse/" class="presse-link">Lire la critique →</a>
         </div>
@@ -241,7 +254,7 @@
       <div class="presse-item">
         <div class="presse-icon">📻</div>
         <div class="presse-content">
-          <h4>Radio Arverne — 2024 &amp; 2026</h4>
+          <h3>Radio Arverne — 2024 &amp; 2026</h3>
           <p>Émission « Chez nous, c'est comme ça… » animée par Alain Vannaire — l'eancre invitée à parler de son action auprès des patients.</p>
           <a href="https://www.podcastics.com/podcast/episode/chez-nous-cest-comme-ca-01-octobre-2025-386206/" class="presse-link">Écouter →</a>
         </div>
@@ -249,7 +262,7 @@
       <div class="presse-item">
         <div class="presse-icon">📰</div>
         <div class="presse-content">
-          <h4>La Montagne — Janvier 2018</h4>
+          <h3>La Montagne — Janvier 2018</h3>
           <p>« De belles et bonnes œuvres » — article sur l'exposition-vente Harmonie Mutuelle organisée par l'eancre.</p>
           <a href="https://www.lamontagne.fr/clermont-ferrand-63000/actualites/vente-exceptionnelle-duvres-dart-a-harmonie-mutuelle_12698426/" class="presse-link">Voir l'article →</a>
         </div>
@@ -257,7 +270,7 @@
       <div class="presse-item">
         <div class="presse-icon">📰</div>
         <div class="presse-content">
-          <h4>La Montagne — Archives 2015–2019</h4>
+          <h3>La Montagne — Archives 2015–2019</h3>
           <p>« Une salle pour les familles » (avr. 2015) · « Un chez soi d'où affronter… » (févr. 2017) · « Pour le bien-être des malades » (oct. 2019)</p>
           <a href="https://www.lamontagne.fr/" class="presse-link">Voir les archives →</a>
         </div>
@@ -284,12 +297,12 @@
 <footer>
   <div class="footer-grid">
     <div>
-      <div class="footer-logo-img"><img src="/images/logo_de_bas_de_page.png" alt="l'eancre"></div>
+      <div class="footer-logo-img"><img src="/images/logo_de_bas_de_page.png" width="98" height="70" alt="l'eancre"></div>
       <p class="footer-desc">Association loi 1901 reconnue d'utilité générale depuis 2017. Nous œuvrons à améliorer le quotidien des patients confrontés à la maladie grave au CH de Riom.</p>
       <div class="footer-dots"><div class="footer-dot" style="background:var(--rose)"></div><div class="footer-dot" style="background:var(--violet)"></div><div class="footer-dot" style="background:var(--bleu)"></div></div>
     </div>
-    <div class="footer-col"><h4>Pages</h4><ul><li><a href="/">Accueil</a></li><li><a href="/apropos/">Qui sommes-nous</a></li><li><a href="/projets/">Nos projets</a></li><li><a href="/actualites/">Actualités</a></li><li><a href="/don/">Faire un don</a></li><li><a href="/contact/">Contact</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul></div>
-    <div class="footer-col"><h4>Nous contacter</h4><ul><li><a href="mailto:eancre63@gmail.com">eancre63@gmail.com</a></li><li><a href="https://www.google.com/maps/place/H%C3%B4pital+de+Riom-+Centre+Hospitalier+GUY+THOMAS/@45.8901022,3.1122246,606m/data=!3m2!1e3!4b1!4m6!3m5!1s0x47f72226115f29cf:0x3ce248046ad13b1!8m2!3d45.8901022!4d3.1122246!16s%2Fg%2F1tgqhs9y?authuser=0&entry=ttu&g_ep=EgoyMDI2MDkyMS4wIKXMDSoASAFQAw%3D%3D">CH Guy Thomas<br>79 Bd Etienne Clémentel<br>63200 RIOM</a></li></ul><br><h4>Notre Facebook</h4><ul><li><a href="https://www.facebook.com/CHRiom63">Centre Hospitalier Guy Thomas</a></li></ul></div>
+    <div class="footer-col"><h3>Pages</h3><ul><li><a href="/">Accueil</a></li><li><a href="/apropos/">Qui sommes-nous</a></li><li><a href="/projets/">Nos projets</a></li><li><a href="/actualites/">Actualités</a></li><li><a href="/don/">Faire un don</a></li><li><a href="/contact/">Contact</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul></div>
+    <div class="footer-col"><h3>Nous contacter</h3><ul><li><a href="mailto:eancre63@gmail.com">eancre63@gmail.com</a></li><li><a href="https://www.google.com/maps/place/H%C3%B4pital+de+Riom-+Centre+Hospitalier+GUY+THOMAS/@45.8901022,3.1122246,606m/data=!3m2!1e3!4b1!4m6!3m5!1s0x47f72226115f29cf:0x3ce248046ad13b1!8m2!3d45.8901022!4d3.1122246!16s%2Fg%2F1tgqhs9y?authuser=0&entry=ttu&g_ep=EgoyMDI2MDkyMS4wIKXMDSoASAFQAw%3D%3D">CH Guy Thomas<br>79 Bd Etienne Clémentel<br>63200 RIOM</a></li></ul><br><h3>Notre Facebook</h3><ul><li><a href="https://www.facebook.com/CHRiom63">Centre Hospitalier Guy Thomas</a></li></ul></div>
   </div>
   <div class="footer-bottom"><span>© 2025 l'eancre — Association loi 1901. Tous droits réservés.</span><span style="color:rgba(255,255,255,.2)">GitHub Pages · OVH</span></div>
 </footer>
