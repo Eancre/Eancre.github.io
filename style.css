@@ -3,8 +3,6 @@
    Couleurs : Rose #e62b87 | Bleu #245075 | Violet #9b549c
    ============================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
-
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
@@ -222,7 +220,7 @@ footer {
 .footer-logo-img img { height: 70px; width: auto; }
 .footer-logo-img.secondary img { height: 90px; }
 .footer-desc { font-size: .88rem; line-height: 1.8; font-weight: 300; max-width: 290px; }
-.footer-col h4 {
+.footer-col h3 {
   font-family: 'DM Sans', sans-serif;
   font-size: .75rem; letter-spacing: .22em; text-transform: uppercase;
   color: rgba(255,255,255,.9); margin-bottom: 1.3rem; font-weight: 500;
