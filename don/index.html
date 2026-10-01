@@ -130,7 +130,9 @@
           <div class="don-impact-icon">🎨</div>
           <p id="impactText"><strong>50 €</strong> financent une partie d'une exposition artistique pour les patients.</p>
         </div>
-        <a href="mailto:eancre63@gmail.com?subject=Don%20à%20l'eancre&body=Bonjour%2C%20je%20souhaite%20faire%20un%20don%20à%20l'eancre." class="btn-rose" style="width:100%;text-align:center;display:block">Faire mon don maintenant</a>
+        <div class="don-iframe-wrap" style="margin-top:1.5rem;border-radius:16px;overflow:hidden">
+          <iframe id="haWidget" src="https://www.helloasso.com/associations/l-eancre/formulaires/1/widget" title="Formulaire de don HelloAsso — l'eancre" loading="lazy" style="width:100%;border:none;display:block;min-height:720px"></iframe>
+        </div>
         <p class="don-info">Paiement sécurisé · Reçu fiscal par e-mail<br>Association loi 1901 — <a href="/mentions-legales/">Mentions légales</a></p>
       </div>
     </div>
@@ -263,12 +265,19 @@ const impacts={
   500:"<strong>500 €</strong> financent intégralement un projet artistique complet pour les patients."
 };
 
+function sendAmountToHA(val){
+  const ha=document.getElementById('haWidget');
+  val=parseFloat(val);
+  if(ha && ha.contentWindow && val>0){
+    ha.contentWindow.postMessage({amount:val},'https://www.helloasso.com');
+  }
+}
 function selectMontant(btn,val){
   document.querySelectorAll('.montant-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   const custom=document.getElementById('customAmt');
   if(val===null){custom.style.display='block';custom.focus();}
-  else{custom.style.display='none';currentMontant=val;updateImpact(val);}
+  else{custom.style.display='none';currentMontant=val;updateImpact(val);sendAmountToHA(val);}
 }
 function updateImpact(val){
   val=parseInt(val)||50;
@@ -277,6 +286,11 @@ function updateImpact(val){
   for(const k of keys){if(val>=k)chosen=k;}
   document.getElementById('impactText').innerHTML=impacts[chosen]||impacts[500];
 }
+document.getElementById('customAmt').addEventListener('input',function(){
+  currentMontant=parseFloat(this.value)||0;
+  sendAmountToHA(currentMontant);
+});
+document.getElementById('haWidget').addEventListener('load',()=>sendAmountToHA(currentMontant));
 function switchTab(btn,type){
   document.querySelectorAll('.don-tab').forEach(t=>t.classList.remove('active'));
   btn.classList.add('active');
