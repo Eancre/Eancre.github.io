@@ -112,11 +112,7 @@
     <div class="reveal" style="transition-delay:.2s">
       <div class="don-widget">
         <h3>Je fais un don</h3>
-        <p>Ponctuel ou mensuel, chaque geste compte</p>
-        <div class="don-type-tabs">
-          <button class="don-tab active" onclick="switchTab(this,'ponctuel')">Don ponctuel</button>
-          <button class="don-tab" onclick="switchTab(this,'mensuel')">Don mensuel</button>
-        </div>
+        <p>Chaque geste compte — ponctuel ou mensuel, à choisir juste en-dessous</p>
         <div class="montants-grid" id="montantsGrid">
           <button class="montant-btn" onclick="selectMontant(this,15)">15 €<small>Un café par mois</small></button>
           <button class="montant-btn active" onclick="selectMontant(this,50)">50 €<small>Coût réel : 17 €</small></button>
@@ -131,7 +127,7 @@
           <p id="impactText"><strong>50 €</strong> financent une partie d'une exposition artistique pour les patients.</p>
         </div>
         <div class="don-iframe-wrap" style="margin-top:1.5rem;border-radius:16px;overflow:hidden">
-          <iframe id="haWidget" src="https://www.helloasso.com/associations/l-eancre/formulaires/1/widget" title="Formulaire de don HelloAsso — l'eancre" loading="lazy" style="width:100%;border:none;display:block;min-height:720px"></iframe>
+          <iframe id="haWidget" title="Formulaire de don HelloAsso — l'eancre" allow="payment 'self' https://paymenthub.helloassopay.com https://helloasso.com" allowtransparency="true" scrolling="auto" src="https://www.helloasso.com/associations/l-eancre/formulaires/1/widget" style="width:100%;height:750px;border:none;display:block"></iframe>
         </div>
         <p class="don-info">Paiement sécurisé · Reçu fiscal par e-mail<br>Association loi 1901 — <a href="/mentions-legales/">Mentions légales</a></p>
       </div>
@@ -291,10 +287,11 @@ document.getElementById('customAmt').addEventListener('input',function(){
   sendAmountToHA(currentMontant);
 });
 document.getElementById('haWidget').addEventListener('load',()=>sendAmountToHA(currentMontant));
-function switchTab(btn,type){
-  document.querySelectorAll('.don-tab').forEach(t=>t.classList.remove('active'));
-  btn.classList.add('active');
-}
+window.addEventListener('message',function(e){
+  const dataHeight=e.data && e.data.height;
+  const haWidgetElement=document.getElementById('haWidget');
+  if(dataHeight>parseFloat(haWidgetElement.style.height||0)){haWidgetElement.style.height=dataHeight+'px';}
+});
 updateImpact(50);
 </script>
 </body>
