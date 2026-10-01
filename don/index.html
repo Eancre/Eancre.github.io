@@ -45,7 +45,7 @@
 /* ---- POURQUOI DON ---- */
 .pourquoi-section { padding: 7rem 2rem; }
 .pourquoi-inner { max-width: 1100px; margin: 0 auto; }
-.pourquoi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-top: 3.5rem; }
+.pourquoi-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 2rem; margin-top: 3.5rem; }
 .pourquoi-card { border-radius: 20px; padding: 2.2rem; border: 1px solid var(--border); opacity: 0; transform: translateY(24px); transition: all .5s ease; }
 .pourquoi-card.vis { opacity: 1; transform: none; }
 .pourquoi-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
@@ -147,19 +147,29 @@
     </div>
     <div class="pourquoi-grid">
       <div class="pourquoi-card" style="border-top:3px solid var(--rose)">
-        <span class="pourquoi-icon">🎨</span>
-        <h3>Financer l'art en soins palliatifs</h3>
-        <p>Votre don finance directement expositions, concerts et installations artistiques qui apaisent le quotidien des patients hospitalisés.</p>
+        <span class="pourquoi-icon">🧭</span>
+        <h3>Une approche globale du patient</h3>
+        <p>Favoriser une approche globale et individualisée du patient, en intégrant son histoire, ses représentations, ses valeurs, ses ressources psychiques, son environnement affectif, social et ses projets.</p>
       </div>
       <div class="pourquoi-card" style="border-top:3px solid var(--violet)">
-        <span class="pourquoi-icon">🤝</span>
-        <h3>Soutenir les familles</h3>
-        <p>Au-delà des patients, l'eancre accompagne aussi les proches et les aidants, souvent épuisés et isolés dans ces moments difficiles.</p>
+        <span class="pourquoi-icon">🛋️</span>
+        <h3>Améliorer le quotidien</h3>
+        <p>Améliorer le quotidien des patients confrontés à la maladie grave, en favorisant le confort et le bien-être.</p>
       </div>
       <div class="pourquoi-card" style="border-top:3px solid var(--bleu)">
-        <span class="pourquoi-icon">💙</span>
-        <h3>Changer le regard sur la mort</h3>
-        <p>Nous sensibilisons le grand public pour que la fin de vie soit abordée avec sérénité, dignité et humanité dans notre société.</p>
+        <span class="pourquoi-icon">🌸</span>
+        <h3>Des soins complémentaires</h3>
+        <p>Proposer des soins complémentaires aux traitements médicaux, pour soutenir le patient et préserver sa qualité de vie.</p>
+      </div>
+      <div class="pourquoi-card" style="border-top:3px solid var(--rose)">
+        <span class="pourquoi-icon">🤝</span>
+        <h3>Soutenir les proches</h3>
+        <p>Soutenir les proches et les familles, dans leur propre vécu face à la maladie. Leur accompagnement participe également à l'apaisement du patient.</p>
+      </div>
+      <div class="pourquoi-card" style="border-top:3px solid var(--violet)">
+        <span class="pourquoi-icon">📣</span>
+        <h3>Informer et sensibiliser</h3>
+        <p>Informer et sensibiliser la population aux soins palliatifs, à la fin de vie, à l'évolution de la législation, aux droits des patients et aux possibilités d'accompagnement.</p>
       </div>
     </div>
   </div>
