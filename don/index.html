@@ -25,20 +25,6 @@
 .don-widget { background: white; border-radius: 24px; padding: 2.8rem; box-shadow: 0 30px 80px rgba(0,0,0,.35); }
 .don-widget h3 { font-size: 1.3rem; font-weight: 600; color: var(--text-dark); margin-bottom: .3rem; }
 .don-widget > p { font-size: .88rem; color: var(--text-light); margin-bottom: 2rem; }
-.don-type-tabs { display: flex; background: var(--off-white); border-radius: 12px; padding: .3rem; margin-bottom: 1.8rem; }
-.don-tab { flex: 1; padding: .7rem; text-align: center; border-radius: 10px; font-size: .85rem; font-weight: 500; cursor: pointer; transition: all .3s; border: none; background: none; font-family: 'DM Sans', sans-serif; color: var(--text-mid); }
-.don-tab.active { background: white; color: var(--text-dark); box-shadow: 0 2px 12px rgba(0,0,0,.1); }
-.montants-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: .7rem; margin-bottom: 1rem; }
-.montant-btn { background: var(--off-white); border: 2px solid var(--border); color: var(--text-dark); padding: 1rem .5rem; border-radius: 12px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all .3s; font-family: 'Cormorant Garamond', serif; display: flex; flex-direction: column; align-items: center; gap: .2rem; }
-.montant-btn small { font-family: 'DM Sans', sans-serif; font-size: .72rem; font-weight: 400; color: var(--text-light); }
-.montant-btn:hover, .montant-btn.active { background: var(--rose-pale); border-color: var(--rose); color: var(--rose); }
-.montant-btn.active small { color: var(--rose); opacity: .7; }
-.don-custom { width: 100%; background: var(--off-white); border: 2px solid var(--border); border-radius: 12px; padding: .9rem 1.2rem; font-size: 1rem; font-family: 'DM Sans', sans-serif; color: var(--text-dark); margin-bottom: 1.5rem; outline: none; transition: border .3s; }
-.don-custom:focus { border-color: var(--rose); }
-.don-impact { background: var(--violet-pale); border-radius: 12px; padding: 1.2rem 1.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; }
-.don-impact-icon { font-size: 1.8rem; }
-.don-impact p { font-size: .88rem; color: var(--violet); line-height: 1.6; margin: 0; font-weight: 400; }
-.don-impact strong { font-weight: 600; }
 .don-info { font-size: .8rem; color: var(--text-light); text-align: center; margin-top: 1.2rem; line-height: 1.6; }
 .don-info a { color: var(--bleu); }
 
@@ -71,10 +57,18 @@
 .author-role { font-size: .75rem; color: rgba(255,255,255,.4); }
 
 @media (max-width: 900px) {
-  .don-hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .don-hero { padding: 8rem 1.5rem 3rem; }
+  .don-hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .don-widget { padding: 1.8rem; box-shadow: 0 16px 40px rgba(0,0,0,.3); }
+  .pourquoi-section { padding: 4rem 1.5rem; }
   .pourquoi-grid { grid-template-columns: 1fr; }
-  .fiscal-box { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
-  .montants-grid { grid-template-columns: repeat(2,1fr); }
+  .fiscal-section { padding: 4rem 1.5rem; }
+  .fiscal-box { grid-template-columns: 1fr; gap: 2rem; text-align: center; padding: 2rem; }
+  .fiscal-highlight { font-size: 3.2rem; }
+}
+@media (max-width: 480px) {
+  .don-widget { padding: 1.4rem; border-radius: 18px; }
+  .don-widget h3 { font-size: 1.15rem; }
 }
 </style>
 </head>
@@ -112,21 +106,8 @@
     <div class="reveal" style="transition-delay:.2s">
       <div class="don-widget">
         <h3>Je fais un don</h3>
-        <p>Chaque geste compte — ponctuel ou mensuel, à choisir juste en-dessous</p>
-        <div class="montants-grid" id="montantsGrid">
-          <button class="montant-btn" onclick="selectMontant(this,15)">15 €<small>Un café par mois</small></button>
-          <button class="montant-btn active" onclick="selectMontant(this,50)">50 €<small>Coût réel : 17 €</small></button>
-          <button class="montant-btn" onclick="selectMontant(this,100)">100 €<small>Coût réel : 34 €</small></button>
-          <button class="montant-btn" onclick="selectMontant(this,200)">200 €<small>Coût réel : 68 €</small></button>
-          <button class="montant-btn" onclick="selectMontant(this,500)">500 €<small>Coût réel : 170 €</small></button>
-          <button class="montant-btn" onclick="selectMontant(this,null)">Autre<small>Montant libre</small></button>
-        </div>
-        <input type="number" class="don-custom" id="customAmt" placeholder="Autre montant en €" style="display:none" oninput="updateImpact(this.value)">
-        <div class="don-impact" id="impactBox">
-          <div class="don-impact-icon">🎨</div>
-          <p id="impactText"><strong>50 €</strong> financent une partie d'une exposition artistique pour les patients.</p>
-        </div>
-        <div class="don-iframe-wrap" style="margin-top:1.5rem;border-radius:16px;overflow:hidden">
+        <p>Chaque geste compte — ponctuel ou mensuel, choisissez ci-dessous</p>
+        <div class="don-iframe-wrap" style="margin-top:.5rem;border-radius:16px;overflow:hidden">
           <iframe id="haWidget" title="Formulaire de don HelloAsso — l'eancre" allow="payment 'self' https://paymenthub.helloassopay.com https://helloasso.com" allowtransparency="true" scrolling="auto" src="https://www.helloasso.com/associations/l-eancre/formulaires/1/widget" style="width:100%;height:750px;border:none;display:block"></iframe>
         </div>
         <p class="don-info">Paiement sécurisé · Reçu fiscal par e-mail<br>Association loi 1901 — <a href="/mentions-legales/">Mentions légales</a></p>
@@ -252,47 +233,11 @@ document.querySelectorAll('.reveal,.pourquoi-card').forEach((el,i)=>{
   io.observe(el);
 });
 
-let currentMontant=50;
-const impacts={
-  15:"<strong>15 €</strong> offrent un moment d'art et de beauté à un patient pour une journée entière.",
-  50:"<strong>50 €</strong> financent une partie d'une exposition artistique pour les patients.",
-  100:"<strong>100 €</strong> couvrent le transport et l'installation d'une œuvre au sein de l'hôpital.",
-  200:"<strong>200 €</strong> participent à l'organisation d'un événement culturel pour patients et soignants.",
-  500:"<strong>500 €</strong> financent intégralement un projet artistique complet pour les patients."
-};
-
-function sendAmountToHA(val){
-  const ha=document.getElementById('haWidget');
-  val=parseFloat(val);
-  if(ha && ha.contentWindow && val>0){
-    ha.contentWindow.postMessage({amount:val},'https://www.helloasso.com');
-  }
-}
-function selectMontant(btn,val){
-  document.querySelectorAll('.montant-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  const custom=document.getElementById('customAmt');
-  if(val===null){custom.style.display='block';custom.focus();}
-  else{custom.style.display='none';currentMontant=val;updateImpact(val);sendAmountToHA(val);}
-}
-function updateImpact(val){
-  val=parseInt(val)||50;
-  const keys=Object.keys(impacts).map(Number).sort((a,b)=>a-b);
-  let chosen=keys[0];
-  for(const k of keys){if(val>=k)chosen=k;}
-  document.getElementById('impactText').innerHTML=impacts[chosen]||impacts[500];
-}
-document.getElementById('customAmt').addEventListener('input',function(){
-  currentMontant=parseFloat(this.value)||0;
-  sendAmountToHA(currentMontant);
-});
-document.getElementById('haWidget').addEventListener('load',()=>sendAmountToHA(currentMontant));
 window.addEventListener('message',function(e){
   const dataHeight=e.data && e.data.height;
   const haWidgetElement=document.getElementById('haWidget');
   if(dataHeight>parseFloat(haWidgetElement.style.height||0)){haWidgetElement.style.height=dataHeight+'px';}
 });
-updateImpact(50);
 </script>
 </body>
 </html>
