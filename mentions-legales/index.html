@@ -120,7 +120,9 @@
         <li>Droit à la portabilité de vos données</li>
         <li>Droit d'opposition au traitement de vos données</li>
       </ul>
-      <p>Les données collectées via le formulaire de contact (nom, prénom, adresse e-mail, message) sont utilisées uniquement pour traiter votre demande et ne sont jamais transmises à des tiers.</p>
+      <p>Les données personnelles collectées sur ce site sont utilisées uniquement dans le cadre des services proposés par l'association l'eancre.</p>
+      <p><strong>Formulaire de contact :</strong> les données renseignées dans le formulaire de contact (nom, prénom, adresse e-mail et message) sont transmises et traitées via le service Formspree, utilisé pour assurer la réception et l'acheminement des messages. Ces données sont utilisées uniquement pour répondre aux demandes adressées à l'association.</p>
+      <p><strong>Dons en ligne :</strong> les dons effectués depuis le site sont réalisés via la plateforme HelloAsso. Les données nécessaires à la réalisation du don et au traitement du paiement sont alors collectées et traitées par HelloAsso conformément à sa politique de confidentialité.</p>
       <p>Pour exercer vos droits ou pour toute question relative à vos données personnelles, contactez-nous à : <a href="mailto:eancre63@gmail.com">eancre63@gmail.com</a></p>
     </div>
 
@@ -142,7 +144,7 @@
       <span class="legal-tag">Droit applicable</span>
       <h2>Droit applicable et <em>juridiction</em></h2>
       <p>Le présent site et ses mentions légales sont soumis au droit français. En cas de litige, et à défaut de résolution amiable, les tribunaux français seront seuls compétents.</p>
-      <p>Dernière mise à jour : Mai 2025</p>
+      <p>Dernière mise à jour : Octobre 2026</p>
     </div>
 
   </div>
@@ -162,34 +164,15 @@
 </footer>
 
 <script>
-// ── Menu mobile ────────────────────────────────────────────────
 const burger = document.getElementById('burger');
 const navMob = document.getElementById('navMobile');
-
-function menuOpen() {
-  navMob.classList.add('open');
-  burger.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function menuClose() {
-  navMob.classList.remove('open');
-  burger.classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-// Toggle au clic sur le burger
-burger.addEventListener('click', () => {
-  burger.classList.contains('open') ? menuClose() : menuOpen();
-});
-
-// Fermer au clic sur un lien du menu
+function menuOpen() { navMob.classList.add('open'); burger.classList.add('open'); document.body.style.overflow = 'hidden'; }
+function menuClose() { navMob.classList.remove('open'); burger.classList.remove('open'); document.body.style.overflow = ''; }
+burger.addEventListener('click', () => { burger.classList.contains('open') ? menuClose() : menuOpen(); });
 navMob.querySelectorAll('a').forEach(a => a.addEventListener('click', menuClose));
 document.getElementById('navClose').addEventListener('click', menuClose);
 document.addEventListener('click', e => { if (navMob.classList.contains('open') && !navMob.contains(e.target) && !burger.contains(e.target)) menuClose(); });
-
-// Fermer avec Échap
 document.addEventListener('keydown', e => { if (e.key === 'Escape') menuClose(); });
-// ───────────────────────────────────────────────────────────────
 const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});},{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
