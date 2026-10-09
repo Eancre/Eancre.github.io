@@ -1,9 +1,10 @@
+---
+---
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" href="/images/logo_onglet.png" type="image/png">
-<link rel="shortcut icon" href="/images/logo_onglet.png" type="image/png">
+<link rel="icon" type="image/png" href="/images/logo_onglet.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Les actualités de l'eancre — événements, expositions, presse et vie de l'association.">
 <title>Actualités — l'eancre</title>
@@ -85,21 +86,7 @@
 </head>
 <body>
 
-<nav id="nav" class="light-nav">
-  <a href="/" class="nav-logo"><img src="/images/Petit_logo_retour_accueil.png" width="29" height="52" alt="l'eancre — Accueil"></a>
-  <ul class="nav-links">
-    <li><a href="/apropos/">Notre mission</a></li>
-    <li><a href="/projets/">Nos projets</a></li>
-    <li><a href="/actualites/" class="active">Actualités</a></li>
-    <li><a href="/contact/">Contact</a></li>
-    <li><a href="/don/" class="nav-cta">Faire un don</a></li>
-  </ul>
-  <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
-</nav>
-<div class="nav-mobile" id="navMobile">
-  <button class="nav-mobile-close" id="navClose">✕</button>
-  <a href="/">Accueil</a><a href="/apropos/">Notre mission</a><a href="/projets/">Nos projets</a><a href="/actualites/">Actualités</a><a href="/don/">Faire un don</a><a href="/contact/">Contact</a>
-</div>
+{% include header.html %}
 
 <div class="page-hero">
   <div class="page-hero-content">
@@ -115,22 +102,24 @@
 <section class="actu-featured">
   <div class="actu-featured-inner">
     <div class="reveal">
-      <div class="actu-featured-img" style="aspect-ratio:2/3;max-width:420px;margin:0 auto;box-shadow:var(--shadow-lg)">
-        <img src="/images/octobre-rose-affiche.jpg" width="700" height="1050" alt="Affiche Octobre Rose — Portez la broche de la solidarité, 8€ la broche dont 5€ reversés à l'eancre">
+      <div class="actu-featured-img">
+        <div class="actu-featured-img-placeholder"><span style="font-size:3rem">🎗️</span><br>Programme Octobre Rose 2026</div>
       </div>
     </div>
     <div class="actu-featured-text reveal" style="transition-delay:.15s">
       <span class="actu-cat-badge">Partenariat · Octobre 2026</span>
-      <h2>Portez la broche de <em>la solidarité</em></h2>
-      <p>Pour Octobre Rose, la créatrice Marion Grasset (Coquette &amp; Paillette) propose de jolies broches en résine en forme de ruban, à 8&nbsp;€ pièce. Durant tout le mois d'octobre, <strong>5&nbsp;€ sont reversés à l'eancre</strong> pour chaque broche vendue.</p>
-      <p>En vente sur le marché d'Ennezat et au Centre Hospitalier de Riom — un petit geste pour une grande cause.</p>
+      <h2>Octobre Rose 2026 avec le <em>Ruban Rose</em></h2>
+      <p>L'association Le Ruban Rose Entre Limagne et Volcans 63 reverse 60 % des dons recueillis pendant sa campagne d'Octobre Rose à l'eancre, pour financer les soins de support des patients pris en charge à l'Hôpital de Jour du CH de Riom.</p>
+      <p>Théâtre, randos, concerts, balade culturelle, greens roses... un programme riche vous attend du 25 septembre au 12 décembre pour soutenir la cause ensemble.</p>
       <div class="actu-meta">
-        <div class="meta-chip"><span>💰</span>8&nbsp;€ la broche</div>
-        <div class="meta-chip"><span>💶</span>5&nbsp;€ reversés à l'eancre</div>
-        <div class="meta-chip"><span>🎗️</span>Coquette &amp; Paillette</div>
+        <div class="meta-chip"><span>📅</span>25 sept. — 12 déc. 2026</div>
+        <div class="meta-chip"><span>📍</span>Riom, Mozac, Virlet, Pessat-Villeneuve…</div>
+        <div class="meta-chip"><span>🎗️</span>60 % reversés à l'eancre</div>
       </div>
-      <a href="https://www.instagram.com/p/DdwNpxejmC0/?stkn=MTlhbWVvMTQyOGZzcQ==" target="_blank" rel="noopener" class="btn-rose">▶ Voir la vidéo Instagram →</a>
-      <p style="margin-top:1.2rem;font-size:.85rem"><a href="https://www.instagram.com/coquetteetpaillette/" target="_blank" rel="noopener" style="color:var(--violet);text-decoration:underline">@coquetteetpaillette</a> sur Instagram</p>
+      <a href="/doc/octobre-rose-2026.pdf" target="_blank" class="btn-rose">Voir le programme complet →</a>
+      <br>
+      <br>
+      <a href="https://octobrerose.fondation-arc.org/" target="_blank" class="btn-rose">Voir le site officiel de l'événement →</a>
     </div>
   </div>
 </section>
@@ -144,18 +133,6 @@
       <h2 style="margin-top:.5rem">Événements &amp; <em>publications</em></h2>
     </div>
     <div class="actu-list">
-      <div class="actu-item">
-        <div class="actu-item-img">
-          <div class="actu-item-img-bg" style="background:linear-gradient(135deg,var(--rose),var(--violet))">🎗️</div>
-          <span class="actu-cat-pill pill-rose">Partenariat</span>
-        </div>
-        <div class="actu-item-body">
-          <div class="actu-item-date">25 sept. — 12 déc. 2026</div>
-          <h3>Octobre Rose 2026 avec le Ruban Rose</h3>
-          <p>Théâtre, randos, concerts, balade culturelle... Le Ruban Rose Entre Limagne et Volcans 63 reverse 60&nbsp;% de ses dons à l'eancre pour financer les soins de support à l'Hôpital de Jour.</p>
-          <a href="/doc/octobre-rose-2026.pdf" target="_blank" class="actu-item-link">Voir le programme complet →</a>
-        </div>
-      </div>
       <div class="actu-item">
         <div class="actu-item-img">
           <div class="actu-item-img-bg" style="background:linear-gradient(135deg,#1a1040,var(--bleu))">💙</div>
@@ -295,18 +272,7 @@
 </section>
 
 <!-- FOOTER -->
-<footer>
-  <div class="footer-grid">
-    <div>
-      <div class="footer-logo-img"><img src="/images/logo_de_bas_de_page.png" width="98" height="70" alt="l'eancre"></div>
-      <p class="footer-desc">Association loi 1901 reconnue d'utilité générale depuis 2017. Nous œuvrons à améliorer le quotidien des patients confrontés à la maladie grave au CH de Riom.</p>
-      <div class="footer-dots"><div class="footer-dot" style="background:var(--rose)"></div><div class="footer-dot" style="background:var(--violet)"></div><div class="footer-dot" style="background:var(--bleu)"></div></div>
-    </div>
-    <div class="footer-col"><h3>Pages</h3><ul><li><a href="/">Accueil</a></li><li><a href="/apropos/">Qui sommes-nous</a></li><li><a href="/projets/">Nos projets</a></li><li><a href="/actualites/">Actualités</a></li><li><a href="/don/">Faire un don</a></li><li><a href="/contact/">Contact</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul></div>
-    <div class="footer-col"><h3>Nous contacter</h3><ul><li><a href="mailto:eancre63@gmail.com">eancre63@gmail.com</a></li><li><a href="https://www.google.com/maps/place/H%C3%B4pital+de+Riom-+Centre+Hospitalier+GUY+THOMAS/@45.8901022,3.1122246,606m/data=!3m2!1e3!4b1!4m6!3m5!1s0x47f72226115f29cf:0x3ce248046ad13b1!8m2!3d45.8901022!4d3.1122246!16s%2Fg%2F1tgqhs9y?authuser=0&entry=ttu&g_ep=EgoyMDI2MDkyMS4wIKXMDSoASAFQAw%3D%3D">CH Guy Thomas<br>79 Bd Etienne Clémentel<br>63200 RIOM</a></li></ul><br><h3>Notre Facebook</h3><ul><li><a href="https://www.facebook.com/CHRiom63">Centre Hospitalier Guy Thomas</a></li></ul></div>
-  </div>
-  <div class="footer-bottom"><span>© 2025 l'eancre — Association loi 1901. Tous droits réservés.</span><span style="color:rgba(255,255,255,.2)">GitHub Pages · OVH</span></div>
-</footer>
+{% include footer.html %}
 
 <script>
 const burger=document.getElementById('burger'),navMob=document.getElementById('navMobile');
