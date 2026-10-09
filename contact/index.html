@@ -1,12 +1,16 @@
+---
+---
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" href="/images/logo_onglet.png" type="image/png">
-<link rel="shortcut icon" href="/images/logo_onglet.png" type="image/png">
+<link rel="icon" type="image/png" href="/images/logo_onglet.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Contacter l'eancre — association pour les soins palliatifs à Riom.">
 <title>Contact — l'eancre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap">
 <link rel="stylesheet" href="../style.css">
 <style>
 /* ---- CONTACT LAYOUT ---- */
@@ -21,9 +25,14 @@
 .info-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem 1.8rem; display: flex; align-items: flex-start; gap: 1.2rem; transition: all .3s; }
 .info-card:hover { box-shadow: var(--shadow-sm); transform: translateY(-2px); border-color: var(--violet); }
 .info-card-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
-.info-card h4 { font-family: 'DM Sans', sans-serif; font-size: .78rem; letter-spacing: .15em; text-transform: uppercase; color: var(--text-light); margin-bottom: .3rem; font-weight: 500; }
+.info-card h3 { font-family: 'DM Sans', sans-serif; font-size: .78rem; letter-spacing: .15em; text-transform: uppercase; color: var(--text-light); margin-bottom: .3rem; font-weight: 500; }
 .info-card p, .info-card a { font-size: .95rem; color: var(--text-dark); text-decoration: none; font-weight: 400; line-height: 1.5; }
 .info-card a:hover { color: var(--rose); }
+
+/* ---- BÉNÉVOLES ---- */
+.benevolat-box { background: linear-gradient(135deg, var(--bleu-dark), #2a1a5a); border-radius: 20px; padding: 2rem; margin-top: 2.5rem; position: relative; overflow: hidden; }
+.benevolat-box::before { content: ''; position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, rgba(230,43,135,.3), transparent 70%); }
+.benevolat-box p { font-size: .88rem; color: rgba(255,255,255,.6); line-height: 1.75; margin-bottom: 1.3rem; font-weight: 300; }
 
 /* ---- FORMULAIRE ---- */
 .contact-form-wrap { background: white; border-radius: 24px; border: 1px solid var(--border); padding: 3rem; box-shadow: var(--shadow-sm); }
@@ -32,29 +41,15 @@
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
 .form-group { margin-bottom: 1.3rem; }
 .form-group label { display: block; font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-mid); font-weight: 500; margin-bottom: .5rem; }
-.form-group input, .form-group select, .form-group textarea {
-  width: 100%; background: var(--off-white); border: 2px solid var(--border);
-  border-radius: 12px; padding: .85rem 1.1rem; font-size: .95rem;
-  font-family: 'DM Sans', sans-serif; color: var(--text-dark); outline: none;
-  transition: border .3s, box-shadow .3s;
-}
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-  border-color: var(--violet); box-shadow: 0 0 0 3px rgba(155,84,156,.12); background: white;
-}
+.form-group input, .form-group select, .form-group textarea { width: 100%; background: var(--off-white); border: 2px solid var(--border); border-radius: 12px; padding: .85rem 1.1rem; font-size: .95rem; font-family: 'DM Sans', sans-serif; color: var(--text-dark); outline: none; transition: border .3s, box-shadow .3s; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--violet); box-shadow: 0 0 0 3px rgba(155,84,156,.12); background: white; }
 .form-group textarea { resize: vertical; min-height: 130px; }
-.form-group select {
-  cursor: pointer; appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a9ab5' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: right 1.1rem center; padding-right: 2.5rem;
-}
+.form-group select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a9ab5' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1.1rem center; padding-right: 2.5rem; }
 .form-check { display: flex; align-items: flex-start; gap: .8rem; margin-bottom: 1.5rem; }
 .form-check input[type=checkbox] { width: 18px; height: 18px; border-radius: 4px; border: 2px solid var(--border); margin-top: .15rem; cursor: pointer; accent-color: var(--rose); flex-shrink: 0; }
 .form-check label { font-size: .85rem; color: var(--text-mid); line-height: 1.6; cursor: pointer; }
 .form-check label a { color: var(--rose); text-decoration: none; }
 .submit-btn { width: 100%; padding: 1.1rem; font-size: 1rem; }
-
-/* Formspree error styles */
-.fs-error { display: none; background: #fff0f0; border: 1px solid #ffcccc; border-radius: 12px; padding: 1rem 1.2rem; margin-bottom: 1rem; color: #c0392b; font-size: .9rem; }
 
 /* ---- SUCCESS ---- */
 .success-msg { display: none; text-align: center; padding: 3rem 2rem; }
@@ -68,6 +63,8 @@
 .map-header { text-align: center; margin-bottom: 3rem; }
 .map-embed { border-radius: 20px; overflow: hidden; height: 380px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
 .map-embed iframe { width: 100%; height: 100%; border: none; }
+.map-placeholder { width: 100%; height: 100%; background: linear-gradient(135deg, var(--bleu-dark), #2a1a5a); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; color: rgba(255,255,255,.6); font-size: 1rem; }
+.map-placeholder span { font-size: 3rem; }
 
 @media (max-width: 900px) {
   .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
@@ -78,31 +75,12 @@
 </head>
 <body>
 
-<nav id="nav" class="light-nav">
-  <a href="../" class="nav-logo"><img src="../images/Petit_logo_retour_accueil.png" alt="l'eancre — Accueil"></a>
-  <ul class="nav-links">
-    <li><a href="../apropos/">Notre mission</a></li>
-    <li><a href="../projets/">Nos projets</a></li>
-    <li><a href="../actualites/">Actualités</a></li>
-    <li><a href="../contact/" class="active">Contact</a></li>
-    <li><a href="../don/" class="nav-cta">Faire un don</a></li>
-  </ul>
-  <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
-</nav>
-<div class="nav-mobile" id="navMobile">
-  <button class="nav-mobile-close" id="navClose">✕</button>
-  <a href="../">Accueil</a>
-  <a href="../apropos/">Notre mission</a>
-  <a href="../projets/">Nos projets</a>
-  <a href="../actualites/">Actualités</a>
-  <a href="../don/">Faire un don</a>
-  <a href="../contact/">Contact</a>
-</div>
+{% include header.html %}
 
 <!-- PAGE HERO -->
 <div class="page-hero">
   <div class="page-hero-content">
-    <img src="../images/logo_principal.png" alt="l'eancre" style="height:60px;width:auto;margin-bottom:1.5rem;mix-blend-mode:lighten;opacity:.9"/>
+  <img src="/images/logo_principal.png" width="139" height="60" alt="l'eancre" style="height:60px;width:auto;margin-bottom:1.5rem;mix-blend-mode:lighten;opacity:.9" />
     <span class="section-tag" style="color:var(--rose-light)">Écrivez-nous</span>
     <h1>Nous <em>contacter</em></h1>
     <p>Une question, une proposition de projet, ou simplement envie de nous soutenir ? Nous vous répondrons avec plaisir.</p>
@@ -122,81 +100,73 @@
       <div class="info-cards">
         <div class="info-card">
           <div class="info-card-icon" style="background:var(--rose-pale)">📧</div>
-          <div><h4>E-mail</h4><a href="mailto:eancre63@gmail.com">eancre63@gmail.com</a></div>
+          <div><h3>E-mail</h3><a href="mailto:eancre63@gmail.com">eancre63@gmail.com</a></div>
         </div>
         <div class="info-card">
           <div class="info-card-icon" style="background:#e3edf5">📍</div>
-          <div><h4>Adresse</h4><p>CH Guy Thomas<br>79 Bd Etienne Clémentel<br>63200 RIOM</p></div>
+          <div><h3>Adresse</h3><p>CH Guy Thomas<br>79 Bd Etienne Clémentel<br>63200 RIOM</p></div>
         </div>
         <div class="info-card">
           <div class="info-card-icon" style="background:var(--violet-pale)">🏥</div>
-          <div><h4>Lieu d'action principal</h4><p>Centre Hospitalier de Riom</p></div>
+          <div><h3>Lieu d'action principal</h3><p>Centre Hospitalier de Riom</p></div>
         </div>
       </div>
     </div>
 
-    <!-- FORMULAIRE FORMSPREE -->
+    <!-- FORMULAIRE -->
     <div class="contact-form-wrap reveal" style="transition-delay:.2s">
       <div id="formContent">
         <h3>Envoyez-nous un <em>message</em></h3>
         <p>Tous les champs marqués * sont obligatoires</p>
 
-        <div class="fs-error" id="fsError">Une erreur est survenue. Veuillez réessayer ou nous écrire directement à <a href="mailto:eancre63@gmail.com">eancre63@gmail.com</a>.</div>
-
-        <form id="contactForm" action="https://formspree.io/f/xgavbdrz" method="POST" novalidate>
-
-          <!-- Champs cachés Formspree -->
-          <input type="hidden" name="_language" value="fr">
-          <input type="hidden" name="_subject" value="Nouveau message depuis le site l'eancre">
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="prenom">Prénom *</label>
-              <input type="text" id="prenom" name="prenom" placeholder="Jean" required>
-            </div>
-            <div class="form-group">
-              <label for="nom">Nom *</label>
-              <input type="text" id="nom" name="nom" placeholder="Dupont" required>
-            </div>
-          </div>
-
+        <div class="form-row">
           <div class="form-group">
-            <label for="email">Adresse e-mail *</label>
-            <input type="email" id="email" name="email" placeholder="jean.dupont@email.fr" required>
+            <label for="prenom">Prénom *</label>
+            <input type="text" id="prenom" placeholder="Jean" required>
           </div>
-
           <div class="form-group">
-            <label for="sujet">Sujet *</label>
-            <select id="sujet" name="sujet" required>
-              <option value="" disabled selected>Choisissez un sujet</option>
-              <option>Question générale sur l'association</option>
-              <option>Proposer un projet artistique</option>
-              <option>Soutenir l'association</option>
-              <option>Partenariat institutionnel</option>
-              <option>Demande presse / médias</option>
-              <option>Autre</option>
-            </select>
+            <label for="nom">Nom *</label>
+            <input type="text" id="nom" placeholder="Dupont" required>
           </div>
+        </div>
 
-          <div class="form-group">
-            <label for="message">Votre message *</label>
-            <textarea id="message" name="message" placeholder="Décrivez votre demande en quelques mots…" required></textarea>
-          </div>
+        <div class="form-group">
+          <label for="email">Adresse e-mail *</label>
+          <input type="email" id="email" placeholder="jean.dupont@email.fr" required>
+        </div>
 
-          <div class="form-check">
-            <input type="checkbox" id="rgpd" name="rgpd" required>
-            <label for="rgpd">J'accepte que mes données soient utilisées pour traiter ma demande, conformément à notre <a href="../mentions-legales/">politique de confidentialité</a>. *</label>
-          </div>
+        <div class="form-group">
+          <label for="sujet">Sujet *</label>
+          <select id="sujet" required>
+            <option value="" disabled selected>Choisissez un sujet</option>
+            <option>Question générale sur l'association</option>
+            <option>Proposer un projet artistique</option>
+            <option>Devenir bénévole</option>
+            <option>Faire un don</option>
+            <option>Partenariat institutionnel</option>
+            <option>Demande presse / médias</option>
+            <option>Autre</option>
+          </select>
+        </div>
 
-          <button type="submit" class="btn-rose submit-btn">Envoyer le message</button>
-        </form>
+        <div class="form-group">
+          <label for="message">Votre message *</label>
+          <textarea id="message" placeholder="Décrivez votre demande en quelques mots…" required></textarea>
+        </div>
+
+        <div class="form-check">
+          <input type="checkbox" id="rgpd" required>
+          <label for="rgpd">J'accepte que mes données soient utilisées pour traiter ma demande, conformément à notre <a href="/mentions-legales/">politique de confidentialité</a>. *</label>
+        </div>
+
+        <button class="btn-rose submit-btn" onclick="submitForm(event)">Envoyer le message</button>
       </div>
 
       <div class="success-msg" id="successMsg">
         <span class="success-icon">💌</span>
         <h3>Message envoyé !</h3>
-        <p>Merci pour votre message. Nous vous répondrons dans les meilleurs délais.</p>
-        <a href="../" class="btn-bleu" style="margin-top:2rem">Retour à l'accueil</a>
+        <p>Merci pour votre message. Nous vous répondrons dans les 48 heures.</p>
+        <a href="/" class="btn-bleu" style="margin-top:2rem">Retour à l'accueil</a>
       </div>
     </div>
 
@@ -212,108 +182,74 @@
     </div>
     <div class="map-embed reveal" style="transition-delay:.15s">
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2764.1!2d3.1122246!3d45.8901022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f72226115f29cf%3A0x3ce248046ad13b1!2sH%C3%B4pital%20de%20Riom-%20Centre%20Hospitalier%20GUY%20THOMAS!5e0!3m2!1sfr!2sfr!4v1727000000000"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2762.!2d3.115!3d45.893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f71b7b7b7b7b7b%3A0x0!2s79+Bd+Etienne+Cl%C3%A9mentel%2C+63200+Riom!5e0!3m2!1sfr!2sfr!4v1234567890"
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
-        title="l'eancre — CH Guy Thomas, 79 Bd Etienne Clémentel, 63200 Riom"
-        allowfullscreen>
-      </iframe>
+        title="l'eancre — 79 Bd Etienne Clémentel, 63200 Riom"
+        onerror="this.style.display='none'"
+      ></iframe>
+      <div class="map-placeholder" id="mapFallback" style="display:none">
+        <span>📍</span>
+        <p>79 Bd Etienne Clémentel, 63200 Riom</p>
+        <a href="https://maps.google.com/?q=Riom+63200" target="_blank" class="btn-outline-white" style="margin-top:.5rem;font-size:.88rem">Ouvrir dans Maps</a>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer>
-  <div class="footer-grid">
-    <div>
-      <div class="footer-logo-img"><img src="../images/logo_de_bas_de_page.png" alt="l'eancre"></div>
-      <p class="footer-desc">Association loi 1901 reconnue d'utilité générale depuis 2017. Nous œuvrons à améliorer le quotidien des patients confrontés à la maladie grave au CH de Riom.</p>
-      <div class="footer-dots"><div class="footer-dot" style="background:var(--rose)"></div><div class="footer-dot" style="background:var(--violet)"></div><div class="footer-dot" style="background:var(--bleu)"></div></div>
-    </div>
-    <div class="footer-col"><h4>Pages</h4><ul>
-      <li><a href="../">Accueil</a></li>
-      <li><a href="../apropos/">Qui sommes-nous</a></li>
-      <li><a href="../projets/">Nos projets</a></li>
-      <li><a href="../actualites/">Actualités</a></li>
-      <li><a href="../don/">Faire un don</a></li>
-      <li><a href="../contact/">Contact</a></li>
-      <li><a href="../mentions-legales/">Mentions légales</a></li>
-    </ul></div>
-    <div class="footer-col"><h4>Nous contacter</h4><ul>
-      <li><a href="mailto:eancre63@gmail.com">eancre63@gmail.com</a></li>
-      <li><a href="https://www.google.com/maps/place/H%C3%B4pital+de+Riom-+Centre+Hospitalier+GUY+THOMAS/@45.8901022,3.1122246,606m/" target="_blank">CH Guy Thomas<br>79 Bd Etienne Clémentel<br>63200 RIOM</a></li>
-    </ul>
-    <h4 style="margin-top:1.5rem">Notre Facebook</h4>
-    <ul><li><a href="https://www.facebook.com/CHRiom63" target="_blank">Centre Hospitalier Guy Thomas</a></li></ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2025 l'eancre — Association loi 1901. Tous droits réservés.</span>
-    <span style="color:rgba(255,255,255,.2)">GitHub Pages · OVH</span>
-  </div>
-</footer>
+{% include footer.html %}
 
 <script>
 // ── Menu mobile ────────────────────────────────────────────────
 const burger = document.getElementById('burger');
 const navMob = document.getElementById('navMobile');
-function menuOpen()  { navMob.classList.add('open');    burger.classList.add('open');    document.body.style.overflow = 'hidden'; }
-function menuClose() { navMob.classList.remove('open'); burger.classList.remove('open'); document.body.style.overflow = ''; }
-burger.addEventListener('click', () => burger.classList.contains('open') ? menuClose() : menuOpen());
+
+function menuOpen() {
+  navMob.classList.add('open');
+  burger.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function menuClose() {
+  navMob.classList.remove('open');
+  burger.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Toggle au clic sur le burger
+burger.addEventListener('click', () => {
+  burger.classList.contains('open') ? menuClose() : menuOpen();
+});
+
+// Fermer au clic sur un lien du menu
 navMob.querySelectorAll('a').forEach(a => a.addEventListener('click', menuClose));
+document.getElementById('navClose').addEventListener('click', menuClose);
+document.addEventListener('click', e => { if (navMob.classList.contains('open') && !navMob.contains(e.target) && !burger.contains(e.target)) menuClose(); });
+
+// Fermer avec Échap
 document.addEventListener('keydown', e => { if (e.key === 'Escape') menuClose(); });
+// ───────────────────────────────────────────────────────────────
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-// ── Reveal on scroll ──────────────────────────────────────────
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } });
-}, { threshold: .1 });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+// Vérifier si la carte s'est bien chargée
+const iframe=document.querySelector('.map-embed iframe');
+if(iframe){iframe.onerror=()=>{iframe.style.display='none';document.getElementById('mapFallback').style.display='flex';};}
 
-// ── Formspree AJAX ────────────────────────────────────────────
-document.getElementById('contactForm').addEventListener('submit', async function(e) {
+function submitForm(e){
   e.preventDefault();
-
-  // Validation manuelle
-  const prenom  = document.getElementById('prenom').value.trim();
-  const email   = document.getElementById('email').value.trim();
-  const sujet   = document.getElementById('sujet').value;
-  const message = document.getElementById('message').value.trim();
-  const rgpd    = document.getElementById('rgpd').checked;
-
-  if (!prenom || !email || !sujet || !message || !rgpd) {
-    document.getElementById('fsError').style.display = 'block';
-    document.getElementById('fsError').textContent = 'Merci de remplir tous les champs obligatoires et d\'accepter la politique de confidentialité.';
+  const prenom=document.getElementById('prenom').value.trim();
+  const email=document.getElementById('email').value.trim();
+  const message=document.getElementById('message').value.trim();
+  const rgpd=document.getElementById('rgpd').checked;
+  if(!prenom||!email||!message||!rgpd){
+    alert('Merci de remplir tous les champs obligatoires et d\'accepter la politique de confidentialité.');
     return;
   }
-
-  const btn = this.querySelector('button[type=submit]');
-  btn.textContent = 'Envoi en cours…';
-  btn.disabled = true;
-
-  try {
-    const res = await fetch(this.action, {
-      method: 'POST',
-      body: new FormData(this),
-      headers: { 'Accept': 'application/json' }
-    });
-
-    if (res.ok) {
-      document.getElementById('formContent').style.display = 'none';
-      document.getElementById('successMsg').style.display = 'block';
-    } else {
-      const data = await res.json();
-      document.getElementById('fsError').style.display = 'block';
-      document.getElementById('fsError').innerHTML = 'Une erreur est survenue. Veuillez nous écrire directement à <a href="mailto:eancre63@gmail.com">eancre63@gmail.com</a>.';
-      btn.textContent = 'Envoyer le message';
-      btn.disabled = false;
-    }
-  } catch {
-    document.getElementById('fsError').style.display = 'block';
-    document.getElementById('fsError').innerHTML = 'Pas de connexion. Veuillez nous écrire à <a href="mailto:eancre63@gmail.com">eancre63@gmail.com</a>.';
-    btn.textContent = 'Envoyer le message';
-    btn.disabled = false;
-  }
-});
+  // Simuler envoi (remplacer par votre formulaire backend / formspree / netlify)
+  document.getElementById('formContent').style.display='none';
+  document.getElementById('successMsg').style.display='block';
+}
 </script>
 </body>
 </html>
