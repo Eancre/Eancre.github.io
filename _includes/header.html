@@ -1,0 +1,15 @@
+<nav id="nav"{% unless page.url == "/" %} class="light-nav"{% endunless %}>
+  <a href="/" class="nav-logo"><img src="/images/Petit_logo_retour_accueil.png" width="29" height="52" alt="l'eancre — Accueil"></a>
+  <ul class="nav-links">
+    <li><a href="/apropos/"{% if page.url contains "/apropos" %} class="active"{% endif %}>Notre mission</a></li>
+    <li><a href="/projets/"{% if page.url contains "/projets" %} class="active"{% endif %}>Nos projets</a></li>
+    <li><a href="/actualites/"{% if page.url contains "/actualites" %} class="active"{% endif %}>Actualités</a></li>
+    <li><a href="/contact/"{% if page.url contains "/contact" %} class="active"{% endif %}>Contact</a></li>
+    <li><a href="/don/" class="nav-cta{% if page.url contains "/don" %} active{% endif %}">Faire un don</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <button class="nav-mobile-close" id="navClose">✕</button>
+  <a href="/">Accueil</a><a href="/apropos/">Notre mission</a><a href="/projets/">Nos projets</a><a href="/actualites/">Actualités</a><a href="/don/">Faire un don</a><a href="/contact/">Contact</a>
+</div>
