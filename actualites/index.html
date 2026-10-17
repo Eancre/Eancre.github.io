@@ -8,9 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Les actualités de l'eancre — événements, expositions, presse et vie de l'association.">
 <title>Actualités — l'eancre</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap">
+{% include fonts.html %}
 <link rel="stylesheet" href="../style.css">
 <style>
 /* ACTU VEDETTE */
@@ -90,7 +88,7 @@
 
 <div class="page-hero">
   <div class="page-hero-content">
-    <img src="/images/logo_principal.png" width="139" height="60" alt="l'eancre" style="height:60px;width:auto;margin-bottom:1.5rem;mix-blend-mode:lighten;opacity:.9"/>
+    <img src="/images/logo_principal.webp" width="139" height="60" alt="l'eancre" style="height:60px;width:auto;margin-bottom:1.5rem;mix-blend-mode:lighten;opacity:.9"/>
     <span class="section-tag" style="color:var(--rose-light)">Vie de l'association</span>
     <h1>Nos <em>actualités</em></h1>
     <p>Expositions, conférences, presse, événements — suivez toute la vie de l'eancre.</p>
@@ -103,7 +101,7 @@
   <div class="actu-featured-inner">
     <div class="reveal">
       <div class="actu-featured-img" style="aspect-ratio:2/3;max-width:420px;margin:0 auto;box-shadow:var(--shadow-lg)">
-        <img src="/images/octobre-rose-affiche.jpg" width="700" height="1050" alt="Affiche Octobre Rose — Portez la broche de la solidarité, 8€ la broche dont 5€ reversés à l'eancre">
+        <img src="/images/octobre-rose-affiche.webp" width="700" height="1050" alt="Affiche Octobre Rose — Portez la broche de la solidarité, 8€ la broche dont 5€ reversés à l'eancre">
       </div>
     </div>
     <div class="actu-featured-text reveal" style="transition-delay:.15s">
@@ -142,7 +140,7 @@
           <p>Théâtre, randos, concerts, balade culturelle... Le Ruban Rose Entre Limagne et Volcans 63 reverse 60&nbsp;% de ses dons à l'eancre pour financer les soins de support à l'Hôpital de Jour.</p>
           <div style="display:flex;flex-direction:column;align-items:flex-start">
             <a href="/doc/octobre-rose-2026.pdf" target="_blank" class="actu-item-link">Voir le programme complet →</a>
-            <a href="https://octobrerose.fondation-arc.org/" target="_blank" rel="noopener" class="actu-item-link" style="margin-top:.5rem">Site officiel de l'événement →</a>
+            <a href="https://octobrerose.fondation-arc.org/" target="_blank" rel="noopener" class="btn-rose" style="margin-top:1.1rem;padding:.65rem 1.4rem;font-size:.82rem">Site officiel de l'événement →</a>
           </div>
         </div>
       </div>
