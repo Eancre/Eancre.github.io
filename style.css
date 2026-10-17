@@ -3,6 +3,16 @@
    Couleurs : Rose #e62b87 | Bleu #245075 | Violet #9b549c
    ============================================= */
 
+/* ---- POLICES (hébergées sur le site, plus de requête vers Google) ---- */
+@font-face { font-family: 'Cormorant Garamond'; font-style: normal; font-weight: 300 700; font-display: swap;
+  src: url('/fonts/cormorant-garamond-latin-wght-normal.woff2') format('woff2-variations'), url('/fonts/cormorant-garamond-latin-wght-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Cormorant Garamond'; font-style: italic; font-weight: 300 700; font-display: swap;
+  src: url('/fonts/cormorant-garamond-latin-wght-italic.woff2') format('woff2-variations'), url('/fonts/cormorant-garamond-latin-wght-italic.woff2') format('woff2'); }
+@font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 100 1000; font-display: swap;
+  src: url('/fonts/dm-sans-latin-wght-normal.woff2') format('woff2-variations'), url('/fonts/dm-sans-latin-wght-normal.woff2') format('woff2'); }
+@font-face { font-family: 'DM Sans'; font-style: italic; font-weight: 100 1000; font-display: swap;
+  src: url('/fonts/dm-sans-latin-wght-italic.woff2') format('woff2-variations'), url('/fonts/dm-sans-latin-wght-italic.woff2') format('woff2'); }
+
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
