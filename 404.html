@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <title>Redirection…</title>
+  <script>
+    var p = location.pathname;
+    if (/\.html$/.test(p) && p !== "/404.html") {
+      // Ancienne page en .html : on retire .html et on met un /
+      location.replace(p.replace(/\.html$/, "/"));
+    } else {
+      // Tout le reste : retour à l'accueil
+      location.replace("/");
+    }
+  </script>
+  <noscript><meta http-equiv="refresh" content="0; url=/"></noscript>
+</head>
+<body>
+  <p>Redirection en cours… <a href="/">Retour à l'accueil</a></p>
+</body>
+</html>
