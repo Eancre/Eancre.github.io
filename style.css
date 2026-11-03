@@ -275,3 +275,14 @@ footer {
   .page-hero { padding: 8rem 1.5rem 4rem; }
   .section { padding: 4rem 1.5rem; }
 }
+/* ---- CARTE : repli centré (page contact) ---- */
+.map-embed .map-placeholder {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: .5rem;
+}
+.map-embed .map-placeholder p {
+  color: rgba(255, 255, 255, .85);
+}
