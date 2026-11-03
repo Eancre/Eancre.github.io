@@ -283,6 +283,6 @@ footer {
   text-align: center;
   gap: .5rem;
 }
-.map-embed .map-placeholder p {
-  color: rgba(255, 255, 255, .85);
+.map-section .map-embed .map-placeholder p {
+  color: #fff !important;
 }
