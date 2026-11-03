@@ -245,5 +245,34 @@ function submitForm(e){
   document.getElementById('successMsg').style.display='block';
 }
 </script>
+<script>
+(function () {
+  var iframe = document.querySelector('.map-embed iframe');
+  var fallback = document.getElementById('mapFallback');
+  if (!iframe || !fallback) return;
+
+  var loaded = false;
+  iframe.addEventListener('load', function () { loaded = true; });
+
+  function startTimer() {
+    setTimeout(function () {
+      if (!loaded) {
+        iframe.style.display = 'none';
+        fallback.style.display = 'block';
+      }
+    }, 5000);
+  }
+
+  // Le timer ne démarre que quand la carte approche de l'écran (à cause de loading="lazy")
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) { startTimer(); obs.disconnect(); }
+    }, { rootMargin: '200px' });
+    obs.observe(iframe);
+  } else {
+    startTimer();
+  }
+})();
+</script>
 </body>
 </html>
