@@ -1,0 +1,23 @@
+<script>
+/* Google Tag Manager chargé en différé : à la 1re interaction (scroll, clic, touche)
+   ou, à défaut, 3,5 s après la fin du chargement de la page. */
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+(function () {
+  var started = false;
+  function loadGTM() {
+    if (started) return;
+    started = true;
+    dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-MMCJPQDF';
+    document.head.appendChild(s);
+  }
+  ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (evt) {
+    window.addEventListener(evt, loadGTM, { once: true, passive: true });
+  });
+  window.addEventListener('load', function () { setTimeout(loadGTM, 3500); });
+})();
+</script>
