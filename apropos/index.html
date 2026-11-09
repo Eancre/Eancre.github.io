@@ -3,15 +3,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-MMCJPQDF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-</script>
 <meta charset="UTF-8">
 <link rel="icon" type="image/png" href="/images/logo_onglet.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Histoire, objectifs et équipe de l'eancre, association créée en 2009 pour améliorer le quotidien des patients et de leurs proches au CH de Riom.">
+<link rel="canonical" href="https://www.asso-eancre.fr/apropos/">
 <title>Qui sommes-nous — l'eancre</title>
 {% include fonts.html %}
 <link rel="stylesheet" href="../style.css">
@@ -45,7 +41,7 @@
 .mission-item { background:white; border-radius:16px; padding:2rem; border:1px solid var(--border); display:flex; gap:1.2rem; opacity:0; transform:translateY(20px); transition:all .5s ease; }
 .mission-item.vis { opacity:1; transform:none; }
 .mission-item:hover { box-shadow:var(--shadow-sm); transform:translateY(-3px); }
-.mission-num { font-family:'Cormorant Garamond',serif; font-size:2.5rem; font-weight:600; color:var(--rose-pale); flex-shrink:0; line-height:1; }
+.mission-num { font-family:'Cormorant Garamond',serif; font-size:2.5rem; font-weight:600; color:#c9729f; flex-shrink:0; line-height:1; }
 .mission-content h3 { font-size:1.05rem; font-weight:600; color:var(--text-dark); margin-bottom:.5rem; }
 .mission-content p { font-size:.88rem; }
 .fiscal-note { background:var(--violet-pale); border-radius:12px; padding:1.2rem 1.5rem; margin-top:2rem; display:flex; gap:1rem; align-items:center; max-width:700px; margin-left:auto; margin-right:auto; }
@@ -66,9 +62,9 @@
 .tl-dot { width:14px; height:14px; border-radius:50%; background:var(--rose); flex-shrink:0; box-shadow:0 0 0 4px rgba(230,43,135,.2); }
 .tl-dot.v { background:var(--violet); box-shadow:0 0 0 4px rgba(155,84,156,.2); }
 .tl-dot.b { background:var(--bleu-light); box-shadow:0 0 0 4px rgba(47,106,158,.2); }
-.tl-year { font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:600; color:rgba(255,255,255,.5); }
+.tl-year { font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:600; color:rgba(255,255,255,.72); }
 .tl-content h3 { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:600; color:white; margin-bottom:.3rem; }
-.tl-content p { font-size:.85rem; color:rgba(255,255,255,.5); line-height:1.7; font-weight:300; }
+.tl-content p { font-size:.85rem; color:rgba(255,255,255,.72); line-height:1.7; font-weight:300; }
 .tl-item.even .tl-left { order:3; text-align:left; padding-right:0; padding-left:2rem; }
 .tl-item.even .tl-right { order:1; text-align:right; padding-left:0; padding-right:2rem; }
 .tl-item.even .tl-center { order:2; }
@@ -85,8 +81,9 @@
 
 /* PARTENAIRES */
 .partners-section { background:var(--off-white); padding:5rem 2rem; text-align:center; }
-.partners-logos { list-style: none; display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; max-width:900px; margin:2rem auto 0; }
+.partners-logos { list-style: none; padding:0; display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; max-width:900px; margin:2rem auto 0; }
 .partner-pill { background:white; border:1px solid var(--border); border-radius:30px; padding:.7rem 1.6rem; font-size:.88rem; font-weight:400; color:var(--text-mid); transition:all .3s; }
+.partner-pill span { color:var(--text-mid); }
 .partner-pill:hover { border-color:var(--violet); color:var(--violet); transform:translateY(-2px); box-shadow:var(--shadow-sm); text-decoration: none; }
 .partner-pill a {text-decoration: none; }
 
@@ -105,10 +102,15 @@
   .values-grid,.team-grid { grid-template-columns:1fr; }
 }
 </style>
+{% include a11y-fixes.html %}
+{% include gtm.html %}
 </head>
 <body>
+<a class="skip-link" href="#main">Aller au contenu principal</a>
 
 {% include header.html %}
+
+<main id="main" tabindex="-1">
 
 <div class="page-hero">
   <div class="page-hero-content">
@@ -181,7 +183,7 @@
       <div class="mission-item"><div class="mission-num">06</div><div class="mission-content"><h3>Fédérer les générosités</h3><p>Récolter des dons et fonds indispensables pour pérenniser et concrétiser nos projets. 100 % des fonds recueillis sont directement réinvestis au bénéfice des patients.</p></div></div>
     </div>
     <div class="fiscal-note reveal">
-      <span style="font-size:1.8rem">💜</span>
+      <span style="font-size:1.8rem" aria-hidden="true">💜</span>
       <p>Reconnue d'utilité générale, l'association permet aux donateurs particuliers de bénéficier d'une <strong>réduction d'impôt à hauteur de 66 %</strong> du montant versé.</p>
     </div>
   </div>
@@ -266,7 +268,7 @@
       <div class="team-card"><div class="team-avatar" style="background:var(--violet)">PP</div><h3>Pauline De Pinho</h3><p>Membre du CA</p></div>
       <div class="team-card"><div class="team-avatar" style="background:linear-gradient(135deg,var(--rose),var(--violet))">FB</div><h3>Flavien Bec</h3><p>Responsable de publication</p></div>
     </div>
-    <p style="text-align:center;margin-top:2rem;font-size:.9rem;color:var(--text-light)">+ 22 bénévoles actifs · <a href="/contact/" style="color:var(--rose);text-decoration:none;font-weight:500">Nous contacter →</a></p>
+    <p style="text-align:center;margin-top:2rem;font-size:.9rem;color:var(--text-light)">+ 22 bénévoles actifs · <a href="/contact/" style="color:var(--rose-text);text-decoration:underline;font-weight:500">Nous contacter →</a></p>
   </div>
 </section>
 
@@ -277,26 +279,28 @@
     <h2 style="margin-top:.5rem">Nos précieux <em>partenaires</em></h2>
     <p style="font-size:.95rem;max-width:580px;margin:.8rem auto 0">Merci à chacun d'entre eux — leur soutien rend possible notre action au quotidien.</p>
   </div>
-  <div class="partners-logos">
-    <div class="partner-pill"><a href="/don/">Donateurs particuliers</a></div>
-    <div class="partner-pill"><a href="https://www.ville-riom.fr/annuaire/ruban-rose-entre-limagne-et-volcans/">Le Ruban Rose Entre Limagne et Volcans 63</a></div>
-    <div class="partner-pill"><a href="#">Volvic en Rose</a></div>
-    <div class="partner-pill"><a href="#">Lions Club</a></div>
-    <div class="partner-pill"><a href="https://e.leclerc/mag/e-leclerc-volvic">Leclerc Enval</a></div>
-    <div class="partner-pill"><a href="https://www.instagram.com/bouillon.saint.amable/">Le Bouillon Saint-Amable</a></div>
-    <div class="partner-pill"><a href="https://www.ville-riom.fr/">Ville de Riom</a></div>
-    <div class="partner-pill"><a href="https://www.rlv.eu/">Riom Limagne &amp; Volcans</a></div>
-    <div class="partner-pill"><a href="https://ch-riom.fr/">Centre Hospitalier Guy Thomas</a></div>
-  </div>
+  <ul class="partners-logos">
+    <li class="partner-pill"><a href="/don/">Donateurs particuliers</a></li>
+    <li class="partner-pill"><a href="https://www.ville-riom.fr/annuaire/ruban-rose-entre-limagne-et-volcans/">Le Ruban Rose Entre Limagne et Volcans 63</a></li>
+    <li class="partner-pill"><span>Volvic en Rose</span></li>
+    <li class="partner-pill"><span>Lions Club</span></li>
+    <li class="partner-pill"><a href="https://e.leclerc/mag/e-leclerc-volvic">Leclerc Enval</a></li>
+    <li class="partner-pill"><a href="https://www.instagram.com/bouillon.saint.amable/">Le Bouillon Saint-Amable</a></li>
+    <li class="partner-pill"><a href="https://www.ville-riom.fr/">Ville de Riom</a></li>
+    <li class="partner-pill"><a href="https://www.rlv.eu/">Riom Limagne &amp; Volcans</a></li>
+    <li class="partner-pill"><a href="https://ch-riom.fr/">Centre Hospitalier Guy Thomas</a></li>
+  </ul>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 {% include footer.html %}
 
 <script>
 const burger=document.getElementById('burger'),navMob=document.getElementById('navMobile');
-function menuOpen(){navMob.classList.add('open');burger.classList.add('open');document.body.style.overflow='hidden';}
-function menuClose(){navMob.classList.remove('open');burger.classList.remove('open');document.body.style.overflow='';}
+function menuOpen(){navMob.classList.add('open');burger.classList.add('open');burger.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+function menuClose(){navMob.classList.remove('open');burger.classList.remove('open');burger.setAttribute('aria-expanded','false');document.body.style.overflow='';}
 burger.addEventListener('click',()=>burger.classList.contains('open')?menuClose():menuOpen());
 navMob.querySelectorAll('a').forEach(a=>a.addEventListener('click',menuClose));
 document.getElementById('navClose').addEventListener('click', menuClose);
