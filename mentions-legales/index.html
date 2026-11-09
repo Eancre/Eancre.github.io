@@ -2,17 +2,13 @@
 ---
 <!DOCTYPE html>
 <html lang="fr">
-<head> 
-  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-MMCJPQDF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-</script>
+<head>
 <meta charset="UTF-8">
 <link rel="icon" href="/images/logo_onglet.png" type="image/png">
 <link rel="shortcut icon" href="/images/logo_onglet.png" type="image/png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Mentions légales du site de l'eancre, association loi 1901 de Riom : éditeur, responsable de publication, hébergement, données personnelles et cookies.">
+<link rel="canonical" href="https://www.asso-eancre.fr/mentions-legales/">
 <title>Mentions légales — l'eancre</title>
 {% include fonts.html %}
 <link rel="stylesheet" href="../style.css">
@@ -25,22 +21,27 @@
 .legal-block h2 em { color: var(--violet); }
 .legal-block p { font-size: .95rem; line-height: 1.9; margin-bottom: .8rem; }
 .legal-block p:last-child { margin-bottom: 0; }
-.legal-block a { color: var(--rose); text-decoration: none; }
-.legal-block a:hover { text-decoration: underline; }
+.legal-block a { color: var(--rose-text); text-decoration: underline; text-underline-offset: 2px; }
+.legal-block a:hover { text-decoration-thickness: 2px; }
 .legal-block ul { list-style: none; margin: .5rem 0; }
 .legal-block ul li { font-size: .95rem; color: var(--text-mid); padding: .3rem 0; display: flex; gap: .6rem; }
 .legal-block ul li::before { content: '—'; color: var(--violet); flex-shrink: 0; }
-.legal-tag { display: inline-block; background: var(--rose-pale); color: var(--rose); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; padding: .3rem .8rem; border-radius: 20px; font-weight: 500; margin-bottom: 1rem; }
+.legal-tag { display: inline-block; background: var(--rose-pale); color: var(--rose-text); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; padding: .3rem .8rem; border-radius: 20px; font-weight: 500; margin-bottom: 1rem; }
 .siren-badge { background: var(--violet-pale); border: 1px solid var(--border); border-radius: 14px; padding: 1.1rem 1.4rem; margin-top: 1.3rem; }
 .siren-badge p { font-size: .9rem; line-height: 1.75; color: var(--text-mid); margin: 0; }
 .siren-badge strong { color: var(--text-dark); }
 .siren-badge a { color: var(--violet); font-weight: 500; text-decoration: underline; text-decoration-color: rgba(155,84,156,.35); text-underline-offset: 2px; }
 .siren-badge a:hover { color: var(--rose); text-decoration-color: var(--rose); }
 </style>
+{% include a11y-fixes.html %}
+{% include gtm.html %}
 </head>
 <body>
+<a class="skip-link" href="#main">Aller au contenu principal</a>
 
 {% include header.html %}
+
+<main id="main" tabindex="-1">
 
 <div class="page-hero">
   <div class="page-hero-content">
@@ -142,13 +143,15 @@
   </div>
 </section>
 
+</main>
+
 {% include footer.html %}
 
 <script>
 const burger = document.getElementById('burger');
 const navMob = document.getElementById('navMobile');
-function menuOpen() { navMob.classList.add('open'); burger.classList.add('open'); document.body.style.overflow = 'hidden'; }
-function menuClose() { navMob.classList.remove('open'); burger.classList.remove('open'); document.body.style.overflow = ''; }
+function menuOpen() { navMob.classList.add('open'); burger.classList.add('open');burger.setAttribute('aria-expanded','true'); document.body.style.overflow = 'hidden'; }
+function menuClose() { navMob.classList.remove('open'); burger.classList.remove('open');burger.setAttribute('aria-expanded','false'); document.body.style.overflow = ''; }
 burger.addEventListener('click', () => { burger.classList.contains('open') ? menuClose() : menuOpen(); });
 navMob.querySelectorAll('a').forEach(a => a.addEventListener('click', menuClose));
 document.getElementById('navClose').addEventListener('click', menuClose);
