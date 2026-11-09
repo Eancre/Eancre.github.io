@@ -3,15 +3,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-MMCJPQDF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-</script>
 <meta charset="UTF-8">
 <link rel="icon" type="image/png" href="/images/logo_onglet.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://www.asso-eancre.fr/contact/">
 <meta name="description" content="Contacter l'eancre — association pour les soins palliatifs à Riom.">
 <title>Contact — l'eancre</title>
 {% include fonts.html %}
@@ -31,7 +26,7 @@
 .info-card-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
 .info-card h3 { font-family: 'DM Sans', sans-serif; font-size: .78rem; letter-spacing: .15em; text-transform: uppercase; color: var(--text-light); margin-bottom: .3rem; font-weight: 500; }
 .info-card p, .info-card a { font-size: .95rem; color: var(--text-dark); text-decoration: none; font-weight: 400; line-height: 1.5; }
-.info-card a:hover { color: var(--rose); }
+.info-card a:hover { color: var(--rose-text); }
 
 /* ---- BÉNÉVOLES ---- */
 .benevolat-box { background: linear-gradient(135deg, var(--bleu-dark), #2a1a5a); border-radius: 20px; padding: 2rem; margin-top: 2.5rem; position: relative; overflow: hidden; }
@@ -52,7 +47,7 @@
 .form-check { display: flex; align-items: flex-start; gap: .8rem; margin-bottom: 1.5rem; }
 .form-check input[type=checkbox] { width: 18px; height: 18px; border-radius: 4px; border: 2px solid var(--border); margin-top: .15rem; cursor: pointer; accent-color: var(--rose); flex-shrink: 0; }
 .form-check label { font-size: .85rem; color: var(--text-mid); line-height: 1.6; cursor: pointer; }
-.form-check label a { color: var(--rose); text-decoration: none; }
+.form-check label a { color: var(--rose-text); text-decoration: underline; }
 .submit-btn { width: 100%; padding: 1.1rem; font-size: 1rem; }
 
 /* ---- SUCCESS ---- */
@@ -69,6 +64,9 @@
 .map-embed iframe { width: 100%; height: 100%; border: none; }
 .map-placeholder { width: 100%; height: 100%; background: linear-gradient(135deg, var(--bleu-dark), #2a1a5a); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; color: rgba(255,255,255,.6); font-size: 1rem; }
 .map-placeholder span { font-size: 3rem; }
+.map-placeholder p { margin: 0; text-align: center; padding: 0 1rem; }
+.map-actions { display: flex; flex-wrap: wrap; gap: .8rem; justify-content: center; }
+.map-note { font-size: .8rem; opacity: .85; }
 
 @media (max-width: 900px) {
   .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
@@ -76,10 +74,15 @@
   .contact-form-wrap { padding: 2rem 1.5rem; }
 }
 </style>
+{% include a11y-fixes.html %}
+{% include gtm.html %}
 </head>
 <body>
+<a class="skip-link" href="#main">Aller au contenu principal</a>
 
 {% include header.html %}
+
+<main id="main" tabindex="-1">
 
 <!-- PAGE HERO -->
 <div class="page-hero">
@@ -103,15 +106,15 @@
       <p>L'équipe de l'eancre est toujours disponible pour répondre à vos questions, parler de nos projets ou accueillir vos idées.</p>
       <div class="info-cards">
         <div class="info-card">
-          <div class="info-card-icon" style="background:var(--rose-pale)">📧</div>
+          <div class="info-card-icon" style="background:var(--rose-pale)" aria-hidden="true">📧</div>
           <div><h3>E-mail</h3><a href="mailto:eancre63@gmail.com">eancre63@gmail.com</a></div>
         </div>
         <div class="info-card">
-          <div class="info-card-icon" style="background:#e3edf5">📍</div>
+          <div class="info-card-icon" style="background:#e3edf5" aria-hidden="true">📍</div>
           <div><h3>Adresse</h3><p>CH Guy Thomas<br>79 Bd Etienne Clémentel<br>63200 RIOM</p></div>
         </div>
         <div class="info-card">
-          <div class="info-card-icon" style="background:var(--violet-pale)">🏥</div>
+          <div class="info-card-icon" style="background:var(--violet-pale)" aria-hidden="true">🏥</div>
           <div><h3>Lieu d'action principal</h3><p>Centre Hospitalier de Riom</p></div>
         </div>
       </div>
@@ -126,17 +129,17 @@
         <div class="form-row">
           <div class="form-group">
             <label for="prenom">Prénom *</label>
-            <input type="text" id="prenom" placeholder="Jean" required>
+            <input type="text" id="prenom" placeholder="Jean" autocomplete="given-name" required>
           </div>
           <div class="form-group">
             <label for="nom">Nom *</label>
-            <input type="text" id="nom" placeholder="Dupont" required>
+            <input type="text" id="nom" placeholder="Dupont" autocomplete="family-name" required>
           </div>
         </div>
 
         <div class="form-group">
           <label for="email">Adresse e-mail *</label>
-          <input type="email" id="email" placeholder="jean.dupont@email.fr" required>
+          <input type="email" id="email" placeholder="jean.dupont@email.fr" autocomplete="email" required>
         </div>
 
         <div class="form-group">
@@ -165,8 +168,8 @@
         <button class="btn-rose submit-btn" onclick="submitForm(event)">Envoyer le message</button>
       </div>
 
-      <div class="success-msg" id="successMsg">
-        <span class="success-icon">💌</span>
+      <div class="success-msg" id="successMsg" role="status">
+        <span class="success-icon" aria-hidden="true">💌</span>
         <h3>Message envoyé !</h3>
         <p>Merci pour votre message. Nous vous répondrons dans les 48 heures.</p>
         <a href="/" class="btn-bleu" style="margin-top:2rem">Retour à l'accueil</a>
@@ -183,19 +186,21 @@
       <span class="section-tag tag-bleu">Nous trouver</span>
       <h2 style="margin-top:.5rem">l'eancre à <em>Riom</em></h2>
     </div>
-    <div class="map-embed reveal" style="transition-delay:.15s">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2639.6574650215775!2d3.1130994000000003!3d45.89002560000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f723e323a0d2fb%3A0x3f4dc09bdee39743!2sl'eancre!5e1!3m2!1sfr!2sfr!4v1793694856518!5m2!1sfr!2sfr" 
-        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
-      
-        </iframe>
-      <div class="map-placeholder" id="mapFallback" style="display:none">
-        <span>📍</span>
+    <div class="map-embed reveal" id="mapEmbed" style="transition-delay:.15s">
+      <div class="map-placeholder" id="mapFacade">
+        <span aria-hidden="true">📍</span>
         <p>79 Bd Etienne Clémentel, 63200 Riom</p>
-        <a href="https://www.google.com/maps/place/l'eancre/data=!4m2!3m1!1s0x47f723e323a0d2fb:0x3f4dc09bdee39743?hl=fr&trk=https%3A%2F%2Fc.gle%2FAGSJxQzgPzwabo2w-PmutDR6Uwxbo55I6smvzhLdqAglMqmEwOcwHv4qYHdD04sGi8SjKxK9YVYtqetDdTqJ3Xsndi1T4NZEQE3e0lyJ1ORQY6ejhBD21DfAzYpY9kXHdw" target="_blank" class="btn-outline-white" style="margin-top:.5rem;font-size:.88rem">Ouvrir dans Maps</a>
+        <div class="map-actions">
+          <button type="button" class="btn-rose" id="mapLoad" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2639.6574650215775!2d3.1130994000000003!3d45.89002560000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f723e323a0d2fb%3A0x3f4dc09bdee39743!2sl'eancre!5e1!3m2!1sfr!2sfr!4v1793694856518!5m2!1sfr!2sfr">Afficher la carte</button>
+          <a href="https://www.google.com/maps/place/l'eancre/data=!4m2!3m1!1s0x47f723e323a0d2fb:0x3f4dc09bdee39743?hl=fr&trk=https%3A%2F%2Fc.gle%2FAGSJxQzgPzwabo2w-PmutDR6Uwxbo55I6smvzhLdqAglMqmEwOcwHv4qYHdD04sGi8SjKxK9YVYtqetDdTqJ3Xsndi1T4NZEQE3e0lyJ1ORQY6ejhBD21DfAzYpY9kXHdw" target="_blank" rel="noopener" class="btn-outline-white">Ouvrir dans Google Maps<span class="sr-only"> (nouvel onglet)</span></a>
+        </div>
+        <p class="map-note">La carte est fournie par Google : elle ne se charge qu'à votre demande.</p>
       </div>
     </div>
   </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 {% include footer.html %}
@@ -207,12 +212,12 @@ const navMob = document.getElementById('navMobile');
 
 function menuOpen() {
   navMob.classList.add('open');
-  burger.classList.add('open');
+  burger.classList.add('open');burger.setAttribute('aria-expanded','true');
   document.body.style.overflow = 'hidden';
 }
 function menuClose() {
   navMob.classList.remove('open');
-  burger.classList.remove('open');
+  burger.classList.remove('open');burger.setAttribute('aria-expanded','false');
   document.body.style.overflow = '';
 }
 
@@ -232,9 +237,6 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') menuClose();
 const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});},{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-// Vérifier si la carte s'est bien chargée
-const iframe=document.querySelector('.map-embed iframe');
-if(iframe){iframe.onerror=()=>{iframe.style.display='none';document.getElementById('mapFallback').style.display='flex';};}
 
 function submitForm(e){
   e.preventDefault();
@@ -252,32 +254,21 @@ function submitForm(e){
 }
 </script>
 <script>
+// Carte Google Maps : chargée uniquement au clic (performance + pas de cookies Google avant action)
 (function () {
-  var iframe = document.querySelector('.map-embed iframe');
-  var fallback = document.getElementById('mapFallback');
-  if (!iframe || !fallback) return;
-
-  var loaded = false;
-  iframe.addEventListener('load', function () { loaded = true; });
-
-  function startTimer() {
-    setTimeout(function () {
-      if (!loaded) {
-        iframe.style.display = 'none';
-        fallback.style.display = 'flex';
-      }
-    }, 5000);
-  }
-
-  // Le timer ne démarre que quand la carte approche de l'écran (à cause de loading="lazy")
-  if ('IntersectionObserver' in window) {
-    var obs = new IntersectionObserver(function (entries) {
-      if (entries[0].isIntersecting) { startTimer(); obs.disconnect(); }
-    }, { rootMargin: '200px' });
-    obs.observe(iframe);
-  } else {
-    startTimer();
-  }
+  var btn = document.getElementById('mapLoad');
+  var box = document.getElementById('mapEmbed');
+  if (!btn || !box) return;
+  btn.addEventListener('click', function () {
+    var f = document.createElement('iframe');
+    f.src = btn.getAttribute('data-src');
+    f.title = "Carte Google Maps : l'eancre, 79 boulevard Étienne Clémentel, Riom";
+    f.width = '600'; f.height = '450';
+    f.allowFullscreen = true;
+    f.referrerPolicy = 'strict-origin-when-cross-origin';
+    box.replaceChildren(f);
+    f.focus();
+  });
 })();
 </script>
 </body>
