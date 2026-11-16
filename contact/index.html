@@ -49,6 +49,8 @@
 .form-check label { font-size: .85rem; color: var(--text-mid); line-height: 1.6; cursor: pointer; }
 .form-check label a { color: var(--rose-text); text-decoration: underline; }
 .submit-btn { width: 100%; padding: 1.1rem; font-size: 1rem; }
+.submit-btn:disabled { opacity: .7; cursor: wait; }
+.form-error { background: #fdecee; color: #a8071a; border: 1px solid #f5b5bd; border-radius: 12px; padding: .9rem 1.1rem; font-size: .9rem; line-height: 1.6; margin: 0 0 1.2rem; }
 
 /* ---- SUCCESS ---- */
 .success-msg { display: none; text-align: center; padding: 3rem 2rem; }
@@ -122,29 +124,30 @@
 
     <!-- FORMULAIRE -->
     <div class="contact-form-wrap reveal" style="transition-delay:.2s">
-      <div id="formContent">
+      <form id="formContent" action="https://formspree.io/f/xgavbdrz" method="POST">
         <h3>Envoyez-nous un <em>message</em></h3>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <p>Tous les champs marqués * sont obligatoires</p>
 
         <div class="form-row">
           <div class="form-group">
             <label for="prenom">Prénom *</label>
-            <input type="text" id="prenom" placeholder="Jean" autocomplete="given-name" required>
+            <input type="text" id="prenom" name="prenom" placeholder="Jean" autocomplete="given-name" required>
           </div>
           <div class="form-group">
             <label for="nom">Nom *</label>
-            <input type="text" id="nom" placeholder="Dupont" autocomplete="family-name" required>
+            <input type="text" id="nom" name="nom" placeholder="Dupont" autocomplete="family-name" required>
           </div>
         </div>
 
         <div class="form-group">
           <label for="email">Adresse e-mail *</label>
-          <input type="email" id="email" placeholder="jean.dupont@email.fr" autocomplete="email" required>
+          <input type="email" id="email" name="email" placeholder="jean.dupont@email.fr" autocomplete="email" required>
         </div>
 
         <div class="form-group">
           <label for="sujet">Sujet *</label>
-          <select id="sujet" required>
+          <select id="sujet" name="sujet" required>
             <option value="" disabled selected>Choisissez un sujet</option>
             <option>Question générale sur l'association</option>
             <option>Proposer un projet artistique</option>
@@ -157,18 +160,20 @@
 
         <div class="form-group">
           <label for="message">Votre message *</label>
-          <textarea id="message" placeholder="Décrivez votre demande en quelques mots…" required></textarea>
+          <textarea id="message" name="message" placeholder="Décrivez votre demande en quelques mots…" required></textarea>
         </div>
 
         <div class="form-check">
-          <input type="checkbox" id="rgpd" required>
+          <input type="checkbox" id="rgpd" name="consentement" value="oui" required>
           <label for="rgpd">J'accepte que mes données soient utilisées pour traiter ma demande, conformément à notre <a href="/mentions-legales/">politique de confidentialité</a>. *</label>
         </div>
 
-        <button class="btn-rose submit-btn" onclick="submitForm(event)">Envoyer le message</button>
-      </div>
+        <p class="form-error" id="formError" role="alert" hidden></p>
 
-      <div class="success-msg" id="successMsg" role="status">
+        <button type="submit" class="btn-rose submit-btn" id="submitBtn">Envoyer le message</button>
+      </form>
+
+      <div class="success-msg" id="successMsg" role="status" tabindex="-1">
         <span class="success-icon" aria-hidden="true">💌</span>
         <h3>Message envoyé !</h3>
         <p>Merci pour votre message. Nous vous répondrons dans les 48 heures.</p>
@@ -238,20 +243,37 @@ const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersect
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 
-function submitForm(e){
+const contactForm = document.getElementById('formContent');
+contactForm.addEventListener('submit', async function (e) {
   e.preventDefault();
-  const prenom=document.getElementById('prenom').value.trim();
-  const email=document.getElementById('email').value.trim();
-  const message=document.getElementById('message').value.trim();
-  const rgpd=document.getElementById('rgpd').checked;
-  if(!prenom||!email||!message||!rgpd){
-    alert('Merci de remplir tous les champs obligatoires et d\'accepter la politique de confidentialité.');
-    return;
+  const btn = document.getElementById('submitBtn');
+  const err = document.getElementById('formError');
+  const label = btn.textContent;
+  err.hidden = true;
+  btn.disabled = true;
+  btn.textContent = 'Envoi en cours…';
+  try {
+    const data = new FormData(contactForm);
+    data.append('_subject', "Site l'eancre — " + (data.get('sujet') || 'Nouveau message'));
+    const res = await fetch(contactForm.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+    if (res.ok) {
+      contactForm.style.display = 'none';
+      const ok = document.getElementById('successMsg');
+      ok.style.display = 'block';
+      ok.focus();
+      return;
+    }
+    let detail = '';
+    try { const j = await res.json(); if (j.errors) detail = j.errors.map(function (x) { return x.message; }).join(' '); } catch (_) {}
+    throw new Error(detail);
+  } catch (_) {
+    err.textContent = "Votre message n'a pas pu être envoyé. Vérifiez votre connexion et réessayez, ou écrivez-nous directement à eancre63@gmail.com.";
+    err.hidden = false;
+  } finally {
+    btn.disabled = false;
+    btn.textContent = label;
   }
-  // Simuler envoi (remplacer par votre formulaire backend / formspree / netlify)
-  document.getElementById('formContent').style.display='none';
-  document.getElementById('successMsg').style.display='block';
-}
+});
 </script>
 <script>
 // Carte Google Maps : chargée uniquement au clic (performance + pas de cookies Google avant action)
