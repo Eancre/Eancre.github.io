@@ -2,16 +2,22 @@
 ---
 <!DOCTYPE html>
 <html lang="fr">
-<head> 
-  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-MMCJPQDF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-</script>
+<head>
 <meta charset="UTF-8">
 <link rel="icon" type="image/png" href="/images/logo_onglet.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://www.asso-eancre.fr/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="l'eancre">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="l'eancre — Association pour les soins palliatifs">
+<meta property="og:description" content="l'eancre — Association loi 1901 qui améliore les conditions d'accueil des patients en soins palliatifs et de leurs proches au Centre Hospitalier de Riom depuis 2009.">
+<meta property="og:url" content="https://www.asso-eancre.fr/">
+<meta property="og:image" content="https://www.asso-eancre.fr/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Logo de l'eancre, association pour les patients en soins palliatifs à Riom">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="description" content="l'eancre — Association loi 1901 qui améliore les conditions d'accueil des patients en soins palliatifs et de leurs proches au Centre Hospitalier de Riom depuis 2009.">
 <title>l'eancre — Association pour les soins palliatifs</title>
 {% include fonts.html %}
@@ -108,6 +114,32 @@ canvas#pc { position: absolute; inset: 0; pointer-events: none; }
   .actu-header { flex-direction:column; align-items:flex-start; }
 }
 </style>
+{% include gtm.html %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NGO",
+  "name": "l'eancre",
+  "description": "l'eancre — Association loi 1901 qui améliore les conditions d'accueil des patients en soins palliatifs et de leurs proches au Centre Hospitalier de Riom depuis 2009.",
+  "url": "https://www.asso-eancre.fr/",
+  "logo": "https://www.asso-eancre.fr/images/logo_principal.webp",
+  "image": "https://www.asso-eancre.fr/images/og-image.jpg",
+  "email": "eancre63@gmail.com",
+  "foundingDate": "2009",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "79 Bd Etienne Clémentel",
+    "postalCode": "63200",
+    "addressLocality": "Riom",
+    "addressCountry": "FR"
+  },
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "SIREN",
+    "value": "810380642"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -246,15 +278,6 @@ canvas#pc { position: absolute; inset: 0; pointer-events: none; }
 <script>
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>70));
-
-const burger=document.getElementById('burger'),navMob=document.getElementById('navMobile');
-function menuOpen(){navMob.classList.add('open');burger.classList.add('open');document.body.style.overflow='hidden';}
-function menuClose(){navMob.classList.remove('open');burger.classList.remove('open');document.body.style.overflow='';}
-burger.addEventListener('click',()=>burger.classList.contains('open')?menuClose():menuOpen());
-navMob.querySelectorAll('a').forEach(a=>a.addEventListener('click',menuClose));
-document.getElementById('navClose').addEventListener('click', menuClose);
-document.addEventListener('click', e => { if (navMob.classList.contains('open') && !navMob.contains(e.target) && !burger.contains(e.target)) menuClose(); });
-document.addEventListener('keydown',e=>{if(e.key==='Escape')menuClose();});
 
 const cv=document.getElementById('pc'),cx=cv.getContext('2d');
 let W,H,pts=[];
