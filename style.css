@@ -8,9 +8,9 @@
   src: url('/fonts/cormorant-garamond-latin-wght-normal.woff2') format('woff2-variations'), url('/fonts/cormorant-garamond-latin-wght-normal.woff2') format('woff2'); }
 @font-face { font-family: 'Cormorant Garamond'; font-style: italic; font-weight: 300 700; font-display: swap;
   src: url('/fonts/cormorant-garamond-latin-wght-italic.woff2') format('woff2-variations'), url('/fonts/cormorant-garamond-latin-wght-italic.woff2') format('woff2'); }
-@font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 100 1000; font-display: swap;
+@font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 300 1000; font-display: swap;
   src: url('/fonts/dm-sans-latin-wght-normal.woff2') format('woff2-variations'), url('/fonts/dm-sans-latin-wght-normal.woff2') format('woff2'); }
-@font-face { font-family: 'DM Sans'; font-style: italic; font-weight: 100 1000; font-display: swap;
+@font-face { font-family: 'DM Sans'; font-style: italic; font-weight: 300 1000; font-display: swap;
   src: url('/fonts/dm-sans-latin-wght-italic.woff2') format('woff2-variations'), url('/fonts/dm-sans-latin-wght-italic.woff2') format('woff2'); }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,7 +29,9 @@
   --off-white:    #f8f5fb;
   --text-dark:    #162f45;
   --text-mid:     #3d5a70;
-  --text-light:   #7a9ab5;
+  --text-light:   #54718b;   /* 5,1:1 sur blanc (avant #7a9ab5 = 2,9:1) */
+  --rose-text:    #c4146c;   /* rose pour du TEXTE sur fond clair (5,7:1) */
+  --violet-text:  #7d3a7e;
   --border:       #e5ddf0;
   --shadow-sm:    0 4px 16px rgba(36,80,117,.1);
   --shadow-md:    0 12px 40px rgba(36,80,117,.14);
@@ -55,7 +57,7 @@ p { font-weight: 300; line-height: 1.9; color: var(--text-mid); }
   font-weight: 500;
   margin-bottom: 1rem;
 }
-.tag-rose   { color: var(--rose); }
+.tag-rose   { color: var(--rose-text); }
 .tag-violet { color: var(--violet); }
 .tag-bleu   { color: var(--bleu); }
 
@@ -285,4 +287,14 @@ footer {
 }
 .map-section .map-embed .map-placeholder p {
   color: #fff !important;
+}
+
+/* ---- ACCESSIBILITÉ (communs à toutes les pages) ---- */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.skip-link { position: absolute; left: 1rem; top: -5rem; z-index: 1000; background: #fff; color: var(--bleu); padding: .7rem 1.2rem; border-radius: 8px; font-weight: 600; text-decoration: underline; box-shadow: 0 4px 20px rgba(0,0,0,.25); }
+.skip-link:focus { top: 1rem; }
+main:focus { outline: none; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  .reveal, .pourquoi-card, .value-card, .tl-item, .team-card, .mission-item, .pillar, .actu-card, .actu-item, .presse-item, .real-card, .support-card, .stat-item { opacity: 1 !important; transform: none !important; }
 }
