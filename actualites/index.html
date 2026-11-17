@@ -3,15 +3,21 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-MMCJPQDF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-</script>
 <meta charset="UTF-8">
 <link rel="icon" type="image/png" href="/images/logo_onglet.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://www.asso-eancre.fr/actualites/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="l'eancre">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Actualités — l'eancre">
+<meta property="og:description" content="Les actualités de l'eancre — événements, expositions, presse et vie de l'association.">
+<meta property="og:url" content="https://www.asso-eancre.fr/actualites/">
+<meta property="og:image" content="https://www.asso-eancre.fr/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Logo de l'eancre, association pour les patients en soins palliatifs à Riom">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="description" content="Les actualités de l'eancre — événements, expositions, presse et vie de l'association.">
 <title>Actualités — l'eancre</title>
 {% include fonts.html %}
@@ -87,6 +93,7 @@
   .actu-list { grid-template-columns:1fr; }
 }
 </style>
+{% include gtm.html %}
 </head>
 <body>
 
@@ -145,7 +152,7 @@
           <h3>Octobre Rose 2026 avec le Ruban Rose</h3>
           <p>Théâtre, randos, concerts, balade culturelle... Le Ruban Rose Entre Limagne et Volcans 63 reverse 60&nbsp;% de ses dons à l'eancre pour financer les soins de support à l'Hôpital de Jour.</p>
           <div style="display:flex;flex-direction:column;align-items:flex-start">
-            <a href="/doc/octobre-rose-2026.pdf" target="_blank" class="actu-item-link">Voir le programme complet →</a>
+            <a href="/doc/octobre-rose-2026.pdf" target="_blank" rel="noopener" class="actu-item-link">Voir le programme complet →</a>
             <a href="https://octobrerose.fondation-arc.org/" target="_blank" rel="noopener" class="btn-rose" style="margin-top:1.1rem;padding:.65rem 1.4rem;font-size:.82rem">Site officiel de l'événement →</a>
           </div>
         </div>
@@ -292,14 +299,6 @@
 {% include footer.html %}
 
 <script>
-const burger=document.getElementById('burger'),navMob=document.getElementById('navMobile');
-function menuOpen(){navMob.classList.add('open');burger.classList.add('open');document.body.style.overflow='hidden';}
-function menuClose(){navMob.classList.remove('open');burger.classList.remove('open');document.body.style.overflow='';}
-burger.addEventListener('click',()=>burger.classList.contains('open')?menuClose():menuOpen());
-navMob.querySelectorAll('a').forEach(a=>a.addEventListener('click',menuClose));
-document.getElementById('navClose').addEventListener('click', menuClose);
-document.addEventListener('click', e => { if (navMob.classList.contains('open') && !navMob.contains(e.target) && !burger.contains(e.target)) menuClose(); });
-document.addEventListener('keydown',e=>{if(e.key==='Escape')menuClose();});
 const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});},{threshold:.1});
 document.querySelectorAll('.reveal,.actu-item,.presse-item').forEach((el,i)=>{
   if(el.classList.contains('actu-item')||el.classList.contains('presse-item'))el.style.transitionDelay=(i%3)*0.12+'s';
