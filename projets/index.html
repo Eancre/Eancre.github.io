@@ -3,15 +3,21 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-MMCJPQDF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-</script>
 <meta charset="UTF-8">
 <link rel="icon" type="image/png" href="/images/logo_onglet.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://www.asso-eancre.fr/projets/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="l'eancre">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Nos projets — l'eancre">
+<meta property="og:description" content="Les projets et réalisations de l'eancre — confort, soins de support, soutien aux soignants.">
+<meta property="og:url" content="https://www.asso-eancre.fr/projets/">
+<meta property="og:image" content="https://www.asso-eancre.fr/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Logo de l'eancre, association pour les patients en soins palliatifs à Riom">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="description" content="Les projets et réalisations de l'eancre — confort, soins de support, soutien aux soignants.">
 <title>Nos projets — l'eancre</title>
 {% include fonts.html %}
@@ -95,6 +101,7 @@
   .featured-meta { grid-template-columns:1fr; }
 }
 </style>
+{% include gtm.html %}
 </head>
 <body>
 
@@ -136,7 +143,7 @@
       </div>
       <div style="display:flex;gap:.8rem;flex-wrap:wrap">
         <a href="/actualites/" class="btn-rose">Voir les actualités</a>
-        <a href="/doc/Pourquoi cette expo.pdf" target="_blank" class="btn-outline-white">Mot de l'artiste</a>
+        <a href="/doc/Pourquoi cette expo.pdf" target="_blank" rel="noopener" class="btn-outline-white">Mot de l'artiste</a>
       </div>
     </div>
     <div class="reveal" style="transition-delay:.2s">
@@ -283,14 +290,6 @@
 {% include footer.html %}
 
 <script>
-const burger=document.getElementById('burger'),navMob=document.getElementById('navMobile');
-function menuOpen(){navMob.classList.add('open');burger.classList.add('open');document.body.style.overflow='hidden';}
-function menuClose(){navMob.classList.remove('open');burger.classList.remove('open');document.body.style.overflow='';}
-burger.addEventListener('click',()=>burger.classList.contains('open')?menuClose():menuOpen());
-navMob.querySelectorAll('a').forEach(a=>a.addEventListener('click',menuClose));
-document.getElementById('navClose').addEventListener('click', menuClose);
-document.addEventListener('click', e => { if (navMob.classList.contains('open') && !navMob.contains(e.target) && !burger.contains(e.target)) menuClose(); });
-document.addEventListener('keydown',e=>{if(e.key==='Escape')menuClose();});
 const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});},{threshold:.1});
 document.querySelectorAll('.reveal,.real-card,.support-card').forEach((el,i)=>{
   if(el.classList.contains('real-card')||el.classList.contains('support-card'))el.style.transitionDelay=(i%3)*0.12+'s';
