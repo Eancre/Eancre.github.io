@@ -1,0 +1,89 @@
+{% unless page.url contains "/cookies" %}
+<div class="cb" id="cb" role="region" aria-labelledby="cb-title" hidden>
+  <p class="cb-title" id="cb-title">Cookies et services externes</p>
+  <p>Pour afficher la carte Google Maps et le formulaire de don HelloAsso, ces services peuvent déposer divers cookies. Vous pouvez les autoriser ou les refuser, et changer d'avis à tout moment. <a href="/cookies/">En savoir plus</a></p>
+  <div class="cb-panel" id="cb-panel" hidden>
+    <p class="cb-cat"><strong>Contenus tiers</strong> : services externes affichés sur certaines pages.</p>
+    <label class="cb-switch"><input type="checkbox" id="cb-maps"><span class="cb-switch-ui" aria-hidden="true"></span><span class="cb-switch-text"><strong>Google Maps</strong><small>Carte de la page Contact. Google peut déposer des cookies.</small></span></label>
+    <label class="cb-switch"><input type="checkbox" id="cb-helloasso"><span class="cb-switch-ui" aria-hidden="true"></span><span class="cb-switch-text"><strong>HelloAsso</strong><small>Formulaire de don de la page Don. HelloAsso et ses partenaires peuvent déposer des cookies.</small></span></label>
+  </div>
+  <div class="cb-actions">
+    <button type="button" class="cb-btn" id="cb-refuse">Tout refuser</button>
+    <button type="button" class="cb-btn" id="cb-custom" aria-controls="cb-panel" aria-expanded="false">Personnaliser</button>
+    <button type="button" class="cb-btn" id="cb-accept">Tout accepter</button>
+  </div>
+</div>
+{% endunless %}
+<script>
+/* Consentement aux services externes (v1) — voir CONSENT-CHANGELOG.md
+   Choix mémorisé dans le navigateur (localStorage « eancre_consent »), valable 180 jours. */
+(function () {
+  'use strict';
+  var KEY = 'eancre_consent', VERSION = 1, MAX_AGE = 180 * 24 * 3600 * 1000;
+  var SERVICES = ['maps', 'helloasso'];
+  var listeners = [], mem = null;
+
+  function load() {
+    var d = null;
+    try { d = JSON.parse(window.localStorage.getItem(KEY)); } catch (e) {}
+    if (!d && mem) d = mem;
+    if (!d || d.v !== VERSION || typeof d.ts !== 'number' || Date.now() - d.ts > MAX_AGE) return null;
+    return d;
+  }
+  var state = load();
+
+  function choices() {
+    var c = {};
+    SERVICES.forEach(function (s) { c[s] = !!(state && state.c && state.c[s]); });
+    return c;
+  }
+  function notify() {
+    listeners.slice().forEach(function (fn) { try { fn(api.get()); } catch (e) {} });
+    render();
+  }
+  function save(c) {
+    var d = { v: VERSION, ts: Date.now(), c: {} };
+    SERVICES.forEach(function (s) { d.c[s] = !!c[s]; });
+    mem = d; state = d;
+    try { window.localStorage.setItem(KEY, JSON.stringify(d)); } catch (e) {}
+    notify();
+  }
+
+  var api = window.EancreConsent = {
+    decided: function () { return !!state; },
+    has: function (s) { return !!(state && state.c && state.c[s]); },
+    get: function () { return { decided: !!state, choices: choices(), ts: state ? state.ts : null, expires: state ? state.ts + MAX_AGE : null }; },
+    set: function (c) { save(c); },
+    all: function (v) { var c = {}; SERVICES.forEach(function (s) { c[s] = !!v; }); save(c); },
+    allow: function (s) { var c = choices(); c[s] = true; save(c); },
+    on: function (fn) { listeners.push(fn); }
+  };
+
+  /* Bandeau (absent de la page /cookies/) */
+  var box = document.getElementById('cb');
+  function render() { if (box) box.hidden = !!state; }
+  if (box) {
+    var panel = document.getElementById('cb-panel'), custom = document.getElementById('cb-custom'), open = false;
+    document.getElementById('cb-refuse').addEventListener('click', function () { api.all(false); });
+    document.getElementById('cb-accept').addEventListener('click', function () { api.all(true); });
+    custom.addEventListener('click', function () {
+      if (!open) {
+        open = true; panel.hidden = false;
+        custom.textContent = 'Enregistrer mes choix';
+        custom.setAttribute('aria-expanded', 'true');
+        document.getElementById('cb-maps').focus();
+      } else {
+        var c = {};
+        SERVICES.forEach(function (s) { c[s] = document.getElementById('cb-' + s).checked; });
+        save(c);
+      }
+    });
+  }
+  render();
+
+  /* Un choix fait dans un autre onglet s'applique ici aussi */
+  window.addEventListener('storage', function (e) {
+    if (e.key === KEY) { state = load(); notify(); }
+  });
+})();
+</script>
