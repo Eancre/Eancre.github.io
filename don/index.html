@@ -2,7 +2,7 @@
 ---
 <!DOCTYPE html>
 <html lang="fr">
-<head> 
+<head>
 <meta charset="UTF-8">
 <link rel="icon" type="image/png" href="/images/logo_onglet.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -84,7 +84,6 @@ body { min-width: 320px; }
   .don-widget h2 { font-size: 1.15rem; }
 }
 </style>
-{% include gtm.html %}
 </head>
 <body>
 
@@ -113,8 +112,14 @@ body { min-width: 320px; }
       <div class="don-widget">
         <h2>Je fais un don</h2>
         <p>Chaque geste compte — ponctuel ou mensuel, choisissez ci-dessous</p>
-        <div class="don-iframe-wrap" style="margin-top:.5rem;border-radius:16px;overflow:hidden">
-          <iframe id="haWidget" title="Formulaire de don HelloAsso — l'eancre" allow="payment 'self' https://paymenthub.helloassopay.com https://helloasso.com" loading="lazy" src="https://www.helloasso.com/associations/l-eancre/formulaires/1/widget" style="width:100%;height:750px;border:none;display:block"></iframe>
+        <div class="don-iframe-wrap" id="haBox" style="margin-top:.5rem;border-radius:16px;overflow:hidden">
+          <div class="consent-box" id="haFacade">
+            <p class="consent-title">Formulaire de don HelloAsso</p>
+            <p>Le formulaire est fourni par HelloAsso, un service externe qui peut déposer divers cookies. Pour l'afficher, vous devez l'autoriser.</p>
+            <button type="button" class="btn-rose" id="haLoad" hidden>Autoriser HelloAsso et afficher le formulaire</button>
+            <p><a href="https://www.helloasso.com/associations/l-eancre/formulaires/1" target="_blank" rel="noopener">Donner directement sur HelloAsso<span class="sr-only"> (nouvel onglet)</span></a></p>
+            <p><a href="/cookies/">En savoir plus sur les cookies</a></p>
+          </div>
         </div>
         <p class="don-info">Paiement sécurisé · Reçu fiscal par e-mail<br>Association loi 1901 — <a href="/mentions-legales/">Mentions légales</a></p>
       </div>
@@ -200,10 +205,36 @@ document.querySelectorAll('.reveal,.pourquoi-card').forEach((el,i)=>{
   io.observe(el);
 });
 
-window.addEventListener('message',function(e){
-  const dataHeight=e.data && e.data.height;
-  const haWidgetElement=document.getElementById('haWidget');
-  if(dataHeight>parseFloat(haWidgetElement.style.height||0)){haWidgetElement.style.height=dataHeight+'px';}
+</script>
+<script>
+// Formulaire HelloAsso : affiché seulement si le visiteur l'a autorisé
+(function () {
+  var C = window.EancreConsent, btn = document.getElementById('haLoad'), box = document.getElementById('haBox');
+  if (!C || !btn || !box) return;
+  btn.hidden = false;
+  function sync() {
+    var shown = document.getElementById('haWidget');
+    if (C.has('helloasso') && !shown) {
+      var f = document.createElement('iframe');
+      f.id = 'haWidget';
+      f.title = "Formulaire de don HelloAsso — l'eancre";
+      f.setAttribute('allow', "payment 'self' https://paymenthub.helloassopay.com https://helloasso.com");
+      f.src = 'https://www.helloasso.com/associations/l-eancre/formulaires/1/widget';
+      f.style.cssText = 'width:100%;height:750px;border:none;display:block';
+      box.replaceChildren(f);
+    } else if (!C.has('helloasso') && shown) {
+      location.reload();   // accord retiré dans un autre onglet : on revient à l'encadré
+    }
+  }
+  btn.addEventListener('click', function () { C.allow('helloasso'); });
+  C.on(sync); sync();
+})();
+</script>
+<script>
+window.addEventListener('message', function (e) {
+  var el = document.getElementById('haWidget');
+  var h = e.data && e.data.height;
+  if (el && h > parseFloat(el.style.height || 0)) { el.style.height = h + 'px'; }
 });
 </script>
 </body>
